@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nardo Fragrâncias | Perfumaria Independente</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/mobile.css">
+    <link rel="stylesheet" href="src/css/btn.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-container">
+                        <a href="/">
+                            <img src="src/assets/img/image.png" alt="N Fragrâncias Logo">
+                        </a>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Nardo Fragrâncias</h1>
+                        <p>Elegância em cada gota</p>
+                    </div>
+                </div>
+
+                <div class="nav-wrapper">
+                    <nav id="mainNav" class="header-nav" aria-label="Main Navigation">
+                        <button class="nav-close" aria-label="Fechar menu">&times;</button>
+                        <ul>
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#catalog">Catálogo</a></li>
+                            <li><a href="#chatbot">Chatbot</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="header-actions">
+                    <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <button class="cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count hidden" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-overlay" id="formOverlay">
+        <div class="form-modal">
+            <h2>Bem-vindo à N Fragrâncias</h2>
+            <p>Por favor, informe seu nome para continuar</p>
+            <input type="text" id="customerName" placeholder="Seu nome completo">
+            <button id="formSubmitBtn">Entrar</button>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content" data-sr>
+            <h1 class="logo">Nardo</h1>
+            <p class="tagline">Fragrâncias Independentes</p>
+            <a href="#catalog" class="cta-button">Ver Catálogo</a>
+            <a href="#chatbot" class="cta-button">Encontre Sua Fragrância</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="section-title text-center" data-sr>Nossa Essência</h2>
+                    <div class="about-content">
+                        <div class="img-about" data-sr>
+                            <img src="https://images.unsplash.com/photo-1709662217618-83586dc9b777?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVyZnVtYXJpYSUyMGZhYnJpY2ElQzMlQTclQzMlQTNvfGVufDB8fDB8fHww"
+                                alt="Sobre Nardo Fragrâncias">
+                        </div>
+                        <article class="about-text" data-sr>
+                            <p>
+                                ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                                labore et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut at reprehenderit
+                                fugit tempora, omnis ex sunt in aliquid voluptate blanditiis veritatis? Dolor officiis,
+                                reprehenderit ex perferendis aliquam similique vitae hic.
+                            </p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, nobis rerum? Nemo
+                                deleniti at et non explicabo reiciendis sequi sint. Dignissimos cupiditate velit debitis
+                                doloremque corrupti, consequatur id excepturi dolorem!
+                                ipsum dolor sit amet, consectetur adipiscing elit.
+                                <br> <br>Sed do eiusmod tempor incididunt ut
+                                labore et Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut at reprehenderit
+                                fugit tempora, omnis ex sunt in aliquid voluptate blanditiis veritatis? Dolor officiis,
+                                reprehenderit ex perferendis aliquam similique vitae hic.
+                            </p>
+                            <!-- A Nardo Fragrâncias nasceu da paixão pela perfumaria artesanal e independente.
+                            Cada fragrância é cuidadosamente desenvolvida para contar uma história única,
+                            combinando ingredientes nobres com criatividade e técnica refinada.
+                            Acreditamos que um perfume é mais do que um aroma – é uma expressão de identidade,
+                            uma memória viva que acompanha cada momento especial da sua jornada. -->
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section class="section catalog" id="catalog">
+        <div class="container">
+            <h2 class="section-title text-center" data-sr>Catálogo Completo</h2>
+            <p class="text-center text-muted mb-5" data-sr>Explore nossa coleção exclusiva de fragrâncias artesanais</p>
+
+            <div class="products-grid" id="productsGrid">
+            </div>
+    </section>
+
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h3 id="modalProductName"></h3>
+            <p class="modal-description" id="modalProductDescription"></p>
+            <h4>Escolha o tamanho:</h4>
+            <div class="sizes-grid" id="sizesGrid"></div>
+        </div>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Sacola</h3>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">Sua sacola está vazia</div>
+        </div>
+        <div class="cart-total hidden" id="cartTotal">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="totalPrice">R$ 0</span>
+            </div>
+        </div>
+        <button class="checkout-btn hidden" id="checkoutBtn">
+            <i class="fab fa-whatsapp"></i>
+            Finalizar no WhatsApp
+        </button>
+    </div>
+
+    <!-- CHATBOT SECTION -->
+    <section class="section chatbot" id="chatbot">
+        <div class="container">
+            <h2 class="section-title text-center" data-sr>Encontre Sua Fragrância Ideal</h2>
+            <div class="chat-container" data-sr>
+                <div class="chat-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+                <div class="chat-description">
+                    <p>
+                        Não sabe qual fragrância escolher? Nossa assistente virtual está pronta para te ajudar!
+                    </p>
+                    <p>
+                        Descreva suas preferências e receba recomendações personalizadas baseadas em:
+                    </p>
+                    <ul class="text-start mt-3" style="max-width: 500px; margin: 0 auto;">
+                        <li>Suas notas olfativas favoritas</li>
+                        <li>Ocasiões de uso</li>
+                        <li>Intensidade desejada</li>
+                        <li>Personalidade e estilo</li>
+                    </ul>
+                </div>
+                <button class="btn-start-chat" id="chatIa">
+                    <i class="bi bi-chat-heart"></i>
+                    Iniciar Consulta Personalizada
+                </button>
+                <p class="text-center mt-3 text-muted" style="font-size: 0.9rem;">
+                    <i class="bi bi-lock"></i> Conversas seguras e confidenciais
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="section-title text-center" data-sr>Entre em Contato</h2>
+                    <div class="contact-info text-center" data-sr>
+                        <p>Descubra nossas fragrâncias exclusivas</p>
+                        <p class="mt-3">
+                            <i class="bi bi-envelope"></i>
+                            <a href="mailto:contato@nardofragrancias.com">contato@nardofragrancias.com</a>
+                        </p>
+                        <p class="mt-2">
+                            <i class="bi bi-whatsapp"></i>
+                            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre as fragrâncias Nardo."
+                                target="_blank">(11) 99999-9999</a>
+                        </p>
+                        <p class="mt-2">
+                            <i class="bi bi-clock"></i>
+                            Atendimento: Segunda a Sexta, 9h às 18h
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="floating-btns">
+        <button class="float-btn ia-btn" id="chatButton" title="Conversar com IA" aria-label="Chat com IA">
+            <i class="fas fa-comments"></i>
+        </button>
+
+        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre as fragrâncias Nardo."
+            target="_blank" class="float-btn whatsapp-btn" title="Conversar no WhatsApp" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+    </button>
+
+    <div class="chat-modal" id="chatModal">
+        <button class="close-button" id="closeButton" aria-label="Fechar chat">&times;</button>
+        <iframe class="chat-iframe" src="https://app.gptmaker.ai/widget/3ED0C095A04EB082D6A612638AEAD7A8/iframe"
+            allow="microphone;" loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- <iframe src="https://app.gptmaker.ai/widget/3ED0B1E9216794DBD7057EB3FEA8D57E/iframe" width="100%"
+        style="height: 100%; min-height: 700px; " allow="microphone;" frameborder="0">
+    </iframe> -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Nardo Fragrâncias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ScrollReveal JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="src/scripts/index.js"></script>
+    <!-- GPTMaker Widget Script -->
+    <script>
+        const chatModal = document.getElementById('chatModal');
+        const closeButton = document.getElementById('closeButton');
+        const floatingButton = document.getElementById('chatButton');
+
+        // Função para abrir o chat
+        function openChat(event) {
+            event.stopPropagation();
+            chatModal.classList.add('active');
+        }
+
+        // Função para fechar o chat
+        function closeChat() {
+            chatModal.classList.remove('active');
+        }
+
+        // Configurar botão flutuante (desaparece ao abrir)
+        if (floatingButton) {
+            floatingButton.addEventListener('click', (e) => {
+                openChat(e);
+                floatingButton.style.display = 'none';
+            });
+        }
+
+        const button2 = document.getElementById('chatIa');
+        if (button2) {
+            button2.addEventListener('click', openChat);
+        }
+
+        // Botão de fechar
+        if (closeButton) {
+            closeButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeChat();
+                // Só mostra o botão flutuante novamente se ele existir
+                if (floatingButton) {
+                    floatingButton.style.display = 'flex';
+                }
+            });
+        }
+
+        // Fechar ao clicar fora do modal
+        document.addEventListener('click', (e) => {
+            if (!chatModal.contains(e.target) && chatModal.classList.contains('active')) {
+                closeChat();
+                if (floatingButton) {
+                    floatingButton.style.display = 'flex';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

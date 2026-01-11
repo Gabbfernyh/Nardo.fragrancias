@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+}
+
+/* ============================================
+        VARIÁVEIS DE CUSTOMIZAÇÃO
+        ============================================ */
+:root {
+    --cor-primaria: #c2a375;
+    --cor-primaria-hover: #e0c799;
+    --cor-secundaria: #1a1a1a;
+    --cor-terciaria: #4a4a4a;
+    --cor-fundo-claro: #f9f9f9;
+    --cor-fundo-escuro: #2c2c2c;
+    --cor-texto-principal: #2c2c2c;
+    --cor-texto-secundario: #555;
+    --cor-texto-claro: #e0e0e0;
+    --cor-borda: #e0e0e0;
+    --cor-sucesso: #28a745;
+    --cor-whatsapp: #25D366;
+
+    --fonte-principal: 'Segoe UI', sans-serif, 'Georgia';
+    --fonte-secundaria: 'Arial', sans-serif;
+    --tamanho-logo: 4rem;
+    --tamanho-titulo: 2.5rem;
+    --tamanho-subtitulo: 1.5rem;
+    --tamanho-texto: 1.1rem;
+    --tamanho-texto-pequeno: 0.95rem;
+    --espacamento-letra-logo: 8px;
+    --espacamento-letra-titulo: 3px;
+    --espacamento-letra-botao: 2px;
+
+    --padding-secao: 100px;
+    --border-radius: 0px;
+    --whatsapp-numero: 5511999999999;
+}
