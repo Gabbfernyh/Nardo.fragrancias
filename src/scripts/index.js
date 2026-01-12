@@ -1,6 +1,6 @@
 // Código limpo: pequenas melhorias de interação
 
-const whatsappNumber = '5511999999999'; // Alterar conforme necessário
+const whatsappNumber = '5511993768869'; // Alterar conforme necessário
 
 var products = [
     {
@@ -417,16 +417,16 @@ function finalizeOrder() {
         return;
     }
 
-    var message = 'Olá! Meu nome é *' + customerName + '*%0A%0A*Pedido:*%0A';
+    var message = 'Olá! Meu nome é ' + ' ' +'*'+customerName +'*'+ ' ' + '\n' + '*Pedido*:' + '\n';
     for (var i = 0; i < cart.length; i++) {
         var item = cart[i];
-        message += '%0A' + (i + 1) + '. ' + item.productName + ' - ' + item.size + ' - R$ ' + item.price;
+        message += '' + (i + 1) + '. ' + item.productName + ' - ' + item.size + ' - R$ ' + ' ' + ' ' +item.price + '\n';
     }
     var total = 0;
     for (var i = 0; i < cart.length; i++) {
         total += cart[i].price;
     }
-    message += '%0A%0A*Total: R$ ' + total + '*';
+    message += '*Total: R$ ' + ' ' + total + '*';
 
     const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
     window.open(url, '_blank');

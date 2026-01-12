@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/mobile.css">
-    <link rel="stylesheet" href="src/css/btn.css">
+    <link rel="stylesheet" href="src/css/response.css">
 </head>
 
 <body>
@@ -25,9 +24,7 @@
             <div class="header-content">
                 <div class="logo-section">
                     <div class="logo-container">
-                        <a href="/">
-                            <img src="src/assets/img/image.png" alt="N Fragrâncias Logo">
-                        </a>
+                        <img class="logoImg" src="src/assets/img/image.png" alt="N Fragrâncias Logo">
                     </div>
                     <div class="logo-text">
                         <h1>Nardo Fragrâncias</h1>
@@ -39,8 +36,9 @@
                     <nav id="mainNav" class="header-nav" aria-label="Main Navigation">
                         <button class="nav-close" aria-label="Fechar menu">&times;</button>
                         <ul>
-                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#hero">Inicio</a></li>
                             <li><a href="#about">Sobre</a></li>
+                            <li><a href="#job">Nosso Trabalho</a></li>
                             <li><a href="#catalog">Catálogo</a></li>
                             <li><a href="#chatbot">Chatbot</a></li>
                             <li><a href="#contact">Contato</a></li>
@@ -54,25 +52,32 @@
                     </button>
 
                     <button class="cart-btn" id="cartBtn">
-                        <i class="fas fa-shopping-bag"></i>
+                        <i class="fa-solid fa-cart-shopping"></i>
                         <span class="cart-count hidden" id="cartCount">0</span>
                     </button>
+
+                    <div class="search">
+                        <!-- <input type="search" id="searchInput" class="search-input" placeholder="Buscar..." aria-label="Buscar perfumes"/> -->
+                        <button class="search-btn" id="searchBtn">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="form-overlay" id="formOverlay">
+    <!-- <div class="form-overlay" id="formOverlay">
         <div class="form-modal">
-            <h2>Bem-vindo à N Fragrâncias</h2>
+            <h2>Bem-vindo à <br> Nardo Fragrâncias</h2>
             <p>Por favor, informe seu nome para continuar</p>
             <input type="text" id="customerName" placeholder="Seu nome completo">
             <button id="formSubmitBtn">Entrar</button>
         </div>
-    </div>
+    </div> -->
 
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content" data-sr>
             <h1 class="logo">Nardo</h1>
             <p class="tagline">Fragrâncias Independentes</p>
@@ -114,6 +119,54 @@
                             Acreditamos que um perfume é mais do que um aroma – é uma expressão de identidade,
                             uma memória viva que acompanha cada momento especial da sua jornada. -->
                         </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="abou-job section" id="job">
+        <div class="containerJ">
+            <h2 class="sectionJob-title text-center" data-sr>Nosso Trabalho</h2>
+
+            <div class="job-content">
+                <div class="job-text" data-sr>
+                    <p class="intro-text">
+                        Muito mais que um perfume: uma experiência sensorial completa.
+                        Nossa missão é criar fragrâncias que encantam e marcam a memória, combinando tradição e
+                        inovação.
+                        Valorizamos a autenticidade e o cuidado em cada detalhe para oferecer uma perfumaria de
+                        excelência que seja acessível a todos.
+                    </p>
+
+                    <p class="intro-bridge">
+                        <strong>O que você pode esperar da Nardo Fragrâncias?</strong>
+                    </p>
+
+                    <ul class="characteristics">
+                        <li class="characteristics-item">
+                            <h3>⏳ Alta Fixação e Performance</h3>
+                            <p>Nossos perfumes são desenvolvidos com concentração otimizada para garantir longa duração
+                                na pele, acompanhando você durante todo o dia. E esta nossa duração é de <b>6 a 8 horas</b></p>
+                        </li>
+
+                        <li class="characteristics-item">
+                            <h3>🚚 Entrega Ágil e Segura</h3>
+                            <p>Sabemos que a expectativa é alta. Por isso, garantimos envio rápido e embalagens
+                                reforçadas para que seu perfume chegue intacto e pronto para usar.</p>
+                        </li>
+
+                        <li class="characteristics-item">
+                            <h3>💎 Qualidade Premium</h3>
+                            <p>Utilizamos matérias-primas selecionadas para criar experiências olfativas únicas, unindo
+                                sofisticação e preço justo.</p>
+                        </li>
+                    </ul>
+
+                    <div class="slogan-container">
+                        <p class="slogan">
+                            "Fragrâncias que ficam. Memórias que duram."
+                        </p>
                     </div>
                 </div>
             </div>

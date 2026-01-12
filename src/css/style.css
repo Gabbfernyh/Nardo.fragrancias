@@ -1,8 +1,14 @@
 @import url('reset.css');
 
 html {
-    overflow-y: scroll; /* força scrollbar sempre visível, evita salto horizontal */
-    overflow-x: clip; /* clipa o overflow horizontal ao invés de permitir scroll */
+    overflow-y: scroll;
+    /* força scrollbar sempre visível, evita salto horizontal */
+    overflow-x: clip;
+    /* clipa o overflow horizontal ao invés de permitir scroll */
+    scrollbar-color: rgb(121, 102, 20) transparent;
+    /* cor da scrollbar */
+    scroll-padding: 2px;
+
 }
 
 body {
@@ -13,9 +19,10 @@ body {
 }
 
 header {
-    border-bottom: 2px solid #d97706;
-    background: linear-gradient(90deg, #000 0%, #78350f 50%, #000 100%);
-    height: 72px; /* fixed header height to match manual */
+    border-bottom: 2px solid #ccab17;
+    background: linear-gradient(90deg, #3a3737 0%, #000000 50%, #4d3c0f 100%);
+    height: 72px;
+    /* fixed header height to match manual */
     position: fixed;
     width: 100%;
     top: 0;
@@ -29,14 +36,16 @@ header {
 .nav-wrapper {
     flex: 1 1 auto;
     display: flex;
-    justify-content: center; /* mantém nav central dentro do header flex */
+    justify-content: center;
+    /* mantém nav central dentro do header flex */
 }
 
 .header-nav {
     display: flex;
     gap: 12px;
     align-items: center;
-    position: static; /* no absolute on desktop */
+    position: static;
+    /* no absolute on desktop */
 }
 
 /* mobile cart list item */
@@ -81,8 +90,10 @@ header {
     color: #fcd34d;
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.88rem; /* menor para encaixe */
-    padding: 4px 8px; /* padding reduzido */
+    font-size: 0.88rem;
+    /* menor para encaixe */
+    padding: 4px 8px;
+    /* padding reduzido */
     border-radius: 6px;
     transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
@@ -100,7 +111,8 @@ header {
     background: transparent;
     border: none;
     color: #fbbf24;
-    font-size: 20px; /* tamanho reduzido */
+    font-size: 20px;
+    /* tamanho reduzido */
     cursor: pointer;
     padding: 6px;
 }
@@ -122,10 +134,10 @@ header {
         top: calc(100% + 8px);
         left: 12px;
         right: 12px;
-        background: linear-gradient(180deg, rgba(0,0,0,0.98) 0%, rgba(120,53,15,0.95) 100%);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(120, 53, 15, 0.95) 100%);
         padding: 12px 16px;
         border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         display: none;
         /* no transitions or transforms - keep simple */
         flex-direction: column;
@@ -209,12 +221,12 @@ header {
     }
 }
 
-.container {
+/* .container {
 }
 
 .header-content {
     
-}
+} */
 
 .img-about img {
     width: 350px;
@@ -229,14 +241,19 @@ header {
     align-items: center;
     justify-content: flex-start;
     padding-top: 45px;
-    gap: 40px; /* maior espaçamento entre imagem e texto */
+    gap: 40px;
+    /* maior espaçamento entre imagem e texto */
 }
 
 .about-text {
-    text-align: left; /* garante linhas alinhadas na mesma margem */
-    max-width: 640px; /* limita largura do texto para melhor leitura */
-    margin: 0; /* remove margens herdadas */
-    padding: 0 29px; /* padding lateral para evitar que o texto encoste na borda */
+    text-align: left;
+    /* garante linhas alinhadas na mesma margem */
+    max-width: 640px;
+    /* limita largura do texto para melhor leitura */
+    margin: 0;
+    /* remove margens herdadas */
+    padding: 0 29px;
+    /* padding lateral para evitar que o texto encoste na borda */
 }
 
 @media (max-width: 1024px) {
@@ -254,7 +271,8 @@ header {
     }
 
     .about-text {
-        text-align: center; /* mantém legibilidade em telas pequenas */
+        text-align: center;
+        /* mantém legibilidade em telas pequenas */
         max-width: 100%;
         padding: 0 12px;
     }
@@ -263,19 +281,29 @@ header {
 .logo-section {
     display: flex;
     align-items: center;
-    gap: 8px; /* reduzir espaçamento para melhor encaixe */
-    
+    gap: 8px;
+    /* reduzir espaçamento para melhor encaixe */
+
 }
 
-.logo-container img {
+/* .logo-container img {
     height: 56px;
     width: auto;
     border: 1px solid #d97706;
     border-radius: 8px;
     object-fit: cover;
+} */
+
+.logoImg {
+    height: 58px;
+    width: auto;
+    /* border: 1px solid #d97706; */
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .logo-text h1 {
+    padding-top: 7px;
     color: #fbbf24;
     font-size: 22px;
     margin-bottom: 5px;
@@ -293,7 +321,8 @@ header .cart-btn {
 }
 
 .header-actions .cart-btn {
-    position: relative; /* mantém badge posicionada corretamente */
+    position: relative;
+    /* mantém badge posicionada corretamente */
 }
 
 /* Desktop: center the nav absolutely inside header */
@@ -308,7 +337,8 @@ header .cart-btn {
     }
 
     .header-nav {
-        position: static; /* inline inside the wrapper */
+        position: static;
+        /* inline inside the wrapper */
         display: flex;
         gap: 20px;
         align-items: center;
@@ -317,7 +347,8 @@ header .cart-btn {
     /* place header actions (cart) at the far right inside header-content */
     .header-actions {
         position: absolute;
-        right: 18px; /* slight more inset to match manual */
+        right: 18px;
+        /* slight more inset to match manual */
         top: 50%;
         transform: translateY(-50%);
         display: flex;
@@ -505,22 +536,42 @@ header .cart-btn {
 
 .cart-btn {
     position: relative;
-    background: #d97706;
+    /* background: #ddd898; */
+    background: none;
     border: none;
-    padding: 15px;
-    border-radius: 50%;
+    padding: 13px;
+    border-radius: 100%;
     cursor: pointer;
     transition: all 0.3s;
 }
 
+.search-btn {
+    position: relative;
+    background: none;
+    border: none;
+    padding: 11px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-btn i {
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.search-btn:hover {
+    transform: scale(1.1);
+}
+
 .cart-btn:hover {
-    background: #fbbf24;
+    /* background: #fbbf24; */
     transform: scale(1.1);
 }
 
 .cart-btn i {
-    color: #000;
-    font-size: 24px;
+    color: #ffffff;
+    font-size: 22px;
 }
 
 .cart-count {
@@ -575,7 +626,7 @@ header .cart-btn {
 .product-card:hover {
     border-color: #fbbf24;
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 18px 30px rgba(0,0,0,0.45);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
 }
 
 .product-image {
@@ -955,7 +1006,7 @@ header .cart-btn {
 
 /* ABOUT SECTION */
 .about {
-    background: var(--cor-fundo-claro);    
+    background: var(--cor-fundo-claro);
 }
 
 .about-text {
@@ -1204,6 +1255,250 @@ header .cart-btn {
     color: white;
 }
 
+/* --- Configurações Gerais da Seção --- */
+.abou-job {
+    height: 100vh;
+    padding: 2rem 1rem;
+    /* Espaçamento interno generoso */
+    background-color: #fcfcfc;
+    /* Fundo off-white para elegância */
+    color: #333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* Fonte limpa */
+}
+
+.containerJ {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Título Principal --- */
+.sectionJob-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Detalhe dourado abaixo do título (opcional) */
+.sectionJob-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #d4af37;
+    /* Dourado */
+    margin: 10px auto 0;
+}
+
+/* --- Textos de Introdução --- */
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.intro-bridge {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #d4af37;
+    /* Dourado */
+    margin-bottom: 3rem;
+}
+
+/* --- Grid de Características (Cards) --- */
+.characteristics {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Responsivo automático */
+    gap: 2rem;
+    /* Espaço entre os cards */
+    margin-bottom: 3rem;
+}
+
+.characteristics-item {
+    background: #ffffff;
+    padding: 1.8rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Sombra suave e moderna */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    /* Centraliza conteúdo do card */
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.characteristics-item:hover {
+    transform: translateY(-5px);
+    /* Sobe levemente */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.characteristics-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    /* Coloca o ícone em cima do texto */
+    align-items: center;
+    gap: 10px;
+}
+
+.characteristics-item p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* --- Slogan Final --- */
+.slogan-container {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.slogan {
+    font-family: 'Georgia', serif;
+    /* Fonte serifada para sofisticação */
+    font-style: italic;
+    font-size: 1.1em;
+    color: #1a1a1a;
+    background: #fdf8e4;
+    /* Fundo levemente dourado */
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 1px solid #efe3c2;
+}
+
+.chat-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e2131 0%, #634d04 100%);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.chat-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.chat-button svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+}
+
+.chat-modal {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 999;
+}
+
+.chat-modal.active {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+    z-index: 1000;
+}
+
+.close-button:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.chat-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 480px) {
+    .chat-modal {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 120px);
+        right: 10px;
+        bottom: 80px;
+    }
+
+    .chat-button {
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+.demo-content {
+    text-align: center;
+    color: white;
+}
+
+.demo-content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.demo-content p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
 /* FOOTER */
 footer {
     background: var(--cor-secundaria);
@@ -1219,17 +1514,22 @@ footer {
 }
 
 /* Focus styles for accessibility */
-button:focus, a:focus, .size-option:focus, .product-card:focus {
+button:focus,
+a:focus,
+.size-option:focus,
+.product-card:focus {
     outline: 3px solid rgba(249, 115, 22, 0.35);
     outline-offset: 3px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
+
     /* hide header cart in mobile (we'll show floating cart) */
     .header-actions .cart-btn {
         display: none;
     }
+
     :root {
         --tamanho-logo: 2.5rem;
         --tamanho-titulo: 2rem;
@@ -1287,5 +1587,10 @@ button:focus, a:focus, .size-option:focus, .product-card:focus {
     display: none;
 }
 
-.float-cart-btn.opened i { display: none; }
-.float-cart-btn.opened .float-close { display: block; }
+.float-cart-btn.opened i {
+    display: none;
+}
+
+.float-cart-btn.opened .float-close {
+    display: block;
+}
