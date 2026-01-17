@@ -84,47 +84,63 @@ section[id] {
         position: relative;
     }
 
-    /* O Modal do Chat */
+    /* MODAL DO CHAT */
     .chat-modal {
         position: fixed;
         bottom: 0;
         right: 0;
         width: 100%;
         height: 85vh;
-        /* Ocupa a maior parte da tela, mas deixa ver o fundo */
         background: #fff;
         z-index: 2000;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
         display: none;
-        /* Ativado pela classe .active */
         flex-direction: column;
+        /* Impede que o modal em si vaze para os lados */
+        overflow: hidden;
     }
 
     .chat-modal.active {
         display: flex;
     }
 
-    /* Onde as mensagens aparecem */
+    /* CONTAINER DE CONVERSA - O CORAÇÃO DO AJUSTE */
     .chat-container {
         flex: 1;
+        width: 100%;
+        /* Força largura total */
+        max-width: 100%;
         padding: 15px;
-        overflow-y: auto;
         background: #f4f4f4;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
+
+        /* Gerenciamento de Scroll */
+        overflow-y: auto;
+        /* Scroll vertical liberado */
+        overflow-x: hidden !important;
+        /* Mata qualquer scroll horizontal */
+
+        /* Garante que o padding não "esprema" o conteúdo além do limite */
+        box-sizing: border-box;
     }
 
-    /* Estilização das bolhas de texto dentro da conversa */
+    /* AJUSTE DAS MENSAGENS PARA NÃO QUEBRAREM O LAYOUT */
     .chat-container .message {
+        width: auto;
         max-width: 85%;
-        padding: 10px 15px;
-        border-radius: 15px;
+        /* Limite para a bolha não encostar na outra parede */
+        padding: 12px 16px;
+        border-radius: 18px;
         font-size: 14px;
-        line-height: 1.4;
+        line-height: 1.5;
         word-wrap: break-word;
+        /* Força quebra de palavras longas */
+        overflow-wrap: break-word;
+        position: relative;
     }
 
     /* 3. PRODUTOS: UM POR LINHA E QUADRADOS */
