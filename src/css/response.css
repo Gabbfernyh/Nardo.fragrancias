@@ -31,16 +31,36 @@ section[id] {
     /* 1. HEADER REBAIXADO E FINO */
     header {
         height: 60px !important;
-        /* Altura fixa para controle total */
-        padding: 0 15px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.98);
+        padding: 0 10px !important;
+        /* Reduzi o padding lateral */
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        background: #000;
+        border-bottom: 1px solid #c5a059;
+    }
+
+    .header-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
+        /* Gap mínimo para não empurrar os ícones */
+    }
+
+    .logo-container {
+        margin-left: 0 !important;
+        /* Remove qualquer left que empurre o logo */
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ajuste para que o texto do logo não quebre ou empurre o menu */
+    .logo-text h1 {
+        font-size: clamp(14px, 4vw, 18px) !important;
+        margin: 0;
+        white-space: nowrap;
     }
 
     body {
@@ -62,6 +82,49 @@ section[id] {
         overflow: visible;
         /* Importante para não travar o scroll */
         position: relative;
+    }
+
+    /* O Modal do Chat */
+    .chat-modal {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 85vh;
+        /* Ocupa a maior parte da tela, mas deixa ver o fundo */
+        background: #fff;
+        z-index: 2000;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+        display: none;
+        /* Ativado pela classe .active */
+        flex-direction: column;
+    }
+
+    .chat-modal.active {
+        display: flex;
+    }
+
+    /* Onde as mensagens aparecem */
+    .chat-container {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Estilização das bolhas de texto dentro da conversa */
+    .chat-container .message {
+        max-width: 85%;
+        padding: 10px 15px;
+        border-radius: 15px;
+        font-size: 14px;
+        line-height: 1.4;
+        word-wrap: break-word;
     }
 
     /* 3. PRODUTOS: UM POR LINHA E QUADRADOS */
@@ -128,6 +191,38 @@ section[id] {
         text-align: center;
         padding-top: 10px;
     }
+
+    /* Área de Filtros */
+    .filter-controls.mb-5 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 15px;
+        margin-bottom: 2rem !important;
+    }
+
+    .filter-controls button,
+    .filter-controls .filter-item {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        background: #fff;
+        border: 1px solid #c5a059;
+        color: #000;
+    }
+
+    /* Texto do Sobre */
+    .about-text {
+        padding: 0 20px !important;
+        /* Garante que o texto não encoste na lateral */
+        text-align: center;
+        line-height: 1.6;
+        font-size: 18px;
+        color: #333;
+        margin: 20px auto;
+        max-width: 800px;
+    }
 }
 
 /* Ajuste extra para telas muito pequenas */
@@ -144,165 +239,4 @@ section[id] {
     .product-info h4 {
         font-size: 16px;
     }
-}
-
-
-
-
-
-
-
-@media (max-width: 1024px) {
-    header {
-        height: 60px !important;
-        padding: 0 10px !important;
-        /* Reduzi o padding lateral */
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #000;
-        border-bottom: 1px solid #c5a059;
-    }
-
-    .header-content {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 5px;
-        /* Gap mínimo para não empurrar os ícones */
-    }
-
-    .logo-container {
-        margin-left: 0 !important;
-        /* Remove qualquer left que empurre o logo */
-        display: flex;
-        align-items: center;
-    }
-
-    /* Ajuste para que o texto do logo não quebre ou empurre o menu */
-    .logo-text h1 {
-        font-size: clamp(14px, 4vw, 18px) !important;
-        margin: 0;
-        white-space: nowrap;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* O Modal do Chat */
-.chat-modal {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 85vh;
-    /* Ocupa a maior parte da tela, mas deixa ver o fundo */
-    background: #fff;
-    z-index: 2000;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
-    display: none;
-    /* Ativado pela classe .active */
-    flex-direction: column;
-}
-
-.chat-modal.active {
-    display: flex;
-}
-
-/* Onde as mensagens aparecem */
-.chat-container {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    background: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* Estilização das bolhas de texto dentro da conversa */
-.chat-container .message {
-    max-width: 85%;
-    padding: 10px 15px;
-    border-radius: 15px;
-    font-size: 14px;
-    line-height: 1.4;
-    word-wrap: break-word;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Área de Filtros */
-.filter-controls.mb-5 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    padding: 15px;
-    margin-bottom: 2rem !important;
-}
-
-.filter-controls button,
-.filter-controls .filter-item {
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    background: #fff;
-    border: 1px solid #c5a059;
-    color: #000;
-}
-
-/* Texto do Sobre */
-.about-text {
-    padding: 0 20px !important;
-    /* Garante que o texto não encoste na lateral */
-    text-align: center;
-    line-height: 1.6;
-    font-size: 15px;
-    color: #333;
-    margin: 20px auto;
-    max-width: 800px;
 }
