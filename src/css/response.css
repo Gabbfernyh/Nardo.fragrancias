@@ -60,6 +60,7 @@
         display: none;
         flex-direction: column;
         backdrop-filter: blur(10px);
+        max-width: calc(100% - 32px); /* Adicionado para garantir que ocupe a largura disponível */
     }
 
     */ .header-nav.open {
@@ -345,8 +346,10 @@
 
     /* FORM MODAL */
     .form-modal {
-        padding: 28px;
-        max-width: 100%;
+        padding: 24px;
+        max-width: 400px; /* Definindo um max-width para o modal */
+        margin: 30px auto; /* Centraliza o modal e adiciona margin top/bottom */
+        border-radius: 12px;
     }
 
     .form-modal h2 {
@@ -846,31 +849,64 @@
     .form-modal {
         padding: 16px; /* Reduzido para melhor ajuste em telas pequenas */
         border-radius: 10px;
+        width: 95%; /* Adicionado para garantir que ocupe a largura disponível, deixando uma pequena margem */
+        margin: 20px auto; /* Centraliza o modal e adiciona um margin top/bottom */
     }
 
     .form-modal h2 {
-        font-size: 24px;
-        margin-bottom: 16px;
+        font-size: 22px; /* Reduzido */
+        margin-bottom: 14px; /* Reduzido */
     }
 
     .form-modal p {
-        font-size: 14px;
-        margin-bottom: 20px;
+        font-size: 13px; /* Reduzido */
+        margin-bottom: 18px; /* Reduzido */
     }
 
     .form-modal input {
-        padding: 13px;
-        font-size: 15px;
-        margin-bottom: 20px;
-        width: 100%; /* Garante que o input ocupe 100% da largura */
-        box-sizing: border-box; /* Inclui padding e borda na largura total */
+        padding: 12px; /* Reduzido */
+        font-size: 14px; /* Reduzido */
+        margin-bottom: 18px; /* Reduzido */
     }
 
     .form-modal button {
-        padding: 13px;
-        font-size: 16px;
-        width: 100%; /* Garante que o botão ocupe 100% da largura */
-        box-sizing: border-box; /* Inclui padding e borda na largura total */
+        padding: 12px; /* Reduzido */
+        font-size: 15px; /* Reduzido */
+    }
+
+    /* HEADER */
+    header {
+        height: 50px; /* Reduzido para telas muito pequenas */
+        padding: 0 8px;
+    }
+
+    body {
+        padding-top: 50px;
+    }
+
+    .logo-container img {
+        height: 38px; /* Reduzido */
+        max-width: 90px; /* Reduzido */
+    }
+
+    .logo-text h1 {
+        font-size: 14px; /* Reduzido */
+        margin-bottom: 1px; /* Reduzido */
+    }
+
+    .logo-text p {
+        font-size: 9.5px; /* Reduzido */
+    }
+
+    .header-nav {
+        left: 8px;
+        right: 8px;
+        padding: 12px 14px; /* Reduzido */
+    }
+
+    .header-nav a {
+        padding: 7px 9px; /* Reduzido */
+        font-size: 0.8rem; /* Reduzido */
     }
 
     .abou-job {
@@ -983,5 +1019,61 @@
         width: 46px;
         height: 46px;
         font-size: 20px;
+    }
+
+    /* FORM MODAL */
+    .form-modal {
+        padding: 12px; /* Reduzido para telas muito pequenas */
+    }
+
+    .form-modal h2 {
+        font-size: 20px; /* Reduzido */
+        margin-bottom: 12px; /* Reduzido */
+    }
+
+    .form-modal p {
+        font-size: 12px; /* Reduzido */
+        margin-bottom: 16px; /* Reduzido */
+    }
+
+    .form-modal input {
+        padding: 10px; /* Reduzido */
+        font-size: 13px; /* Reduzido */
+        margin-bottom: 16px; /* Reduzido */
+    }
+
+    .form-modal button {
+        padding: 10px; /* Reduzido */
+        font-size: 14px; /* Reduzido */
+    }
+
+    /* HEADER */
+    header {
+        height: 45px; /* Reduzido ainda mais */
+        padding: 0 5px; /* Reduzido */
+    }
+
+    .logo-container img {
+        height: 35px; /* Reduzido */
+        max-width: 80px; /* Reduzido */
+    }
+
+    .logo-text h1 {
+        font-size: 13px; /* Reduzido */
+    }
+
+    .logo-text p {
+        font-size: 9px; /* Reduzido */
+    }
+
+    .header-nav {
+        left: 5px; /* Ajustado */
+        right: 5px; /* Ajustado */
+        padding: 10px 12px; /* Reduzido */
+    }
+
+    .header-nav a {
+        padding: 6px 8px; /* Reduzido */
+        font-size: 0.75rem; /* Reduzido */
     }
 }
