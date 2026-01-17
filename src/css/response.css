@@ -13,12 +13,16 @@
     /* HEADER */
     header {
         height: 64px;
-        padding: 0 16px;
+        padding: 0 12px;
+    }
+
+    body {
+        overflow-x: hidden;
     }
 
     .header-content {
         padding: 0;
-        gap: 12px;
+        gap: 10px;
     }
 
     .logo-section {
@@ -63,7 +67,7 @@
         max-width: calc(100% - 32px); /* Adicionado para garantir que ocupe a largura disponível */
     }
 
-    */ .header-nav.open {
+    .header-nav.open {
         display: flex;
     }
 
@@ -114,7 +118,7 @@
     }
 
     .hero {
-        min-height: 70vh;
+        min-height: 100vh;
         height: auto;
         padding: 100px 24px 80px;
     }
@@ -346,31 +350,31 @@
 
     /* FORM MODAL */
     .form-modal {
-        padding: 24px;
-        max-width: 400px; /* Definindo um max-width para o modal */
+        padding: 22px;
+        max-width: 360px; /* Definindo um max-width para o modal */
         margin: 30px auto; /* Centraliza o modal e adiciona margin top/bottom */
         border-radius: 12px;
     }
 
     .form-modal h2 {
-        font-size: 26px;
+        font-size: 25px;
         margin-bottom: 18px;
     }
 
     .form-modal p {
-        font-size: 15px;
+        font-size: 14px;
         margin-bottom: 22px;
     }
 
     .form-modal input {
-        padding: 14px;
-        font-size: 16px;
+        padding: 13px;
+        font-size: 15px;
         margin-bottom: 22px;
     }
 
     .form-modal button {
-        padding: 14px;
-        font-size: 17px;
+        padding: 12px;
+        font-size: 15px;
     }
 
     /* FLOATING BUTTONS */
@@ -950,7 +954,7 @@
     }
 
     .float-btn {
-        width: 48px;
+        width: 48px; 
         height: 48px;
         font-size: 22px;
     }
