@@ -467,6 +467,8 @@
 
     .logo-container img {
         height: 46px;
+        width: auto; /* Permite que a largura se ajuste */
+        max-width: 120px; /* Limita a largura máxima do logo */
     }
 
     .logo-text h1 {
@@ -629,6 +631,8 @@
 
     .logo-container img {
         height: 42px;
+        width: auto; /* Permite que a largura se ajuste */
+        max-width: 100px; /* Limita a largura máxima do logo para telas pequenas */
     }
 
     .logo-text h1 {
@@ -840,7 +844,8 @@
     }
 
     .form-modal {
-        padding: 24px;
+        padding: 16px; /* Reduzido para melhor ajuste em telas pequenas */
+        border-radius: 10px;
     }
 
     .form-modal h2 {
@@ -857,11 +862,15 @@
         padding: 13px;
         font-size: 15px;
         margin-bottom: 20px;
+        width: 100%; /* Garante que o input ocupe 100% da largura */
+        box-sizing: border-box; /* Inclui padding e borda na largura total */
     }
 
     .form-modal button {
         padding: 13px;
         font-size: 16px;
+        width: 100%; /* Garante que o botão ocupe 100% da largura */
+        box-sizing: border-box; /* Inclui padding e borda na largura total */
     }
 
     .abou-job {
