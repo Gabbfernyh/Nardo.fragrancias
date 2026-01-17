@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function getUniqueTags() {
         const allTags = products.flatMap(p => p.tags);
-        return [...new Set(allTags)];
+        const uniqueTags = [...new Set(allTags)];
+        return uniqueTags;
     }
 
     function createFilterButtons() {
