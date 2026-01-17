@@ -453,6 +453,12 @@
 
     header {
         height: 60px;
+        padding: 0 12px; /* Ajusta o padding para telas menores */
+    }
+
+    .header-nav {
+        left: 12px;
+        right: 12px;
     }
 
     body {
@@ -601,6 +607,10 @@
         height: 52px;
         font-size: 24px;
     }
+
+    footer {
+        padding: 28px 12px; /* Ajusta padding para telas de tablet */
+    }
 }
 
 /* ==========================================
@@ -610,7 +620,7 @@
 
     header {
         height: 56px;
-        padding: 0 12px;
+        padding: 0 8px; /* Ajusta o padding para telas ainda menores */
     }
 
     body {
@@ -631,8 +641,8 @@
     }
 
     .header-nav {
-        left: 12px;
-        right: 12px;
+        left: 8px; /* Ajusta a posição lateral para telas menores */
+        right: 8px; /* Ajusta a posição lateral para telas menores */
         padding: 14px 16px;
         max-width: 100%;
     }
@@ -915,7 +925,7 @@
     }
 
     footer {
-        padding: 28px 16px;
+        padding: 24px 8px; /* Ajusta padding para telas móveis pequenas, alinhando com o header */
     }
 
     footer p {
