@@ -12,7 +12,7 @@
 
     /* HEADER */
     header {
-        height: 64px;
+        height: 6px;
         padding: 0 12px;
     }
 
@@ -118,13 +118,13 @@
     }
 
     .hero {
-        min-height: 100vh;
+        max-height: 100vh;
         height: auto;
         padding: 100px 24px 80px;
     }
 
     .logo {
-        font-size: 52px;
+        font-size: 51px;
         letter-spacing: 6px;
         margin-bottom: 1.5rem;
     }
