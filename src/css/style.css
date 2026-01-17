@@ -444,6 +444,13 @@ header .cart-btn {
     font-size: 22px;
 }
 
+.bi-trash3-fill {
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+
+}
+
 .float-cart-btn .cart-count {
     position: absolute;
     top: -6px;
@@ -545,6 +552,30 @@ header .cart-btn {
     transition: all 0.3s;
 }
 
+.search {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    width: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #fff;
+    transition: width 0.4s ease, padding 0.4s ease;
+    overflow: hidden;
+    outline: none;
+    border-bottom: 1px solid transparent;
+}
+
+.search.active .search-input {
+    width: 200px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #fbbf24;
+}
+
 .search-btn {
     position: relative;
     background: none;
@@ -594,6 +625,23 @@ header .cart-btn {
     display: none;
 }
 
+/* Mensagem de Produto Não Encontrado */
+.not-found-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #dc2626;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.not-found-message i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
 .products {
     padding: 80px 20px;
 }
@@ -607,7 +655,7 @@ header .cart-btn {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 22px;
     max-width: 1100px;
     margin: 0 auto;
@@ -781,10 +829,12 @@ header .cart-btn {
     height: 100%;
     background: linear-gradient(180deg, #78350f 0%, #000 100%);
     border-left: 2px solid #d97706;
-    padding: 30px;
     transition: right 0.3s;
     z-index: 2000;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os blocos */
+    padding-bottom: 30px; /* Padding apenas no fundo */
 }
 
 .cart-sidebar.active {
@@ -795,7 +845,7 @@ header .cart-btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    padding: 30px 30px 0;
 }
 
 .cart-header h3 {
@@ -803,21 +853,51 @@ header .cart-btn {
     font-size: 28px;
 }
 
-.cart-close {
-    background: none;
-    border: none;
-    color: #fbbf24;
-    font-size: 28px;
-    cursor: pointer;
-    padding: 6px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
+.cart-items {
+    flex: 1; /* Permite que o container cresça e ocupe o espaço */
+    overflow-y: auto; /* Adiciona scroll apenas nesta área */
+    padding: 0 30px;
+    margin-bottom: 0;
 }
 
-.cart-items {
-    margin-bottom: 30px;
+/* Estilo da caixa de confirmação para limpar o carrinho */
+.cart-confirmation-dialog {
+    background-color: #1a1a1a;
+    border: 1px solid #d97706;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.cart-confirmation-dialog p {
+    color: #fcd34d;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.cart-confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cart-confirmation-actions .btn-confirm {
+    background-color: #dc2626;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cart-confirmation-actions .btn-cancel {
+    background-color: #4b5563;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .cart-item {
@@ -871,22 +951,57 @@ header .cart-btn {
     margin-bottom: 30px;
 }
 
+.cart-close {
+    background: none;
+    border: none;
+    color: #fbbf24;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cart-close:hover {
+    color: #fcd34d;
+    transform: rotate(90deg);
+}
+
 .cart-total-row {
     display: flex;
     justify-content: space-between;
-    font-size: 22px;
+    font-size: 21px;
     font-weight: bold;
+    margin: 0 20px 0 20px;
     color: #fbbf24;
+    flex-wrap: wrap; /* Permite quebra de linha */
+    gap: 10px; /* Espaço caso quebre a linha */
+}
+
+@media (max-width: 480px) {
+    .cart-header {
+        padding: 20px 20px 0;
+    }
+    .cart-items {
+        padding: 0 20px;
+    }
+    .cart-total-row {
+        font-size: 18px;
+    }
 }
 
 .checkout-btn {
-    width: 100%;
+    width: 90%;
     padding: 18px;
     background: linear-gradient(90deg, #d97706 0%, #78350f 100%);
     border: none;
     border-radius: 8px;
     color: #fff;
     font-size: 18px;
+    margin: 0 20px 0 20px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
@@ -902,7 +1017,7 @@ header .cart-btn {
 
 /* HERO SECTION */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-terciaria) 100%);
     display: flex;
     align-items: center;
@@ -993,7 +1108,7 @@ header .cart-btn {
 
 .section {
     padding: var(--padding-secao);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .section-title {
@@ -1202,6 +1317,7 @@ header .cart-btn {
 
 /* CONTACT SECTION */
 .contact {
+    min-height: auto;
     background: linear-gradient(135deg, var(--cor-fundo-escuro) 0%, var(--cor-secundaria) 100%);
     color: #fff;
     padding: 15px;
@@ -1257,8 +1373,8 @@ header .cart-btn {
 
 /* --- Configurações Gerais da Seção --- */
 .abou-job {
-    height: 100vh;
-    padding: 2rem 1rem;
+    min-height: 100vh;
+    padding: 4.9rem 1rem 2rem 1rem;
     /* Espaçamento interno generoso */
     background-color: #fcfcfc;
     /* Fundo off-white para elegância */
@@ -1593,4 +1709,118 @@ a:focus,
 
 .float-cart-btn.opened .float-close {
     display: block;
+}
+
+/* Filter Controls - Modern & Clean UX */
+.filter-controls {
+    display: flex;
+    flex-direction: column; /* Empilha os grupos verticalmente */
+    align-items: center; /* Centraliza tudo */
+    gap: 1.5rem; /* Espaço entre os grupos 'Ordenar' e 'Filtrar' */
+    background-color: #fcfaf6; /* Fundo sutil para destacar a seção */
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #efeae2;
+    margin-bottom: 3rem; /* Aumenta o espaço abaixo dos filtros */
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha */
+    align-items: center;
+    justify-content: center; /* Centraliza os itens do grupo */
+    gap: 1rem; /* Espaço entre label e o controle */
+}
+
+.filter-group label {
+    font-weight: 600; /* Fonte mais forte */
+    font-size: 1.1rem;
+    color: #78350f; /* Cor consistente com a marca */
+    margin-bottom: 0; /* Remove margem inferior da label */
+}
+
+/* Estilo para o <select> de ordenação */
+.filter-group .form-select {
+    background-color: #fff;
+    color: #78350f;
+    border: 2px solid #d97706;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-width: 200px; /* Largura mínima para melhor toque */
+}
+
+.filter-group .form-select:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+/* Container para as tags de filtro */
+#filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem; /* Espaço entre os chips */
+    justify-content: center;
+}
+
+/* Estilo dos botões de filtro (chips) */
+#filter-tags .btn {
+    background-color: #fff;
+    color: #a16207; /* Cor do texto do chip */
+    border: 2px solid #fcd34d; /* Borda dourada clara */
+    border-radius: 20px; /* Pílula/chip */
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    transition: all 0.25s ease-in-out;
+}
+
+#filter-tags .btn:hover {
+    transform: translateY(-2px);
+    background-color: #fef3c7; /* Fundo levemente dourado no hover */
+    border-color: #fbbf24;
+}
+
+/* Estilo do chip ATIVO */
+#filter-tags .btn.active {
+    background: linear-gradient(145deg, #d97706, #a16207);
+    color: #fff;
+    border-color: #a16207;
+    box-shadow: 0 4px 10px rgba(161, 98, 7, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    .filter-controls {
+        padding: 1.5rem;
+    }
+
+    .filter-group {
+        flex-direction: column; /* Empilha label e controle em telas pequenas */
+        gap: 0.8rem;
+    }
+}
+
+/* --- Correções Finais de Responsividade da Sacola --- */
+
+@media (max-width: 480px) {
+
+    /* Diminui o tamanho da fonte e ajusta o espaçamento da linha do total */
+    .cart-total-row {
+        font-size: 1.2rem !important; /* Reduz a fonte do total */
+        justify-content: space-between !important;
+    }
+
+    /* Ajusta o botão de checkout para não ocupar a largura toda */
+    .checkout-btn {
+        width: auto !important; /* Permite que o botão encolha */
+        align-self: center !important; /* Centraliza o botão */
+        padding: 15px 25px !important; /* Reduz o padding interno */
+        font-size: 1rem !important; /* Reduz a fonte do botão */
+    }
+
+    /* Reduz o padding dos itens para dar mais espaço */
+    .cart-item {
+        padding: 15px !important;
+    }
 }

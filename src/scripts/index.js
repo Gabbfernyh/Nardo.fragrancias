@@ -1,44 +1,61 @@
 // Código limpo: pequenas melhorias de interação
-
 const whatsappNumber = '5511993768869'; // Alterar conforme necessário
 
-var products = [
+let products = [
     {
         id: 1,
         name: "Essência Luxury",
         image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=500&fit=crop",
-        description: "Fragrância sofisticada com notas amadeiradas"
+        description: "Fragrância sofisticada com notas amadeiradas",
+        tags: ["amadeirado", "unissex"]
     },
     {
         id: 2,
         name: "Noir Élégance",
         image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=500&fit=crop",
-        description: "Perfume intenso com toque floral"
+        description: "Perfume intenso com toque floral",
+        tags: ["floral", "feminino"]
     },
     {
         id: 3,
         name: "Oud Royal",
         image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=500&fit=crop",
-        description: "Aroma oriental exclusivo"
+        description: "Aroma oriental exclusivo",
+        tags: ["oriental", "unissex"]
     },
     {
         id: 4,
         name: "Citrus Fresh",
         image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
-        description: "Fragrância cítrica revitalizante"
+        description: "Fragrância cítrica revitalizante",
+        tags: ["cítrico", "unissex"]
+    },
+    {
+        id: 5,
+        name: "Doce Paixão",
+        image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
+        description: "Um perfume doce e envolvente",
+        tags: ["doce", "feminino"]
+    },
+    {
+        id: 6,
+        name: "Aventura Selvagem",
+        image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
+        description: "Fragrância masculina com notas de couro e especiarias",
+        tags: ["especiado", "masculino"]
     }
 ];
 
-var sizes = [
+let sizes = [
     { name: "De Bolso", ml: "15ml", price: 15 },
     { name: "Pequeno", ml: "30ml", price: 30 },
     { name: "Médio", ml: "50ml", price: 50 },
     { name: "Grande", ml: "100ml", price: 100 }
 ];
 
-var customerName = '';
-var cart = [];
-var selectedProduct = null;
+let customerName = '';
+let cart = [];
+let selectedProduct = null;
 
 function startChat() {
     // const message = 'Olá! Gostaria de uma recomendação personalizada de fragrância. Pode me ajudar?';
@@ -120,6 +137,68 @@ document.addEventListener('DOMContentLoaded', function () {
     const formSubmitBtn = document.getElementById('formSubmitBtn');
     const startChatBtn = document.getElementById('startChatBtn');
     const gptmakerBtn = document.getElementById('gptmakerBtn');
+    const clearCartBtn = document.getElementById('clearCart');
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    let currentSort = 'default';
+    let activeFilters = [];
+
+    function getUniqueTags() {
+        const allTags = products.flatMap(p => p.tags);
+        return [...new Set(allTags)];
+    }
+
+    function createFilterButtons() {
+        const container = document.getElementById('filter-tags');
+        if (!container) return;
+        const tags = getUniqueTags();
+        tags.forEach(tag => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = tag;
+            btn.dataset.tag = tag;
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+                if (activeFilters.includes(tag)) {
+                    activeFilters = activeFilters.filter(t => t !== tag);
+                } else {
+                    activeFilters.push(tag);
+                }
+                applyFiltersAndSort();
+            });
+            container.appendChild(btn);
+        });
+    }
+
+    function applyFiltersAndSort() {
+        let filteredProducts = [...products];
+
+        // Apply filters
+        if (activeFilters.length > 0) {
+            filteredProducts = filteredProducts.filter(p => 
+                activeFilters.every(filter => p.tags.includes(filter))
+            );
+        }
+
+        // Apply search term
+        const term = searchInput.value.toLowerCase();
+        if (term) {
+            filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(term));
+        }
+
+        // Apply sort
+        switch (currentSort) {
+            case 'alpha-asc':
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+            case 'alpha-desc':
+                filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+                break;
+        }
+
+        renderProducts(filteredProducts);
+    }
 
     if (cartBtn) cartBtn.addEventListener('click', toggleCart);
     if (cartClose) cartClose.addEventListener('click', toggleCart);
@@ -127,6 +206,66 @@ document.addEventListener('DOMContentLoaded', function () {
     if (modalClose) modalClose.addEventListener('click', closeModal);
     if (formSubmitBtn) formSubmitBtn.addEventListener('click', submitForm);
     if (startChatBtn) startChatBtn.addEventListener('click', startChat);
+
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            applyFiltersAndSort();
+        });
+    }
+    
+    // Lógica da Pesquisa
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', function() {
+            const searchContainer = document.querySelector('.search');
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                searchInput.focus();
+            }
+        });
+
+        searchInput.addEventListener('keyup', function() {
+            applyFiltersAndSort();
+        });
+    }
+
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener('click', function () {
+            if (cart.length === 0) {
+                showNotification('Sua sacola já está vazia!', 'info');
+                return;
+            }
+
+            // Se o diálogo já existe, não faz nada
+            if (document.querySelector('.cart-confirmation-dialog')) {
+                return;
+            }
+
+            const dialog = document.createElement('div');
+            dialog.className = 'cart-confirmation-dialog';
+            dialog.innerHTML = `
+                <p>Tem certeza que deseja esvaziar sua sacola?</p>
+                <div class="cart-confirmation-actions">
+                    <button class="btn-confirm">Sim</button>
+                    <button class="btn-cancel">Não</button>
+                </div>
+            `;
+
+            const cartSidebar = document.getElementById('cartSidebar');
+            cartSidebar.appendChild(dialog);
+
+            dialog.querySelector('.btn-confirm').addEventListener('click', () => {
+                cart = [];
+                updateCart();
+                dialog.remove();
+            });
+
+            dialog.querySelector('.btn-cancel').addEventListener('click', () => {
+                dialog.remove();
+            });
+        });
+    }
     if (gptmakerBtn) {
         gptmakerBtn.addEventListener('click', function () {
             // Trigger GPTMaker widget
@@ -135,6 +274,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    createFilterButtons();
+    applyFiltersAndSort();
 
     // Manage cart placement: desktop -> header, mobile -> floating button
     const floatingContainer = document.querySelector('.floating-btns');
@@ -235,15 +377,27 @@ function submitForm() {
         customerName = nameInput.value.trim();
         document.getElementById('formOverlay').classList.add('hidden');
     } else {
-        alert('Por favor, informe seu nome!');
+        showNotification('Por favor, informe seu nome!', 'error');
     }
 }
 
-function renderProducts() {
+function renderProducts(productList = products) {
     var grid = document.getElementById('productsGrid');
     grid.innerHTML = '';
-    for (var i = 0; i < products.length; i++) {
-        var product = products[i];
+
+    if (productList.length === 0) {
+        grid.innerHTML = `
+            <div class="not-found-message">
+                <i class="bi bi-x-circle"></i>
+                <h3>Produto não Encontrado :(</h3>
+                <p style="color: #888; font-size: 0.9rem;">Tente buscar por outro nome ou verifique a ortografia.</p>
+            </div>
+        `;
+        return;
+    }
+
+    for (var i = 0; i < productList.length; i++) {
+        var product = productList[i];
         var card = document.createElement('div');
         card.className = 'product-card';
         card.tabIndex = 0;
@@ -269,7 +423,7 @@ function renderProducts() {
 
 function openProductModal(productId) {
     if (!customerName) {
-        alert('Por favor, preencha seu nome primeiro!');
+        showNotification('Por favor, preencha seu nome primeiro!', 'error');
         return;
     }
 
@@ -316,7 +470,7 @@ function addToCart(sizeIndex) {
     cart.push(item);
     updateCart();
     closeModal();
-    alert('Produto adicionado à sacola!');
+    showNotification('Produto adicionado à sacola!');
 }
 
 function removeFromCart(itemId) {
@@ -329,6 +483,7 @@ function removeFromCart(itemId) {
     cart = newCart;
     updateCart();
 }
+
 
 function updateCart() {
     var cartCount = document.getElementById('cartCount');
@@ -413,14 +568,25 @@ function toggleCart() {
 
 function finalizeOrder() {
     if (cart.length === 0) {
-        alert('Sua sacola está vazia!');
+        showNotification('Sua sacola está vazia!', 'info');
         return;
     }
 
-    var message = 'Olá! Meu nome é ' + ' ' +'*'+customerName +'*'+ ' ' + '\n' + '*Pedido*:' + '\n';
+    let addressInput = document.getElementById('customerAddress');
+    let adressClient = addressInput.value.trim();
+
+    if (!adressClient) {
+        showNotification('Por favor, informe o endereço de entrega!', 'error');
+        addressInput.classList.add('is-invalid');
+        addressInput.focus();
+        return;
+    }
+    addressInput.classList.remove('is-invalid');
+
+    var message = 'Olá! Meu nome é ' + ' ' + '*' + customerName + '*' + '\n' + 'Endereço de Entrega: ' + '*' + adressClient + '*' + '\n' + '*Pedido*:' + '\n';
     for (var i = 0; i < cart.length; i++) {
         var item = cart[i];
-        message += '' + (i + 1) + '. ' + item.productName + ' - ' + item.size + ' - R$ ' + ' ' + ' ' +item.price + '\n';
+        message += '' + (i + 1) + '. ' + item.productName + ' - ' + item.size + ' - R$ ' + ' ' + ' ' + item.price + '\n';
     }
     var total = 0;
     for (var i = 0; i < cart.length; i++) {
@@ -431,5 +597,7 @@ function finalizeOrder() {
     const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
     window.open(url, '_blank');
 }
+
+
 
 init();
