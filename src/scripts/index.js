@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Apply filters
         if (activeFilters.length > 0) {
-            filteredProducts = filteredProducts.filter(p => 
+            filteredProducts = filteredProducts.filter(p =>
                 activeFilters.every(filter => p.tags.includes(filter))
             );
         }
@@ -200,6 +200,8 @@ document.addEventListener('DOMContentLoaded', function () {
         renderProducts(filteredProducts);
     }
 
+
+
     if (cartBtn) cartBtn.addEventListener('click', toggleCart);
     if (cartClose) cartClose.addEventListener('click', toggleCart);
     if (checkoutBtn) checkoutBtn.addEventListener('click', finalizeOrder);
@@ -214,21 +216,51 @@ document.addEventListener('DOMContentLoaded', function () {
             applyFiltersAndSort();
         });
     }
-    
+
     // Lógica da Pesquisa
     if (searchBtn && searchInput) {
-        searchBtn.addEventListener('click', function() {
+        searchBtn.addEventListener('click', function () {
             const searchContainer = document.querySelector('.search');
             searchContainer.classList.toggle('active');
             if (searchContainer.classList.contains('active')) {
                 searchInput.focus();
+            } else {
+                searchInput.value = ''; // Limpa o input quando fecha pelo botão
+                applyFiltersAndSort(); // Reaplica filtros para mostrar todos os produtos
             }
         });
 
-        searchInput.addEventListener('keyup', function() {
+        searchInput.addEventListener('keyup', function () {
             applyFiltersAndSort();
         });
+
+        // Adicionar event listener para 'blur' no searchInput
+        searchInput.addEventListener('blur', function () {
+            const searchContainer = document.querySelector('.search');
+            // Fechar se estiver vazio e o searchContainer estiver ativo
+            if (searchInput.value.trim() === '' && searchContainer.classList.contains('active')) {
+                searchContainer.classList.remove('active');
+                applyFiltersAndSort(); // Reaplica filtros para mostrar todos os produtos
+            }
+        });
     }
+
+    // Lógica para fechar a barra de pesquisa ao clicar fora do container da pesquisa e do botão
+    document.addEventListener('click', function (event) {
+        const searchContainer = document.querySelector('.search'); // Container .search
+        const searchBtnElement = document.getElementById('searchBtn'); // O botão (lupa)
+        const searchInput = document.getElementById('searchInput'); // O input de texto
+
+        // Se o searchContainer existe e está ativo
+        if (searchContainer && searchContainer.classList.contains('active')) {
+            // Se o clique foi fora do searchContainer E fora do searchBtn
+            if (!searchContainer.contains(event.target) && (!searchBtnElement || !searchBtnElement.contains(event.target))) {
+                searchContainer.classList.remove('active');
+                searchInput.value = ''; // Limpa o input quando fecha
+                applyFiltersAndSort(); // Reaplica filtros
+            }
+        }
+    });
 
     if (clearCartBtn) {
         clearCartBtn.addEventListener('click', function () {

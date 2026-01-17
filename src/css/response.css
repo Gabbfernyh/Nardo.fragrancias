@@ -84,63 +84,58 @@ section[id] {
         position: relative;
     }
 
-    /* MODAL DO CHAT */
-    .chat-modal {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 85vh;
-        background: #fff;
-        z-index: 2000;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
-        display: none;
-        flex-direction: column;
-        /* Impede que o modal em si vaze para os lados */
-        overflow: hidden;
+    /* Remove as margens que estão espremendo o conteúdo no mobile */
+    .chat-modal,
+    .chat-modal.active,
+    .container,
+    .about-text {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
     }
 
-    .chat-modal.active {
-        display: flex;
-    }
-
-    /* CONTAINER DE CONVERSA - O CORAÇÃO DO AJUSTE */
+    /* Descomprime o container de mensagens */
     .chat-container {
         flex: 1;
         width: 100%;
-        /* Força largura total */
-        max-width: 100%;
         padding: 15px;
-        background: #f4f4f4;
         display: flex;
         flex-direction: column;
-        gap: 15px;
-
-        /* Gerenciamento de Scroll */
         overflow-y: auto;
-        /* Scroll vertical liberado */
         overflow-x: hidden !important;
-        /* Mata qualquer scroll horizontal */
-
-        /* Garante que o padding não "esprema" o conteúdo além do limite */
+        /* Remove o scroll lateral interno */
         box-sizing: border-box;
     }
 
-    /* AJUSTE DAS MENSAGENS PARA NÃO QUEBRAREM O LAYOUT */
-    .chat-container .message {
-        width: auto;
-        max-width: 85%;
-        /* Limite para a bolha não encostar na outra parede */
-        padding: 12px 16px;
-        border-radius: 18px;
-        font-size: 14px;
-        line-height: 1.5;
-        word-wrap: break-word;
-        /* Força quebra de palavras longas */
-        overflow-wrap: break-word;
-        position: relative;
+    /* Barra de Pesquisa Flutuante (Abaixo do Header) */
+    .search-input {
+        position: fixed;
+        top: 60px;
+        /* Ajuste conforme a altura do seu header */
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        display: none;
+        /* Escondido por padrão */
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    .search-input.active {
+        display: block;
+        transform: translateY(0);
+    }
+
+    .search-input input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #c5a059;
+        border-radius: 8px;
+        outline: none;
     }
 
     /* 3. PRODUTOS: UM POR LINHA E QUADRADOS */
