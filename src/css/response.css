@@ -4,26 +4,24 @@
     padding: 0;
     box-sizing: border-box;
     /* Melhora a performance de scroll em dispositivos móveis */
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; 
 }
 
-html,
-body {
+html, body {
     width: 100%;
     overflow-x: hidden;
     /* Evita travamentos de renderização */
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; 
 }
 
 /* ==========================================
    TABLET & MOBILE (Ajuste Geral)
 ========================================== */
 @media (max-width: 1024px) {
-
+    
     /* HEADER MAIS FINO */
     header {
-        height: 55px;
-        /* Altura fixa reduzida */
+        height: 55px; /* Altura fixa reduzida */
         padding: 0 15px;
         position: fixed;
         top: 0;
@@ -32,12 +30,12 @@ body {
         display: flex;
         align-items: center;
         /* Removido o blur pesado se estiver travando */
-        background: rgba(0, 0, 0, 0.95);
+        background: rgba(0, 0, 0, 0.95); 
     }
 
     /* COMPENSAÇÃO DO HEADER (Margem para não tampar títulos) */
     body {
-        padding-top: 55px;
+        padding-top: 55px; 
     }
 
     .hero {
@@ -59,15 +57,13 @@ body {
 
     .product-card {
         width: 100%;
-        max-width: 350px;
-        /* Limita para não ficar gigante em tablets */
+        max-width: 350px; /* Limita para não ficar gigante em tablets */
         margin: 0 auto;
     }
 
     .product-image {
         width: 100%;
-        aspect-ratio: 1 / 1;
-        /* Força o formato quadrado */
+        aspect-ratio: 1 / 1; /* Força o formato quadrado */
         height: auto;
         object-fit: cover;
     }
@@ -80,31 +76,25 @@ body {
     }
 
     .float-btn {
-        width: 42px;
-        /* Reduzido de 54px */
-        height: 42px;
-        /* Reduzido de 54px */
-        font-size: 18px;
-        /* Ícone menor */
+        width: 42px; /* Reduzido de 54px */
+        height: 42px; /* Reduzido de 54px */
+        font-size: 18px; /* Ícone menor */
     }
 
     /* Se houver um botão específico do Chat de IA com outra classe: */
-    #chat-ia-btn,
-    .chat-ia-toggle {
+    #chat-ia-btn, .chat-ia-toggle {
         width: 45px;
         height: 45px;
-        transform: scale(0.8);
-        /* Garante redução em todas as telas */
+        transform: scale(0.8); /* Garante redução em todas as telas */
     }
 
     /* SOBRE / ESSÊNCIA */
     .section {
         padding: 40px 20px;
     }
-
+    
     .section-title {
-        margin-top: 10px;
-        /* Garante que o título apareça após o scroll */
+        margin-top: 10px; /* Garante que o título apareça após o scroll */
     }
 }
 
