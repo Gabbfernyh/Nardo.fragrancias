@@ -122,112 +122,6 @@ header {
     display: none !important;
 }
 
-@media (max-width: 1024px) {
-    .nav-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .header-nav {
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 12px;
-        right: 12px;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.98) 0%, rgba(120, 53, 15, 0.95) 100%);
-        padding: 12px 16px;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        display: none;
-        /* no transitions or transforms - keep simple */
-        flex-direction: column;
-        width: auto;
-        max-width: 420px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .header-nav.open {
-        display: flex;
-    }
-
-    /* close button hidden by default; only visible when nav open */
-    .header-nav .nav-close {
-        display: none;
-        position: absolute;
-        top: 8px;
-        right: 12px;
-        background: transparent;
-        border: none;
-        color: #fbbf24;
-        font-size: 28px;
-        line-height: 1;
-        cursor: pointer;
-        padding: 6px 8px;
-    }
-
-    .header-nav.open .nav-close {
-        display: block;
-    }
-
-    .header-nav ul {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .header-nav a {
-        display: block;
-        padding: 8px 6px;
-    }
-
-    /* Quando a sacola for movida para dentro do nav em mobile, ajuste o estilo */
-    .header-nav .cart-btn {
-        display: block;
-        margin: 12px auto 0;
-        padding: 10px 14px;
-        border-radius: 8px;
-        width: auto;
-        background: #d97706;
-    }
-
-    .header-nav .cart-btn i {
-        font-size: 20px;
-        color: #000;
-    }
-
-    .header-nav .cart-count {
-        top: -6px;
-        right: -6px;
-    }
-
-    .header-content {
-        padding: 0 12px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-    }
-
-    .nav-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-}
-
-/* .container {
-}
-
-.header-content {
-    
-} */
-
 .img-about img {
     width: 350px;
     height: 500px;
@@ -256,28 +150,6 @@ header {
     /* padding lateral para evitar que o texto encoste na borda */
 }
 
-@media (max-width: 1024px) {
-    .about-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding-top: 20px;
-    }
-
-    .img-about img {
-        width: 100%;
-        height: auto;
-        max-width: 420px;
-    }
-
-    .about-text {
-        text-align: center;
-        /* mantém legibilidade em telas pequenas */
-        max-width: 100%;
-        padding: 0 12px;
-    }
-}
-
 .logo-section {
     display: flex;
     align-items: center;
@@ -285,14 +157,6 @@ header {
     /* reduzir espaçamento para melhor encaixe */
 
 }
-
-/* .logo-container img {
-    height: 56px;
-    width: auto;
-    border: 1px solid #d97706;
-    border-radius: 8px;
-    object-fit: cover;
-} */
 
 .logoImg {
     height: 58px;
@@ -323,43 +187,6 @@ header .cart-btn {
 .header-actions .cart-btn {
     position: relative;
     /* mantém badge posicionada corretamente */
-}
-
-/* Desktop: center the nav absolutely inside header */
-@media (min-width: 1025px) {
-    .nav-wrapper {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        display: block;
-        width: auto;
-    }
-
-    .header-nav {
-        position: static;
-        /* inline inside the wrapper */
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
-
-    /* place header actions (cart) at the far right inside header-content */
-    .header-actions {
-        position: absolute;
-        right: 18px;
-        /* slight more inset to match manual */
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    /* ensure page content doesn't sit under fixed header */
-    body {
-        padding-top: 72px;
-    }
 }
 
 .floating-btns {
@@ -981,18 +808,6 @@ header .cart-btn {
     gap: 10px; /* Espaço caso quebre a linha */
 }
 
-@media (max-width: 480px) {
-    .cart-header {
-        padding: 20px 20px 0;
-    }
-    .cart-items {
-        padding: 0 20px;
-    }
-    .cart-total-row {
-        font-size: 18px;
-    }
-}
-
 .checkout-btn {
     width: 90%;
     padding: 18px;
@@ -1586,35 +1401,6 @@ header .cart-btn {
     border: none;
 }
 
-@media (max-width: 480px) {
-    .chat-modal {
-        width: calc(100vw - 20px);
-        height: calc(100vh - 120px);
-        right: 10px;
-        bottom: 80px;
-    }
-
-    .chat-button {
-        right: 20px;
-        bottom: 20px;
-    }
-}
-
-.demo-content {
-    text-align: center;
-    color: white;
-}
-
-.demo-content h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.demo-content p {
-    font-size: 18px;
-    opacity: 0.9;
-}
-
 /* FOOTER */
 footer {
     background: var(--cor-secundaria);
@@ -1636,79 +1422,6 @@ a:focus,
 .product-card:focus {
     outline: 3px solid rgba(249, 115, 22, 0.35);
     outline-offset: 3px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-
-    /* hide header cart in mobile (we'll show floating cart) */
-    .header-actions .cart-btn {
-        display: none;
-    }
-
-    :root {
-        --tamanho-logo: 2.5rem;
-        --tamanho-titulo: 2rem;
-        --espacamento-letra-logo: 4px;
-        --espacamento-letra-titulo: 2px;
-        --padding-secao: 60px;
-    }
-
-    .tagline {
-        font-size: 1rem;
-    }
-
-    .product-image {
-        height: 220px;
-    }
-
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 25px;
-        bottom: 20px;
-        right: 20px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .hero h2 {
-        font-size: 32px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .cart-sidebar {
-        width: 100%;
-        right: -100%;
-    }
-
-    .sizes-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-/* show close X inside floating button when open */
-.float-cart-btn .float-close {
-    position: absolute;
-    font-size: 26px;
-    top: 16px;
-    left: 0px;
-    right: 0;
-    text-align: center;
-    color: #000;
-    pointer-events: none;
-    display: none;
-}
-
-.float-cart-btn.opened i {
-    display: none;
-}
-
-.float-cart-btn.opened .float-close {
-    display: block;
 }
 
 /* Filter Controls - Modern & Clean UX */
@@ -1787,61 +1500,4 @@ a:focus,
     border-color: #a16207;
     box-shadow: 0 4px 10px rgba(161, 98, 7, 0.3);
     transform: translateY(-1px);
-}
-
-/* Media query para telas menores */
-@media (max-width: 768px) {
-    .filter-controls {
-        padding: 1.5rem;
-    }
-
-    .filter-group {
-        flex-direction: column; /* Empilha label e controle em telas pequenas */
-        gap: 0.8rem;
-    }
-}
-
-/* --- Correções Finais de Responsividade da Sacola --- */
-
-@media (max-width: 480px) {
-
-    /* Diminui o tamanho da fonte e ajusta o espaçamento da linha do total */
-    .cart-total-row {
-        font-size: 1.2rem !important; /* Reduz a fonte do total */
-        justify-content: space-between !important;
-    }
-
-    /* Ajusta o botão de checkout para não ocupar a largura toda */
-    .checkout-btn {
-        width: auto !important; /* Permite que o botão encolha */
-        align-self: center !important; /* Centraliza o botão */
-        padding: 15px 25px !important; /* Reduz o padding interno */
-        font-size: 1rem !important; /* Reduz a fonte do botão */
-    }
-
-    /* Reduz o padding dos itens para dar mais espaço */
-    .cart-item {
-        padding: 15px !important;
-    }
-}
-
-/* --- Correções Finais de Responsividade da Sacola (Tentativa 2) --- */
-
-@media (max-width: 480px) {
-    .cart-total-row {
-        font-size: 1.2rem !important;
-        justify-content: space-between !important;
-    }
-
-    .checkout-btn {
-        width: auto !important;
-        align-self: center !important;
-        padding: 15px 25px !important;
-        font-size: 1rem !important;
-        margin: 0 auto !important; /* Centraliza horizontalmente */
-    }
-
-    .cart-item {
-        padding: 15px !important;
-    }
 }
