@@ -1,147 +1,174 @@
 /* ============================================================
-   CONFIGURAÇÕES GLOBAIS (FORA DAS MEDIA QUERIES)
+   ESTILIZAÇÃO DE TEXTOS E ÁREAS GERAIS
    ============================================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+
+/* Ajuste do Sobre e áreas de texto para não encostar na borda */
+.about-text,
+.intro-text,
+.section-text {
+    padding: 0 25px !important;
+    /* Mais respiro lateral */
+    line-height: 1.8;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #444;
 }
 
-html,
-body {
-    width: 100%;
-    overflow-x: hidden;
-    /* Trava definitiva para o espaço branco lateral */
-    scroll-behavior: smooth;
-    /* Melhora o desempenho do scroll e evita travamentos */
-    -webkit-overflow-scrolling: touch;
+/* Ajuste dos Filtros de Pesquisa (Pills) */
+.filter-controls {
+    padding: 20px 15px !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin: 0 15px 3rem 15px !important;
 }
 
-/* Ajuste do Scroll Margin para não tampar os títulos ao clicar no menu */
-section[id] {
-    scroll-margin-top: 70px;
+/* Estilização dos botões de filtro para mobile */
+#filter-tags .btn {
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    border: 1px solid #ddd;
+    background: transparent;
+    transition: all 0.3s ease;
 }
 
 /* ============================================================
-   RESPONSIVIDADE - TABLET & MOBILE
+   HEADER REFINADO (Elegância e Alinhamento)
    ============================================================ */
 @media (max-width: 1024px) {
-
-    /* 1. HEADER REBAIXADO E FINO */
     header {
-        height: 60px !important;
-        /* Altura fixa para controle total */
-        padding: 0 15px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.98);
+        height: 65px !important;
+        background: #000;
+        border-bottom: 1px solid #c5a059;
+        /* Linha dourada fina */
+        padding: 0 15px !important;
+    }
+
+    .logo-section {
         display: flex;
         align-items: center;
+        gap: 10px;
     }
 
-    body {
-        padding-top: 60px;
-        /* Mesma altura do header para não tampar nada */
+    .logo-text h1 {
+        font-size: 16px !important;
+        letter-spacing: 1px;
+        color: #c5a059;
+        margin: 0;
     }
 
-    /* 2. CORREÇÃO DO TRAVAMENTO NO HERO */
-    .hero {
-        width: 100%;
-        min-height: calc(100vh - 60px);
-        /* Usa min-height em vez de height */
-        height: auto;
-        padding: 40px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        overflow: visible;
-        /* Importante para não travar o scroll */
-        position: relative;
+    .logo-text p {
+        font-size: 10px !important;
+        font-style: italic;
+        margin: 0;
     }
+}
 
-    /* 3. PRODUTOS: UM POR LINHA E QUADRADOS */
+/* ============================================================
+   CHAT MODAL E CONTAINER DE CONVERSA (Responsividade Total)
+   ============================================================ */
+
+/* Modal que sobrepõe a tela */
+.chat-modal {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 85%;
+    /* Não ocupa a tela toda para dar sensação de modal */
+    background: #fff;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 3000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.chat-modal.active {
+    display: flex;
+}
+
+/* Header interno do Chat */
+.chat-header {
+    padding: 15px 20px;
+    background: #000;
+    color: #c5a059;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+/* Container onde as bolhas de texto aparecem */
+.chat-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Ajuste das Bolhas de Mensagem */
+.chat-container .message {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Input de texto do Chat */
+.chat-input-area {
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chat-input-area input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 10px 18px;
+    outline: none;
+}
+
+/* ============================================================
+   PRODUTOS EM LISTA QUADRADA (Mobile)
+   ============================================================ */
+@media (max-width: 768px) {
     .products-grid {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 30px;
-        width: 100%;
-        padding: 20px;
+        padding: 0 20px;
+        gap: 40px;
     }
 
     .product-card {
         width: 100%;
-        max-width: 380px;
-        /* Tamanho confortável para mobile */
-        margin: 0 auto;
+        max-width: 400px;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     }
 
     .product-image {
         width: 100%;
         aspect-ratio: 1 / 1;
-        /* Força o quadrado perfeito */
         object-fit: cover;
-        border-radius: 8px;
-    }
-
-    /* 4. CHAT DE IA E BOTÕES FLUTUANTES REDUZIDOS */
-    .floating-btns {
-        bottom: 20px;
-        right: 15px;
-        gap: 8px;
-    }
-
-    .float-btn {
-        width: 44px;
-        /* Tamanho discreto para todas as telas */
-        height: 44px;
-        font-size: 20px;
-    }
-
-    /* Se o Chat de IA tiver uma classe específica, forçamos a redução aqui */
-    .chat-ia-toggle,
-    #chat-ia-icon {
-        width: 44px !important;
-        height: 44px !important;
-        transform: scale(0.9);
-    }
-
-    /* 5. MANUTENÇÃO DO FORMULÁRIO (CONFORME SOLICITADO) */
-    .form-modal {
-        width: 95%;
-        max-width: 360px;
-        margin: 30px auto;
-        padding: 22px;
-        /* Mantendo suas configurações originais de fonte e padding interno */
-    }
-
-    /* 6. CORREÇÃO DE TÍTULOS */
-    .section-title,
-    .products h3 {
-        font-size: 24px;
-        margin-bottom: 25px;
-        text-align: center;
-        padding-top: 10px;
-    }
-}
-
-/* Ajuste extra para telas muito pequenas */
-@media (max-width: 480px) {
-    .logo {
-        font-size: 28px;
-    }
-
-    .tagline {
-        font-size: 0.9rem;
-    }
-
-    /* Garante que o texto longo não empurre a tela */
-    .product-info h4 {
-        font-size: 16px;
+        border-radius: 12px 12px 0 0;
     }
 }
