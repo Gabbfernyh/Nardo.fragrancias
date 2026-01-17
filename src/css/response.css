@@ -18,6 +18,37 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
+/* Estilos para Desktop (Fora das Media Queries) */
+
+.search { /* O container da barra de pesquisa no desktop */
+    display: flex; /* Para alinhar o input e o botão */
+    align-items: center;
+    gap: 10px; /* Espaço entre o input e o botão */
+}
+
+/* O input de texto dentro do container .search no desktop */
+.search-input {
+    width: 250px; /* Exemplo de largura para desktop */
+    padding: 8px 12px;
+    border: 1px solid #c5a059;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* O botão (lupa) dentro da barra de pesquisa no desktop */
+button.search-btn {
+    background: transparent;
+    border: none;
+    color: #c5a059;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* O novo botão de pesquisa para mobile, escondido no desktop */
+#mobileSearchBtn {
+    display: none;
+}
+
 /* Ajuste do Scroll Margin para não tampar os títulos ao clicar no menu */
 section[id] {
     scroll-margin-top: 70px;
@@ -108,34 +139,66 @@ section[id] {
         box-sizing: border-box;
     }
 
-    /* Barra de Pesquisa Flutuante (Abaixo do Header) */
-    .search-input {
+    /* O novo botão de pesquisa para mobile, visível no mobile */
+    #mobileSearchBtn {
+        display: inline-flex; /* Ou block, ou flex */
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        background: transparent;
+        border: none;
+        color: #c5a059;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1000; /* Garante que esteja acima de outros elementos */
+    }
+
+    /* O container da barra de pesquisa no mobile (flutuante) */
+    .search {
         position: fixed;
-        top: 60px;
-        /* Ajuste conforme a altura do seu header */
+        top: 60px; /* Ajuste conforme a altura do seu header */
         left: 0;
         width: 100%;
         background: #fff;
         padding: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         z-index: 999;
-        display: none;
-        /* Escondido por padrão */
+        display: none; /* Escondido por padrão para mobile */
         transform: translateY(-10px);
         transition: all 0.3s ease;
+        box-sizing: border-box;
+        /* Alinhamento dos itens dentro da barra de pesquisa */
+        display: flex; /* Usar flex para manter o alinhamento, ou block se preferir */
+        flex-direction: row; /* Volta para linha caso .search tenha display flex */
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .search-input.active {
-        display: block;
+    .search.active { /* Quando o container da barra de pesquisa está ativo em mobile */
+        display: flex; /* Usar flex para manter o alinhamento, ou block se preferir */
         transform: translateY(0);
     }
 
-    .search-input input {
-        width: 100%;
+    /* O input de texto dentro do container .search no mobile */
+    .search-input {
+        flex-grow: 1; /* Ocupa o espaço restante */
         padding: 12px;
         border: 1px solid #c5a059;
         border-radius: 8px;
         outline: none;
+    }
+
+    /* O botão (lupa) interno à div.search, escondido no mobile */
+    button.search-btn {
+        display: none;
+    }
+
+    /* Ajustes específicos para o header */
+    header .header-actions {
+        /* Para garantir que o mobileSearchBtn não quebre o layout */
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Ajuste conforme necessário */
     }
 
     /* 3. PRODUTOS: UM POR LINHA E QUADRADOS */

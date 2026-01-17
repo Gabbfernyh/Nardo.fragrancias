@@ -58,9 +58,9 @@ let cart = [];
 let selectedProduct = null;
 
 function startChat() {
-    // const message = 'Olá! Gostaria de uma recomendação personalizada de fragrância. Pode me ajudar?';
-    // const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
-    // window.open(whatsappUrl, '_blank');
+    const message = 'Olá! Gostaria de uma recomendação personalizada de fragrância. Pode me ajudar?';
+    const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
+    window.open(whatsappUrl, '_blank');
 }
 
 // (arrays e variáveis definidos acima)
@@ -73,6 +73,67 @@ function init() {
 document.addEventListener('DOMContentLoaded', function () {
     const navToggle = document.querySelector('.nav-toggle');
     const headerNav = document.querySelector('.header-nav');
+    const MOBILE_BREAKPOINT = 1024; // Definir um breakpoint para mobile/desktop
+
+    let currentSort = 'default';
+    let activeFilters = [];
+
+    function getUniqueTags() {
+        const allTags = products.flatMap(p => p.tags);
+        return [...new Set(allTags)];
+    }
+
+    function createFilterButtons() {
+        const container = document.getElementById('filter-tags');
+        if (!container) return;
+        const tags = getUniqueTags();
+        tags.forEach(tag => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = tag;
+            btn.dataset.tag = tag;
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+                if (activeFilters.includes(tag)) {
+                    activeFilters = activeFilters.filter(t => t !== tag);
+                } else {
+                    activeFilters.push(tag);
+                }
+                applyFiltersAndSort();
+            });
+            container.appendChild(btn);
+        });
+    }
+
+    function applyFiltersAndSort() {
+        let filteredProducts = [...products];
+
+        // Apply filters
+        if (activeFilters.length > 0) {
+            filteredProducts = filteredProducts.filter(p =>
+                activeFilters.every(filter => p.tags.includes(filter))
+            );
+        }
+
+        // Apply search term
+        const term = searchInput.value.toLowerCase();
+        if (term) {
+            filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(term));
+        }
+
+        // Apply sort
+        switch (currentSort) {
+            case 'alpha-asc':
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+            case 'alpha-desc':
+                filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+                break;
+        }
+
+        renderProducts(filteredProducts);
+    }
+
     if (navToggle && headerNav) {
         // ensure initial ARIA state
         navToggle.setAttribute('aria-expanded', 'false');
@@ -140,9 +201,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const clearCartBtn = document.getElementById('clearCart');
     const searchBtn = document.getElementById('searchBtn');
     const searchInput = document.getElementById('searchInput');
+    console.log('searchBtn (on DOMContentLoaded):', searchBtn);
+    console.log('searchInput (on DOMContentLoaded):', searchInput);
 
-    let currentSort = 'default';
-    let activeFilters = [];
+
 
     function getUniqueTags() {
         const allTags = products.flatMap(p => p.tags);
@@ -209,6 +271,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (formSubmitBtn) formSubmitBtn.addEventListener('click', submitForm);
     if (startChatBtn) startChatBtn.addEventListener('click', startChat);
 
+
+
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
@@ -217,50 +281,107 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Lógica da Pesquisa
-    if (searchBtn && searchInput) {
-        searchBtn.addEventListener('click', function () {
-            const searchContainer = document.querySelector('.search');
-            searchContainer.classList.toggle('active');
-            if (searchContainer.classList.contains('active')) {
-                searchInput.focus();
-            } else {
-                searchInput.value = ''; // Limpa o input quando fecha pelo botão
-                applyFiltersAndSort(); // Reaplica filtros para mostrar todos os produtos
-            }
-        });
-
-        searchInput.addEventListener('keyup', function () {
+    // Handlers separados para serem removidos/adicionados facilmente
+    function mobileSearchBtnClickHandler(event) {
+        event.stopPropagation();
+        const searchContainer = document.querySelector('.search');
+        const searchInput = document.getElementById('searchInput'); // Pegar novamente para garantir que está atualizado
+        //console.log('Mobile Search button clicked. searchContainer:', searchContainer);
+        //console.log('searchContainer before toggle:', searchContainer.classList.contains('active'));
+        searchContainer.classList.toggle('active');
+        //console.log('searchContainer after toggle:', searchContainer.classList.contains('active'));
+        if (searchContainer.classList.contains('active')) {
+            if (searchInput) searchInput.focus();
+            //console.log('searchInput focused.');
+        } else {
+            //console.log('Mobile Search bar closed. Clearing input.');
+            if (searchInput) searchInput.value = '';
             applyFiltersAndSort();
-        });
-
-        // Adicionar event listener para 'blur' no searchInput
-        searchInput.addEventListener('blur', function () {
-            const searchContainer = document.querySelector('.search');
-            // Fechar se estiver vazio e o searchContainer estiver ativo
-            if (searchInput.value.trim() === '' && searchContainer.classList.contains('active')) {
-                searchContainer.classList.remove('active');
-                applyFiltersAndSort(); // Reaplica filtros para mostrar todos os produtos
-            }
-        });
+        }
     }
 
-    // Lógica para fechar a barra de pesquisa ao clicar fora do container da pesquisa e do botão
-    document.addEventListener('click', function (event) {
-        const searchContainer = document.querySelector('.search'); // Container .search
-        const searchBtnElement = document.getElementById('searchBtn'); // O botão (lupa)
-        const searchInput = document.getElementById('searchInput'); // O input de texto
+    function mobileSearchInputBlurHandler() {
+        const searchContainer = document.querySelector('.search');
+        const searchInput = document.getElementById('searchInput'); // Pegar novamente
+        if (searchInput && searchInput.value.trim() === '' && searchContainer && searchContainer.classList.contains('active')) {
+            searchContainer.classList.remove('active');
+            applyFiltersAndSort();
+        }
+    }
 
-        // Se o searchContainer existe e está ativo
+    function mobileDocumentClickHandler(event) {
+        //console.log('Document clicked for mobile search logic');
+        const searchContainer = document.querySelector('.search');
+        const searchBtnElement = document.getElementById('searchBtn'); // Botão interno da barra
+        const mobileSearchBtnElement = document.getElementById('mobileSearchBtn'); // Botão externo do header
+        const searchInput = document.getElementById('searchInput'); // Input de texto
+
         if (searchContainer && searchContainer.classList.contains('active')) {
-            // Se o clique foi fora do searchContainer E fora do searchBtn
-            if (!searchContainer.contains(event.target) && (!searchBtnElement || !searchBtnElement.contains(event.target))) {
+            //console.log('searchContainer.classList.contains("active")', searchContainer.classList.contains('active'));
+            //console.log('event.target for document click:', event.target);
+            // Se o clique foi fora do searchContainer E fora do mobileSearchBtnElement E fora do searchBtnElement (interno)
+            if (!searchContainer.contains(event.target) &&
+                (!mobileSearchBtnElement || !mobileSearchBtnElement.contains(event.target)) &&
+                (!searchBtnElement || !searchBtnElement.contains(event.target))) {
+                //console.log('Click outside mobile search bar. Closing.');
                 searchContainer.classList.remove('active');
-                searchInput.value = ''; // Limpa o input quando fecha
-                applyFiltersAndSort(); // Reaplica filtros
+                if (searchInput) searchInput.value = '';
+                applyFiltersAndSort();
             }
         }
+    }
+
+    function desktopSearchInputKeyupHandler() {
+        applyFiltersAndSort();
+    }
+
+    function desktopSearchBtnClickHandler(event) {
+        event.preventDefault(); // Evita submeter formulário se o botão estiver em um
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.focus();
+    }
+
+
+
+    // Chamada inicial e no resize
+    let resizeTimeout;
+    const handleSearchSetup = () => {
+        // Remover todos os listeners potenciais antes de reconfigurar
+        if (mobileSearchBtn) mobileSearchBtn.removeEventListener('click', mobileSearchBtnClickHandler);
+        if (searchInput) searchInput.removeEventListener('keyup', desktopSearchInputKeyupHandler);
+        if (searchInput) searchInput.removeEventListener('blur', mobileSearchInputBlurHandler);
+        document.removeEventListener('click', mobileDocumentClickHandler);
+        if (searchBtn) searchBtn.removeEventListener('click', desktopSearchBtnClickHandler); // Para o botão interno no desktop
+
+        const searchContainer = document.querySelector('.search');
+        if (!searchContainer) return; // Se o container não existe, sair
+
+        if (window.innerWidth <= MOBILE_BREAKPOINT) { // Mobile
+            // Desativar a barra de pesquisa no desktop se ela estiver ativa
+            searchContainer.classList.remove('active'); // O CSS já a esconde
+            searchContainer.style.display = 'none'; // Garantir que está escondida visualmente até ser ativada
+            if (searchInput) searchInput.value = ''; // Limpar o input
+
+            // Configurar listeners para mobile
+            if (mobileSearchBtn) mobileSearchBtn.addEventListener('click', mobileSearchBtnClickHandler);
+            if (searchInput) searchInput.addEventListener('keyup', desktopSearchInputKeyupHandler); // Keyup ainda filtra
+            if (searchInput) searchInput.addEventListener('blur', mobileSearchInputBlurHandler);
+            document.addEventListener('click', mobileDocumentClickHandler);
+        } else { // Desktop
+            // Garantir que a barra de pesquisa esteja visível no desktop
+            searchContainer.style.display = 'flex'; // O CSS global já cuida disso, mas garantir.
+            searchContainer.classList.remove('active'); // Remove a classe active se sobrou do mobile
+            if (searchBtn) searchBtn.addEventListener('click', desktopSearchBtnClickHandler); // Ação do botão interno no desktop
+            if (searchInput) searchInput.addEventListener('keyup', desktopSearchInputKeyupHandler);
+        }
+    };
+
+    handleSearchSetup(); // Configurar no carregamento
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(handleSearchSetup, 200); // Debounce
     });
+
 
     if (clearCartBtn) {
         clearCartBtn.addEventListener('click', function () {
@@ -307,8 +428,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    createFilterButtons();
-    applyFiltersAndSort();
+
 
     // Manage cart placement: desktop -> header, mobile -> floating button
     const floatingContainer = document.querySelector('.floating-btns');
@@ -340,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function manageCartPlacement() {
         if (!cartBtn) return;
-        if (window.innerWidth <= 1024) {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) {
             // ensure header cart hidden via CSS; add floating
             if (!floatCartBtn) floatCartBtn = createFloatingCart();
             // sync counts
@@ -403,7 +523,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-function submitForm() {
+function submitForm(event) {
+    if (event) event.preventDefault(); // Evita o recarregamento da página
     var nameInput = document.getElementById('customerName');
     if (nameInput.value.trim()) {
         customerName = nameInput.value.trim();
