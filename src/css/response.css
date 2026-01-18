@@ -1,6 +1,7 @@
 /* ============================================================
    CONFIGURAÇÕES GLOBAIS (FORA DAS MEDIA QUERIES)
    ============================================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -20,15 +21,19 @@ body {
 
 /* Estilos para Desktop (Fora das Media Queries) */
 
-.search { /* O container da barra de pesquisa no desktop */
-    display: flex; /* Para alinhar o input e o botão */
+.search {
+    /* O container da barra de pesquisa no desktop */
+    display: flex;
+    /* Para alinhar o input e o botão */
     align-items: center;
-    gap: 10px; /* Espaço entre o input e o botão */
+    gap: 10px;
+    /* Espaço entre o input e o botão */
 }
 
 /* O input de texto dentro do container .search no desktop */
 .search-input {
-    width: 250px; /* Exemplo de largura para desktop */
+    width: 250px;
+    /* Exemplo de largura para desktop */
     padding: 8px 12px;
     border: 1px solid #c5a059;
     border-radius: 8px;
@@ -57,7 +62,7 @@ section[id] {
 /* ============================================================
    RESPONSIVIDADE - TABLET & MOBILE
    ============================================================ */
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
 
     /* 1. HEADER REBAIXADO E FINO */
     header {
@@ -117,9 +122,7 @@ section[id] {
 
     /* Remove as margens que estão espremendo o conteúdo no mobile */
     .chat-modal,
-    .chat-modal.active,
-    .container,
-    .about-text {
+    .chat-modal.active {
         margin-left: 0 !important;
         margin-right: 0 !important;
         width: 100% !important;
@@ -128,13 +131,15 @@ section[id] {
 
     /* CHATBOT SECTION */
     .chatbot {
-        padding: 20px 15px; /* Adiciona padding lateral para não colar nas bordas */
+        padding: 20px 15px;
+        /* Adiciona padding lateral para não colar nas bordas */
     }
 
     .chat-container {
         flex: 1;
         width: 100%;
-        max-width: 100% !important; /* Garante que ocupe toda a largura disponível */
+        max-width: 100% !important;
+        /* Garante que ocupe toda a largura disponível */
         padding: 15px;
         display: flex;
         flex-direction: column;
@@ -145,14 +150,16 @@ section[id] {
     }
 
     .chat-container .chat-description ul {
-        max-width: 100% !important; /* Ajusta a largura da lista para mobile */
+        max-width: 100% !important;
+        /* Ajusta a largura da lista para mobile */
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
 
     /* O novo botão de pesquisa para mobile, visível no mobile */
     #mobileSearchBtn {
-        display: inline-flex; /* Ou block, ou flex */
+        display: inline-flex;
+        /* Ou block, ou flex */
         align-items: center;
         justify-content: center;
         padding: 8px;
@@ -161,20 +168,23 @@ section[id] {
         color: #c5a059;
         font-size: 1.5rem;
         cursor: pointer;
-        z-index: 1000; /* Garante que esteja acima de outros elementos */
+        z-index: 1000;
+        /* Garante que esteja acima de outros elementos */
     }
 
     /* O container da barra de pesquisa no mobile (flutuante) */
     .search {
         position: fixed;
-        top: 60px; /* Ajuste conforme a altura do seu header */
+        top: 60px;
+        /* Ajuste conforme a altura do seu header */
         left: 0;
         width: 100%;
         background: #fff;
         padding: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         z-index: 999;
-        display: none; /* Escondido por padrão para mobile */
+        display: none;
+        /* Escondido por padrão para mobile */
         transform: translateY(-10px);
         transition: all 0.3s ease;
         box-sizing: border-box;
@@ -185,17 +195,23 @@ section[id] {
         align-items: center;*/
     }
 
-    .search.active { /* Quando o container da barra de pesquisa está ativo em mobile */
-        display: flex; /* Usar flex para manter o alinhamento, ou block se preferir */
-        flex-direction: row; /* Move aqui para aplicar apenas quando ativo */
-        justify-content: space-between; /* Move aqui para aplicar apenas quando ativo */
-        align-items: center; /* Move aqui para aplicar apenas quando ativo */
+    .search.active {
+        /* Quando o container da barra de pesquisa está ativo em mobile */
+        display: flex;
+        /* Usar flex para manter o alinhamento, ou block se preferir */
+        flex-direction: row;
+        /* Move aqui para aplicar apenas quando ativo */
+        justify-content: space-between;
+        /* Move aqui para aplicar apenas quando ativo */
+        align-items: center;
+        /* Move aqui para aplicar apenas quando ativo */
         transform: translateY(0);
     }
 
     /* O input de texto dentro do container .search no mobile */
     .search-input {
-        flex-grow: 1; /* Ocupa o espaço restante */
+        flex-grow: 1;
+        /* Ocupa o espaço restante */
         padding: 12px;
         border: 1px solid #c5a059;
         border-radius: 8px;
@@ -212,7 +228,8 @@ section[id] {
         /* Para garantir que o mobileSearchBtn não quebre o layout */
         display: flex;
         align-items: center;
-        gap: 10px; /* Ajuste conforme necessário */
+        gap: 10px;
+        /* Ajuste conforme necessário */
     }
 
     /* 3. PRODUTOS: UM POR LINHA E QUADRADOS */
@@ -220,31 +237,39 @@ section[id] {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px; /* Reduzir o espaço entre os cards no mobile */
+        gap: 20px;
+        /* Reduzir o espaço entre os cards no mobile */
         width: 100%;
-        padding: 10px; /* Reduzir o padding geral */
+        padding: 10px;
+        /* Reduzir o padding geral */
     }
 
     .product-card {
-        width: 90%; /* Ajustar para ocupar mais largura */
-        max-width: 320px; /* Tamanho confortável para mobile */
-        margin: 0 auto;
-        background-color: #ffffff; /* Fundo branco para os cards */
+        width: 150%;
+        /* Ajustar para ocupar mais largura */
+        max-width: 320px;
+        /* Tamanho confortável para mobile */
+        
+        background-color: #ffffff;
+        /* Fundo branco para os cards */
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        /* Sombra suave */
         overflow: hidden;
         transition: transform 0.2s ease-in-out;
     }
 
     .product-card:hover {
-        transform: translateY(-5px); /* Efeito sutil no hover */
+        transform: translateY(-5px);
+        /* Efeito sutil no hover */
     }
 
     .product-image {
         width: 100%;
         aspect-ratio: 1 / 1;
         object-fit: cover;
-        border-radius: 8px 8px 0 0; /* Apenas no topo */
+        border-radius: 8px 8px 0 0;
+        /* Apenas no topo */
     }
 
     .product-info {
@@ -267,24 +292,30 @@ section[id] {
     .product-price {
         font-size: 1rem;
         font-weight: bold;
-        color: #c5a059; /* Cor dourada */
+        color: #c5a059;
+        /* Cor dourada */
     }
 
     /* Estilo das tags de filtro (chips) no mobile */
     .filter-controls button.btn {
-        background-color: #fef3c7; /* Fundo levemente dourado */
-        color: #a16207; /* Texto marrom-dourado */
-        border: 1px solid #fcd34d; /* Borda dourada */
+        background-color: #fef3c7;
+        /* Fundo levemente dourado */
+        color: #a16207;
+        /* Texto marrom-dourado */
+        border: 1px solid #fcd34d;
+        /* Borda dourada */
         padding: 8px 16px;
         border-radius: 20px;
         font-size: 0.9rem;
         font-weight: 500;
-        margin: 4px; /* Espaçamento entre os chips */
+        margin: 4px;
+        /* Espaçamento entre os chips */
         transition: all 0.2s ease;
     }
 
     .filter-controls button.btn.active {
-        background-color: #fbbf24; /* Dourado mais forte quando ativo */
+        background-color: #fbbf24;
+        /* Dourado mais forte quando ativo */
         color: #fff;
         border-color: #fbbf24;
     }
@@ -356,13 +387,15 @@ section[id] {
 
     /* Texto do Sobre */
     .about-text {
-        padding: 0 24px !important;
-        text-align: justify;
-        line-height: 1.8;
-        font-size: 1rem;
-        color: #4a4a4a;
-        margin: 20px auto;
-        max-width: 100%;
+        padding: 0 2px !important;
+        text-align:initial;
+        line-height: 1.25rem;
+        font-size: 1.1rem;
+        color: #000000;
+        margin: 20px 24px;
+        width: 110% !important;
+        max-width: 650px;
+        font-family: 'Roboto', sans-serifSegoe UI', sans-serif, 'Georgia';
     }
 
     .about-text p {
