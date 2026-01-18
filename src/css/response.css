@@ -220,24 +220,78 @@ section[id] {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 30px;
+        gap: 20px; /* Reduzir o espaço entre os cards no mobile */
         width: 100%;
-        padding: 20px;
+        padding: 10px; /* Reduzir o padding geral */
     }
 
     .product-card {
-        width: 100%;
-        max-width: 380px;
-        /* Tamanho confortável para mobile */
+        width: 90%; /* Ajustar para ocupar mais largura */
+        max-width: 320px; /* Tamanho confortável para mobile */
         margin: 0 auto;
+        background-color: #ffffff; /* Fundo branco para os cards */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px); /* Efeito sutil no hover */
     }
 
     .product-image {
         width: 100%;
         aspect-ratio: 1 / 1;
-        /* Força o quadrado perfeito */
         object-fit: cover;
-        border-radius: 8px;
+        border-radius: 8px 8px 0 0; /* Apenas no topo */
+    }
+
+    .product-info {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .product-info h4 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .product-info p {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .product-price {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #c5a059; /* Cor dourada */
+    }
+
+    /* Estilo das tags de filtro (chips) no mobile */
+    .filter-controls button.btn {
+        background-color: #fef3c7; /* Fundo levemente dourado */
+        color: #a16207; /* Texto marrom-dourado */
+        border: 1px solid #fcd34d; /* Borda dourada */
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin: 4px; /* Espaçamento entre os chips */
+        transition: all 0.2s ease;
+    }
+
+    .filter-controls button.btn.active {
+        background-color: #fbbf24; /* Dourado mais forte quando ativo */
+        color: #fff;
+        border-color: #fbbf24;
+    }
+
+    .filter-controls button.btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     /* 4. CHAT DE IA E BOTÕES FLUTUANTES REDUZIDOS */
@@ -302,14 +356,17 @@ section[id] {
 
     /* Texto do Sobre */
     .about-text {
-        padding: 0 20px !important;
-        /* Garante que o texto não encoste na lateral */
-        text-align: center;
-        line-height: 1.6;
-        font-size: 18px;
-        color: #333;
+        padding: 0 24px !important;
+        text-align: justify;
+        line-height: 1.8;
+        font-size: 1rem;
+        color: #4a4a4a;
         margin: 20px auto;
-        max-width: 800px;
+        max-width: 100%;
+    }
+
+    .about-text p {
+        margin-bottom: 1.5rem;
     }
 }
 

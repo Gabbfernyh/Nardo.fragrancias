@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const gptmakerBtn = document.getElementById('gptmakerBtn');
     const clearCartBtn = document.getElementById('clearCart');
     const searchBtn = document.getElementById('searchBtn');
+    const mobileSearchBtn = document.getElementById('mobileSearchBtn');
     const searchInput = document.getElementById('searchInput');
 
     let currentSort = 'default';
@@ -216,15 +217,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Lógica da Pesquisa
-    if (searchBtn && searchInput) {
-        searchBtn.addEventListener('click', function () {
+    if (mobileSearchBtn) {
+        mobileSearchBtn.addEventListener('click', function () {
             const searchContainer = document.querySelector('.search');
-            searchContainer.classList.toggle('active');
-            if (searchContainer.classList.contains('active')) {
-                searchInput.focus();
+            if (searchContainer) {
+                searchContainer.classList.toggle('active');
+                if (searchContainer.classList.contains('active') && searchInput) {
+                    searchInput.focus();
+                }
             }
         });
+    }
 
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function () {
+            const searchContainer = document.querySelector('.search');
+            if (searchContainer) {
+                searchContainer.classList.toggle('active');
+                if (searchContainer.classList.contains('active') && searchInput) {
+                    searchInput.focus();
+                }
+            }
+        });
+    }
+
+    if (searchInput) {
         searchInput.addEventListener('keyup', function () {
             applyFiltersAndSort();
         });
