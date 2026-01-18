@@ -59,6 +59,96 @@ section[id] {
     scroll-margin-top: 70px;
 }
 
+/* Estilos para o about-text em desktop */
+.about-text {
+    max-width: 800px;
+    /* Limita a largura em telas maiores para melhor legibilidade */
+    margin: 40px auto;
+    /* Centraliza e adiciona margem vertical */
+    padding: 0 20px;
+    /* Padding lateral */
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    /* Aumenta um pouco o tamanho da fonte para desktop */
+    color: #4a4a4a;
+}
+
+/* Estilos para o grid de produtos em desktop */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* 3 ou 4 colunas */
+    gap: 30px;
+    /* Espaçamento entre os cards */
+    padding: 30px 20px;
+    max-width: 1200px;
+    /* Limita a largura do grid */
+    margin: 0 auto;
+    /* Centraliza o grid */
+}
+
+.product-card {
+    background-color: #ffffff;
+    /* Fundo branco para os cards */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    /* Sombra mais pronunciada e moderna */
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    /* Efeito de elevação e leve aumento no hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Mantém a imagem quadrada */
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    /* Bordas arredondadas apenas no topo */
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    /* Garante que a info ocupe o espaço restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-info h4 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    color: #222;
+    font-weight: 600;
+}
+
+.product-info p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #c5a059;
+    /* Cor dourada */
+    margin-top: auto;
+    /* Empurra o preço para baixo se houver espaço */
+}
+
 /* ============================================================
    RESPONSIVIDADE - TABLET & MOBILE
    ============================================================ */
@@ -179,7 +269,7 @@ section[id] {
         /* Ajuste conforme a altura do seu header */
         left: 0;
         width: 100%;
-        background: #fff;
+        background: #000000;
         padding: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         z-index: 999;
@@ -216,6 +306,7 @@ section[id] {
         border: 1px solid #c5a059;
         border-radius: 8px;
         outline: none;
+        color: #ffffff;
     }
 
     /* O botão (lupa) interno à div.search, escondido no mobile */
@@ -249,7 +340,7 @@ section[id] {
         /* Ajustar para ocupar mais largura */
         max-width: 320px;
         /* Tamanho confortável para mobile */
-        
+
         background-color: #ffffff;
         /* Fundo branco para os cards */
         border-radius: 10px;
@@ -296,33 +387,84 @@ section[id] {
         /* Cor dourada */
     }
 
-    /* Estilo das tags de filtro (chips) no mobile */
+    /* Ajuste do container pai para suportar o crescimento vertical das 4 linhas */
+    .filter-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 122% !important;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 40px 15px !important;
+        /* Ajuste leve no padding para focar na grade */
+        margin: 0 0 3rem 0 !important;
+        background-color: #fcfaf6;
+        border-radius: 12px;
+        border: 1px solid #efeae2;
+        box-sizing: border-box;
+        gap: 25px;
+    }
+
+    .filter-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Manter os botões em grid como combinamos, para o encaixe perfeito */
+    #filter-tags {
+        display: grid;
+        /* Define 2 colunas de larguras iguais */
+        grid-template-columns: repeat(2, 1fr);
+        /* Define 4 linhas de alturas iguais */
+        grid-template-rows: repeat(4, auto);
+        gap: 10px;
+        /* Espaço reduzido para caber melhor na grade */
+        width: 95%;
+        /* Ocupa quase todo o container de 122% */
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* Estilização dos botões para o novo encaixe */
     .filter-controls button.btn {
-        background-color: #fef3c7;
-        /* Fundo levemente dourado */
-        color: #a16207;
-        /* Texto marrom-dourado */
-        border: 1px solid #fcd34d;
-        /* Borda dourada */
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin: 4px;
-        /* Espaçamento entre os chips */
-        transition: all 0.2s ease;
+        width: 100%;
+        /* Diminuímos o padding e a fonte para caberem no layout 2x4 */
+        padding: 10px 5px;
+        font-size: 0.85rem;
+        border-radius: 12px;
+        margin: 0;
+
+        /* Garante que o texto não quebre a altura da linha */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Se o nome for muito longo, ele coloca "..." */
     }
 
     .filter-controls button.btn.active {
         background-color: #fbbf24;
-        /* Dourado mais forte quando ativo */
         color: #fff;
         border-color: #fbbf24;
+        box-shadow: 0 4px 12px rgba(161, 98, 7, 0.2);
     }
 
-    .filter-controls button.btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Ajuste do Select para acompanhar o alinhamento */
+    .filter-group .form-select {
+        width: 100%;
+        max-width: 400px;
+        padding: 12px;
+        border: 2px solid #d97706;
+        border-radius: 8px;
+        background-color: #fff;
+        color: #78350f;
     }
 
     /* 4. CHAT DE IA E BOTÕES FLUTUANTES REDUZIDOS */
@@ -365,37 +507,18 @@ section[id] {
         padding-top: 10px;
     }
 
-    /* Área de Filtros */
-    .filter-controls.mb-5 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        padding: 15px;
-        margin-bottom: 2rem !important;
-    }
-
-    .filter-controls button,
-    .filter-controls .filter-item {
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 13px;
-        background: #fff;
-        border: 1px solid #c5a059;
-        color: #000;
-    }
-
     /* Texto do Sobre */
     .about-text {
         padding: 0 2px !important;
-        text-align:initial;
+        text-align: initial;
         line-height: 1.25rem;
         font-size: 1.1rem;
         color: #000000;
         margin: 20px 24px;
         width: 110% !important;
         max-width: 650px;
-        font-family: 'Roboto', sans-serifSegoe UI', sans-serif, 'Georgia';
+        font-family: 'Roboto', sans-serifSegoe UI', sans-serif, ' Georgia';
+
     }
 
     .about-text p {
