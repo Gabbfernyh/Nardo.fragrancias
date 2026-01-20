@@ -1,4 +1,8 @@
 @import url('reset.css');
+@import url('produtos.css');
+@import url('perfumeDescription.css');
+@import url('filter.css');
+@import url('zoom.css');
 
 html {
     overflow-y: scroll;
@@ -642,12 +646,64 @@ header .cart-btn {
     margin-bottom: 10px;
 }
 
-.products {
+
+.wishlist-btn {
+    background: none;
+    border: none;
+    color: #008584;
+    cursor: pointer;
+}
+
+/* Tipografia */
+.brand-name {
+    font-size: 12px;
+    color: #666;
+    margin-top: 15px;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+.price-container {
+    margin: 15px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+}
+
+.current-price {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Botão Laranja Arredondado */
+.add-to-cart-btn {
+    width: 100%;
+    border: 1px solid #f2994a;
+    background: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background: #f2994a;
+    color: white;
+}
+
+/* .products {
     padding: 80px 20px;
 }
 
 .products h3 {
-    color: #fbbf24;
+    color: #3dfb24;
     font-size: 36px;
     text-align: center;
     margin-bottom: 60px;
@@ -713,7 +769,7 @@ header .cart-btn {
 .product-price {
     color: #d97706;
     font-weight: bold;
-}
+} */
 
 .modal-overlay {
     position: fixed;
@@ -833,8 +889,10 @@ header .cart-btn {
     z-index: 2000;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaçamento entre os blocos */
-    padding-bottom: 30px; /* Padding apenas no fundo */
+    gap: 15px;
+    /* Espaçamento entre os blocos */
+    padding-bottom: 30px;
+    /* Padding apenas no fundo */
 }
 
 .cart-sidebar.active {
@@ -854,8 +912,10 @@ header .cart-btn {
 }
 
 .cart-items {
-    flex: 1; /* Permite que o container cresça e ocupe o espaço */
-    overflow-y: auto; /* Adiciona scroll apenas nesta área */
+    flex: 1;
+    /* Permite que o container cresça e ocupe o espaço */
+    overflow-y: auto;
+    /* Adiciona scroll apenas nesta área */
     padding: 0 30px;
     margin-bottom: 0;
 }
@@ -977,17 +1037,21 @@ header .cart-btn {
     font-weight: bold;
     margin: 0 20px 0 20px;
     color: #fbbf24;
-    flex-wrap: wrap; /* Permite quebra de linha */
-    gap: 10px; /* Espaço caso quebre a linha */
+    flex-wrap: wrap;
+    /* Permite quebra de linha */
+    gap: 10px;
+    /* Espaço caso quebre a linha */
 }
 
 @media (max-width: 480px) {
     .cart-header {
         padding: 20px 20px 0;
     }
+
     .cart-items {
         padding: 0 20px;
     }
+
     .cart-total-row {
         font-size: 18px;
     }
@@ -1711,112 +1775,27 @@ a:focus,
     display: block;
 }
 
-/* Filter Controls - Modern & Clean UX */
-.filter-controls {
-    display: flex;
-    flex-direction: column; /* Empilha os grupos verticalmente */
-    align-items: center; /* Centraliza tudo */
-    gap: 1.5rem; /* Espaço entre os grupos 'Ordenar' e 'Filtrar' */
-    background-color: #fcfaf6; /* Fundo sutil para destacar a seção */
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid #efeae2;
-    margin-bottom: 3rem; /* Aumenta o espaço abaixo dos filtros */
-}
-
-.filter-group {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem linha */
-    align-items: center;
-    justify-content: center; /* Centraliza os itens do grupo */
-    gap: 1rem; /* Espaço entre label e o controle */
-}
-
-.filter-group label {
-    font-weight: 600; /* Fonte mais forte */
-    font-size: 1.1rem;
-    color: #78350f; /* Cor consistente com a marca */
-    margin-bottom: 0; /* Remove margem inferior da label */
-}
-
-/* Estilo para o <select> de ordenação */
-.filter-group .form-select {
-    background-color: #fff;
-    color: #78350f;
-    border: 2px solid #d97706;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    min-width: 200px; /* Largura mínima para melhor toque */
-}
-
-.filter-group .form-select:focus {
-    border-color: #fbbf24;
-    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
-}
-
-/* Container para as tags de filtro */
-#filter-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem; /* Espaço entre os chips */
-    justify-content: center;
-}
-
-/* Estilo dos botões de filtro (chips) */
-#filter-tags .btn {
-    background-color: #fff;
-    color: #a16207; /* Cor do texto do chip */
-    border: 2px solid #fcd34d; /* Borda dourada clara */
-    border-radius: 20px; /* Pílula/chip */
-    font-weight: 500;
-    padding: 0.5rem 1.2rem;
-    transition: all 0.25s ease-in-out;
-}
-
-#filter-tags .btn:hover {
-    transform: translateY(-2px);
-    background-color: #fef3c7; /* Fundo levemente dourado no hover */
-    border-color: #fbbf24;
-}
-
-/* Estilo do chip ATIVO */
-#filter-tags .btn.active {
-    background: linear-gradient(145deg, #d97706, #a16207);
-    color: #fff;
-    border-color: #a16207;
-    box-shadow: 0 4px 10px rgba(161, 98, 7, 0.3);
-    transform: translateY(-1px);
-}
-
-/* Media query para telas menores */
-@media (max-width: 768px) {
-    .filter-controls {
-        padding: 1.5rem;
-    }
-
-    .filter-group {
-        flex-direction: column; /* Empilha label e controle em telas pequenas */
-        gap: 0.8rem;
-    }
-}
-
 /* --- Correções Finais de Responsividade da Sacola --- */
 
 @media (max-width: 480px) {
 
     /* Diminui o tamanho da fonte e ajusta o espaçamento da linha do total */
     .cart-total-row {
-        font-size: 1.2rem !important; /* Reduz a fonte do total */
+        font-size: 1.2rem !important;
+        /* Reduz a fonte do total */
         justify-content: space-between !important;
     }
 
     /* Ajusta o botão de checkout para não ocupar a largura toda */
     .checkout-btn {
-        width: auto !important; /* Permite que o botão encolha */
-        align-self: center !important; /* Centraliza o botão */
-        padding: 15px 25px !important; /* Reduz o padding interno */
-        font-size: 1rem !important; /* Reduz a fonte do botão */
+        width: auto !important;
+        /* Permite que o botão encolha */
+        align-self: center !important;
+        /* Centraliza o botão */
+        padding: 15px 25px !important;
+        /* Reduz o padding interno */
+        font-size: 1rem !important;
+        /* Reduz a fonte do botão */
     }
 
     /* Reduz o padding dos itens para dar mais espaço */
@@ -1838,7 +1817,8 @@ a:focus,
         align-self: center !important;
         padding: 15px 25px !important;
         font-size: 1rem !important;
-        margin: 0 auto !important; /* Centraliza horizontalmente */
+        margin: 0 auto !important;
+        /* Centraliza horizontalmente */
     }
 
     .cart-item {

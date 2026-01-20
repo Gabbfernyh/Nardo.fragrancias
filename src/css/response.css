@@ -325,31 +325,24 @@ section[id] {
     }
 
     /* 3. PRODUTOS: UM POR LINHA E QUADRADOS */
-    .products-grid {
+    /* .products-grid {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 20px;
-        /* Reduzir o espaço entre os cards no mobile */
         width: 100%;
         padding: 10px;
-        /* Reduzir o padding geral */
     }
 
     .product-card {
         width: 150%;
-        /* Ajustar para ocupar mais largura */
         max-width: 320px;
-        /* Tamanho confortável para mobile */
-
         background-color: #ffffff;
-        /* Fundo branco para os cards */
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        /* Sombra suave */
         overflow: hidden;
         transition: transform 0.2s ease-in-out;
-    }
+    } */
 
     .product-card:hover {
         transform: translateY(-5px);

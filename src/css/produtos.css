@@ -1,0 +1,188 @@
+/* ============================================================
+    BASE DO GRID (CONTROLE DE TODAS AS TELAS)
+   ============================================================ */
+.products-grid {
+    display: grid;
+    /* Impede cards finos: No mínimo 250px, no máximo 1 fração do espaço */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px 10px;
+    width: 100%;
+}
+
+/* ============================================================
+    ESTILO DO CARD (SEM LARGURA FIXA)
+   ============================================================ */
+.product-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border: 1px solid #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Removido width: 280px para permitir responsividade */
+    width: 100%;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* --- IMAGEM ADAPTÁVEL --- */
+.product-image-container {
+    width: 100%;
+    height: 220px;
+    /* Altura fixa para alinhar os cards */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.product-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* --- CONTEÚDO TEXTUAL --- */
+.brand-name {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 8px 0;
+    line-height: 1.3;
+    /* Mantém títulos de 2 linhas alinhados */
+    min-height: 42px;
+}
+
+/* --- AÇÕES E BOTÕES --- */
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    /* Empurra os botões sempre para o fundo do card */
+}
+
+.btn-add {
+    background: transparent;
+    border: 2px solid #d97706;
+    color: #4b2e1e;
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.btn-add:hover {
+    background: #d97706;
+    color: #fff;
+}
+
+.btn-description {
+    background: transparent;
+    border: none;
+    color: #71717a;
+    text-decoration: underline;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+}
+
+/* --- BADGES --- */
+.badge-popular {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #d97706;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    z-index: 10;
+}
+
+.tag-discount {
+    background: #4a635d;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* ============================================================
+    MEDIA QUERIES (AJUSTES FINOS)
+   ============================================================ */
+
+/* Tablets e Desktops Pequenos */
+@media (max-width: 1024px) {
+    .products-grid {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .sidebar-filters {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Celulares (Garante que o card ocupe quase toda a largura se estiver sozinho) */
+@media (max-width: 600px) {
+    .products-grid {
+        /* Força uma única coluna em telas menores para um layout vertical */
+        grid-template-columns: 1fr;
+        gap: 20px; /* Aumenta o espaço entre os cards */
+        align-items: center;
+        justify-content: center;
+        padding: 15px 5px; /* Aumenta o padding vertical, diminui o horizontal para cards mais largos */
+    }
+
+    .product-card {
+        padding: 15px; /* Aumenta o padding interno do card */
+    }
+
+    .product-image-container {
+        height: 200px; /* Aumenta a altura da imagem */
+    }
+
+    .product-title {
+        font-size: 16px; /* Aumenta o tamanho do título */
+        min-height: 42px; /* Garante altura consistente para o título */
+    }
+
+    .btn-add {
+        padding: 12px; /* Aumenta o padding do botão */
+        font-size: 0.9rem; /* Aumenta o tamanho da fonte do botão */
+    }
+}
+
+/* Telas muito pequenas (iPhone SE) */
+@media (max-width: 350px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+        /* Um card por linha */
+    }
+}

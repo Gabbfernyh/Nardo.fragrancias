@@ -1,0 +1,274 @@
+/* ============================================================
+   ESTILOS DE FILTROS E LAYOUT DO CATÁLOGO
+   ============================================================ */
+
+/* 1. ESTRUTURA E CONTAINERS */
+.filter-section-container,
+.main-catalog-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 2. GRID DE TOPO (ORDENAR E CATEGORIAS) */
+.filter-main-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    margin-bottom: 2.5rem;
+}
+
+.filter-card {
+    background: #ffffff;
+    padding: 1.2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f8f9fa;
+}
+
+.filter-card label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #78350f;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.modern-select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 12px;
+    border: 1px solid #efeae2;
+    background-color: #fcfaf6;
+    font-weight: 600;
+    color: #4b2e1e;
+    outline: none;
+}
+
+/* Chips das Categorias */
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.filter-chip {
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    border: 1px solid #fcd34d;
+    background: #fff;
+    color: #a16207;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.filter-chip.active {
+    background: #d97706;
+    color: #fff;
+    border-color: #d97706;
+}
+
+/* 3. SIDEBAR E ÁREA DE PRODUTOS */
+.main-catalog-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    height: 85vh;
+    /* Scroll interno apenas no Desktop */
+    margin-top: 20px;
+}
+
+.sidebar-filters {
+    width: 250px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 90px;
+    /* Ajuste conforme a altura do seu header fixo */
+}
+
+.sidebar-title {
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #78350f;
+    border-bottom: 2px solid #d97706;
+    display: inline-block;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Estilo das Marcas (Details) */
+.sidebar-details summary {
+    list-style: none;
+    font-weight: 600;
+    color: #4b2e1e;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #fcfaf6;
+}
+
+.sidebar-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.sidebar-sub-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0 16px 12px;
+    gap: 4px;
+}
+
+.filter-sub-item {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 8px 12px;
+    color: #71717a;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.filter-sub-item:hover,
+.filter-sub-item.active {
+    background-color: #fef3c7;
+    color: #d97706;
+    font-weight: 700;
+}
+
+/* Área de Scroll dos Produtos */
+.products-content {
+    flex-grow: 1;
+    min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-gutter: stable;
+}
+
+/* Scrollbar Customizada */
+.products-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.products-content::-webkit-scrollbar-thumb {
+    background-color: #efeae2;
+    border-radius: 10px;
+}
+
+/* ============================================================
+   RESPONSIVIDADE PARA TODAS AS TELAS
+   ============================================================ */
+
+/* TABLETS E TELAS MÉDIAS (Abaixo de 1024px) */
+@media (max-width: 1024px) {
+    .filter-main-grid {
+        grid-template-columns: 1fr;
+        /* Ordenar fica em cima das categorias */
+        gap: 15px;
+    }
+
+    .main-catalog-layout {
+        flex-direction: column;
+        /* Sidebar fica em cima dos produtos */
+        align-items: center;
+        height: auto;
+        /* Desativa scroll interno no mobile para melhor UX */
+        gap: 30px;
+    }
+
+    .sidebar-filters {
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+
+    .sidebar-sub-menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Perfumes em 2 colunas na sidebar */
+        gap: 8px;
+    }
+
+    .products-content {
+        overflow-y: visible;
+        /* Usa o scroll natural da página */
+        padding-right: 0;
+    }
+}
+
+/* CELULARES (Abaixo de 600px) */
+@media (max-width: 600px) {
+    .filter-section-container {
+        padding: 0 10px;
+    }
+
+    .filter-card {
+        padding: 1rem;
+    }
+
+    /* Organiza os chips de categoria verticalmente em telas pequenas */
+    .chip-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filter-chip {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .sidebar-sub-menu {
+        grid-template-columns: 1fr;
+        /* Volta para 1 coluna se a tela for muito estreita */
+    }
+}
+
+/* Ajuste para telas muito grandes (Desktop Wide) */
+@media (min-width: 1400px) {
+
+    .filter-section-container,
+    .main-catalog-layout {
+        max-width: 1400px;
+    }
+}
+
+.marcas-scroll-container {
+    max-height: 250px;
+    /* Altura suficiente para mostrar +- 5 marcas */
+    overflow-y: auto;
+    /* Ativa o scroll vertical apenas se necessário */
+    padding-right: 10px;
+    /* Espaço para a barra de scroll não cobrir o texto */
+}
+
+/* Personalização da barra de scroll para ficar elegante */
+.marcas-scroll-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.marcas-scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.marcas-scroll-container::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+.marcas-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}

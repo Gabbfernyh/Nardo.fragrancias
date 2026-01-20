@@ -1,73 +1,92 @@
 // Código limpo: pequenas melhorias de interação
 const whatsappNumber = '5511993768869'; // Alterar conforme necessário
-
-let products = [
-    {
-        id: 1,
-        name: "Essência Luxury",
-        image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=500&fit=crop",
-        description: "Fragrância sofisticada com notas amadeiradas",
-        tags: ["amadeirado", "unissex"]
-    },
-    {
-        id: 2,
-        name: "Noir Élégance",
-        image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=500&fit=crop",
-        description: "Perfume intenso com toque floral",
-        tags: ["floral", "feminino"]
-    },
-    {
-        id: 3,
-        name: "Oud Royal",
-        image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=500&fit=crop",
-        description: "Aroma oriental exclusivo",
-        tags: ["oriental", "unissex"]
-    },
-    {
-        id: 4,
-        name: "Citrus Fresh",
-        image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
-        description: "Fragrância cítrica revitalizante",
-        tags: ["cítrico", "unissex"]
-    },
-    {
-        id: 5,
-        name: "Doce Paixão",
-        image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
-        description: "Um perfume doce e envolvente",
-        tags: ["doce", "feminino"]
-    },
-    {
-        id: 6,
-        name: "Aventura Selvagem",
-        image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
-        description: "Fragrância masculina com notas de couro e especiarias",
-        tags: ["especiado", "masculino"]
-    }
-];
-
-let sizes = [
-    { name: "De Bolso", ml: "15ml", price: 15 },
-    { name: "Pequeno", ml: "30ml", price: 30 },
-    { name: "Médio", ml: "50ml", price: 50 },
-    { name: "Grande", ml: "100ml", price: 100 }
-];
-
 let customerName = '';
 let cart = [];
 let selectedProduct = null;
+let products = [];  //Carregado do produtos.json
+let sizes = [];    // Carregado do price.json
 
-function startChat() {
-    // const message = 'Olá! Gostaria de uma recomendação personalizada de fragrância. Pode me ajudar?';
-    // const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
-    // window.open(whatsappUrl, '_blank');
-}
+// let products = [
+//     {
+//         id: 1,
+//         name: "Essência Luxury",
+//         image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=500&fit=crop",
+//         description: "Fragrância sofisticada com notas amadeiradas",
+//         tags: ["Populares"]
+//     },
+//     {
+//         id: 2,
+//         name: "Noir Élégance",
+//         image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=500&fit=crop",
+//         description: "Perfume intenso com toque floral",
+//         tags: ["floral", "feminino"]
+//     },
+//     {
+//         id: 3,
+//         name: "Oud Royal",
+//         image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=500&fit=crop",
+//         description: "Aroma oriental exclusivo",
+//         tags: ["oriental", "unissex"]
+//     },
+//     {
+//         id: 4,
+//         name: "Citrus Fresh",
+//         image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
+//         description: "Fragrância cítrica revitalizante",
+//         tags: ["cítrico", "unissex"]
+//     },
+//     {
+//         id: 5,
+//         name: "Doce Paixão",
+//         image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
+//         description: "Um perfume doce e envolvente",
+//         tags: ["doce", "feminino"]
+//     },
+//     {
+//         id: 6,
+//         name: "Aventura Selvagem",
+//         image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
+//         description: "Fragrância masculina com notas de couro e especiarias",
+//         tags: ["especiado", "masculino"]
+//     }
+// ];
+
 
 // (arrays e variáveis definidos acima)
 
-function init() {
-    renderProducts();
+// 1. INICIALIZAÇÃO E CARREGAMENTO DE DADOS (Dual JSON)
+async function init() {
+    try {
+        // Carregamento simultâneo dos dois arquivos JSON
+        const [prodRes, priceRes] = await Promise.all([
+            fetch('src/data/produtos.json'),
+            fetch('src/data/price.json')
+        ]);
+
+        products = await prodRes.json();
+        sizes = await priceRes.json();
+
+        // Renderização inicial
+        renderProducts(products);
+
+        // Conexão do sistema de pesquisa original
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function (e) {
+                const termo = e.target.value.toLowerCase();
+                const filtrados = products.filter(p =>
+                    p.nome.toLowerCase().includes(termo) ||
+                    p.marca.toLowerCase().includes(termo)
+                );
+                renderProducts(filtrados);
+            });
+        }
+    } catch (error) {
+        console.error("Erro ao carregar os dados:", error);
+    }
 }
+
+
 
 // Menu toggle (mobile)
 document.addEventListener('DOMContentLoaded', function () {
@@ -172,34 +191,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function applyFiltersAndSort() {
-        let filteredProducts = [...products];
+    // function applyFiltersAndSort() {
+    //     let filteredProducts = [...products];
 
-        // Apply filters
-        if (activeFilters.length > 0) {
-            filteredProducts = filteredProducts.filter(p =>
-                activeFilters.every(filter => p.tags.includes(filter))
-            );
-        }
+    //     // Apply filters
+    //     if (activeFilters.length > 0) {
+    //         filteredProducts = filteredProducts.filter(p =>
+    //             activeFilters.every(filter => p.tags.includes(filter))
+    //         );
+    //     }
 
-        // Apply search term
-        const term = searchInput.value.toLowerCase();
-        if (term) {
-            filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(term));
-        }
+    //     // Apply search term
+    //     const term = searchInput.value.toLowerCase();
+    //     if (term) {
+    //         filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(term));
+    //     }
 
-        // Apply sort
-        switch (currentSort) {
-            case 'alpha-asc':
-                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-            case 'alpha-desc':
-                filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
-                break;
-        }
+    //     // Apply sort
+    //     switch (currentSort) {
+    //         case 'alpha-asc':
+    //             filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+    //             break;
+    //         case 'alpha-desc':
+    //             filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+    //             break;
+    //     }
 
-        renderProducts(filteredProducts);
-    }
+    //     renderProducts(filteredProducts);
+    // }
 
     if (cartBtn) cartBtn.addEventListener('click', toggleCart);
     if (cartClose) cartClose.addEventListener('click', toggleCart);
@@ -398,8 +417,10 @@ function submitForm() {
     }
 }
 
+// 2. FUNÇÃO DE RENDERIZAÇÃO (SUA LÓGICA ORIGINAL PRESERVADA)
 function renderProducts(productList = products) {
     var grid = document.getElementById('productsGrid');
+    if (!grid) return;
     grid.innerHTML = '';
 
     if (productList.length === 0) {
@@ -417,33 +438,308 @@ function renderProducts(productList = products) {
         var product = productList[i];
         var card = document.createElement('div');
         card.className = 'product-card';
-        card.tabIndex = 0;
-        card.setAttribute('role', 'button');
-        card.addEventListener('click', (function (id) { return function () { openProductModal(id); }; })(product.id));
 
+        // 1. Badge de Popular (Inserido no topo do card)
+        if (product.popular) {
+            // Usando a classe badge-popular que definimos para o estilo premium
+            var badge = document.createElement('span');
+            badge.className = 'badge-popular';
+            badge.innerHTML = `🔥 Popular`;
+            card.appendChild(badge);
+        }
+
+        // 2. Container de imagem
         var imgWrap = document.createElement('div');
-        imgWrap.className = 'product-image';
+        imgWrap.className = 'product-image-container';
+
         var img = document.createElement('img');
-        img.src = product.image;
-        img.alt = product.name;
+        img.src = product.imagem;
+        img.alt = product.nome;
+        img.className = 'product-img';
         imgWrap.appendChild(img);
 
+        // 3. Div de informações
         var info = document.createElement('div');
         info.className = 'product-info';
-        info.innerHTML = '<h4>' + product.name + '</h4><p>' + product.description + '</p><div class="product-price">A partir de R$ 15</div>';
 
+        info.innerHTML = `
+            <p class="brand-name">${product.marca.toUpperCase()} - ${product.linha}</p>
+            <h3 class="product-title">${product.nome}</h3>
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+            </div>
+            <div class="price-container">
+                <span>A partir de</span>
+                <div class="current-price-row">
+                    <span class="current-price">R$ 15,00</span>
+                </div>
+            </div>
+        `;
+
+        // 4. Container de ações (Para empilhar os botões via CSS)
+        var actionsContainer = document.createElement('div');
+        actionsContainer.className = 'product-actions';
+
+        // Botão Adicionar à Sacola
+        var btnAdd = document.createElement('button');
+        btnAdd.className = 'add-to-cart-btn';
+        btnAdd.textContent = 'Adicionar à sacola';
+
+        btnAdd.addEventListener('click', (function (id) {
+            return function () {
+                if (typeof openProductModal === 'function') {
+                    openProductModal(id);
+                }
+            };
+        })(product.id));
+
+        // Botão de Detalhes (O que abre o novo modal de descrição)
+        var btnDesc = document.createElement('button');
+        btnDesc.className = 'btn-description';
+        btnDesc.textContent = 'Ver detalhes do perfume';
+
+        btnDesc.addEventListener('click', (function (id) {
+            return function () {
+                if (typeof abrirDescricao === 'function') {
+                    abrirDescricao(id);
+                } else {
+                    console.log("Função abrirDescricao não encontrada.");
+                }
+            };
+        })(product.id));
+
+        // 5. Montagem Final do Card
+        actionsContainer.appendChild(btnAdd);
+        actionsContainer.appendChild(btnDesc);
+
+        info.appendChild(actionsContainer);
         card.appendChild(imgWrap);
         card.appendChild(info);
+
         grid.appendChild(card);
     }
 }
 
-function openProductModal(productId) {
-    if (!customerName) {
-        showNotification('Por favor, preencha seu nome primeiro!', 'error');
+// 1. A função fica aqui
+// index.js
+
+function abrirDescricao(id) {
+    // 1. Verifica se a lista 'products' tem algo
+    if (!products || products.length === 0) {
+        console.error("A lista 'products' está vazia ou não foi carregada.");
         return;
     }
 
+    // 2. Procura o perfume pelo ID
+    const perfume = products.find(p => String(p.id) === String(id));
+
+    if (perfume) {
+        // 3. Captura os elementos do modal (IDs que criamos antes)
+        const modal = document.getElementById('perfumeDetailOverlay');
+        const img = document.getElementById('detailPerfumeImg');
+        const brand = document.getElementById('detailPerfumeBrand');
+        const title = document.getElementById('detailPerfumeTitle');
+        const text = document.getElementById('detailPerfumeText');
+        const price = document.getElementById('detailPerfumePrice');
+
+        const acordesContainer = document.getElementById('detailPerfumeAcordes');
+        // 4. Preenche apenas se o elemento existir no HTML
+        if (img) img.src = perfume.imagem;
+        if (brand) brand.textContent = `${perfume.marca} - ${perfume.linha}`;
+        if (title) title.textContent = perfume.nome;
+        if (text) text.textContent = perfume.descricao || "Descrição indisponível.";
+        if (price) price.textContent = "R$ 15,00"; // Ou perfume.preco se tiver no JSON
+
+        if (acordesContainer) {
+            acordesContainer.innerHTML = gerarGraficoAcordes(perfume.acordes);
+        }
+
+        // 5. Abre o modal
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        } else {
+            console.error("Não encontrei o ID 'perfumeDetailOverlay' no HTML.");
+        }
+    } else {
+        console.error("Perfume com ID " + id + " não encontrado em 'products'.");
+    }
+
+    setTimeout(() => {
+        aplicarZoom();
+    }, 100); // Dá um tempo para o modal renderizar
+    // function gerarHTMLClima(estacoes) {
+    //     if (!estacoes) return '';
+
+    //     const configs = [
+    //         { chave: 'inverno', label: 'Inverno', icon: 'bi-snow', cor: '#90caf9' },
+    //         { chave: 'primavera', label: 'Primavera', icon: 'bi-leaf', cor: '#a5d6a7' },
+    //         { chave: 'verao', label: 'Verão', icon: 'bi-umbrella', cor: '#ef9a9a' },
+    //         { chave: 'outono', label: 'Outono', icon: 'bi-reception-1', cor: '#ffcc80' },
+    //         { chave: 'dia', label: 'Dia', icon: 'bi-sun', cor: '#ffb300' },
+    //         { chave: 'noite', label: 'Noite', icon: 'bi-moon-stars', cor: '#9fa8da' }
+    //     ];
+
+    //     return configs.map(c => `
+    //     <div class="estacao-item">
+    //         <i class="bi ${c.icon}"></i>
+    //         <span>${c.label}</span>
+    //         <div class="mini-progress-bg">
+    //             <div class="mini-progress-fill" style="width: ${estacoes[c.chave]}%; background-color: ${c.cor};"></div>
+    //         </div>
+    //     </div>
+    // `).join('');
+    // }
+
+    // // Chame assim no abrirDescricao:
+    // document.getElementById('detailEstacoesGrid').innerHTML = gerarHTMLClima(perfume.estacoes);
+}
+
+function aplicarZoom() {
+    const container = document.querySelector('.detail-modal-visual');
+    const img = document.querySelector('#detailPerfumeImg');
+
+    if (!container || !img) return;
+
+    container.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = container.getBoundingClientRect();
+
+        // Calcula a posição do rato em percentagem dentro da imagem
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = "scale(2)"; // Nível de zoom
+    });
+
+    container.addEventListener('mouseleave', () => {
+        img.style.transform = "scale(1)";
+        img.style.transformOrigin = "center center";
+    });
+}
+
+// ATENÇÃO: Deves chamar esta função dentro da tua abrirDescricao(id)
+// logo após preencheres o src da imagem!
+
+document.addEventListener('DOMContentLoaded', function () {
+    const imgContainer = document.querySelector('.detail-modal-visual');
+    const img = document.querySelector('[data-zoom]');
+
+    if (imgContainer && img) {
+        imgContainer.addEventListener('mousemove', (e) => {
+            const { left, top, width, height } = imgContainer.getBoundingClientRect();
+            const x = ((e.pageX - left) / width) * 100;
+            const y = ((e.pageY - top) / height) * 100;
+
+            img.style.transformOrigin = `${x}% ${y}%`;
+        });
+    }
+});
+
+function gerarGraficoAcordes(acordes) {
+    if (!acordes) return '';
+
+    let html = '<div class="acordes-container"><p style="color:white; text-align:center;">Principais Acordes</p>';
+
+    acordes.forEach(acorde => {
+        html += `
+        <div class="acorde-item">
+            <div class="bar-fill" style="width: ${acorde.valor}%; background-color: ${acorde.cor};">
+                ${acorde.nome.toLowerCase()}
+            </div>
+        </div>
+    `;
+    });
+
+    html += '</div>';
+    return html;
+}
+
+function closePerfumeDetail() {
+    const modal = document.getElementById('perfumeDetailOverlay');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// TORNAR GLOBAL (Obrigatório por estar em módulo)
+window.abrirDescricao = abrirDescricao;
+window.closePerfumeDetail = closePerfumeDetail;
+
+// Fechar ao clicar fora da caixa branca
+window.addEventListener('click', (e) => {
+    const overlay = document.getElementById('perfumeDetailOverlay');
+    if (e.target === overlay) {
+        window.closePerfumeDetail();
+    }
+});
+
+// Fechar ao apertar a tecla ESC
+window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        window.closePerfumeDetail();
+    }
+});
+
+window.filtrarCatalogo = function (tipo, valor, elementoClicado) {
+    // 1. Feedback visual imediato nos botões
+    document.querySelectorAll('.filter-chip, .filter-sub-item').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    if (elementoClicado) {
+        elementoClicado.classList.add('active');
+    }
+
+    // 2. Filtragem silenciosa (sem mover a tela)
+    if (tipo === 'todos') {
+        currentProducts = [...products];
+    } else if (tipo === 'popular') {
+        currentProducts = products.filter(p => p.popular === true);
+    } else {
+        currentProducts = products.filter(p => {
+            if (!p[tipo]) return false;
+            return p[tipo].toString().toLowerCase() === valor.toString().toLowerCase();
+        });
+    }
+
+    // 3. Renderiza os novos cards
+    renderProducts(currentProducts);
+
+    // DICA: Em vez de rolar a página, podemos dar um pequeno "fade" no grid 
+    // para o usuário perceber que os produtos mudaram.
+    const grid = document.getElementById('productsGrid');
+    if (grid) {
+        grid.style.opacity = '0';
+        setTimeout(() => {
+            grid.style.transition = 'opacity 0.4s ease';
+            grid.style.opacity = '1';
+        }, 10);
+    }
+};
+
+// ORDENAÇÃO (Chamada pelo seu Select)
+window.ordenarProdutos = function (criterio) {
+    if (criterio === 'alpha-asc') {
+        currentProducts.sort((a, b) => a.nome.localeCompare(b.nome));
+    } else if (criterio === 'alpha-desc') {
+        currentProducts.sort((a, b) => b.nome.localeCompare(a.nome));
+    } else {
+        // Reset para ordem original do JSON
+        currentProducts = [...products];
+    }
+    renderProducts(currentProducts);
+};
+
+// 4. MODAL DE PRODUTO (ALIMENTADO PELO PRICE.JSON)
+window.openProductModal = function (productId) {
+    if (!customerName) {
+        if (typeof showNotification === 'function') showNotification('Por favor, preencha seu nome!', 'error');
+        return;
+    }
+
+    // Busca o produto selecionado no array de produtos
     for (var i = 0; i < products.length; i++) {
         if (products[i].id === productId) {
             selectedProduct = products[i];
@@ -451,44 +747,64 @@ function openProductModal(productId) {
         }
     }
 
-    document.getElementById('modalProductName').textContent = selectedProduct.name;
-    document.getElementById('modalProductDescription').textContent = selectedProduct.description;
+    document.getElementById('modalProductName').textContent = selectedProduct.nome;
+    document.getElementById('modalProductDescription').textContent = selectedProduct.tipo;
 
     var sizesGrid = document.getElementById('sizesGrid');
+    if (!sizesGrid) return;
     sizesGrid.innerHTML = '';
+
+    // Usa o array 'sizes' que veio do price.json
     for (var i = 0; i < sizes.length; i++) {
         var size = sizes[i];
         var opt = document.createElement('div');
         opt.className = 'size-option';
         opt.tabIndex = 0;
-        opt.innerHTML = '<div class="size-name">' + size.name + '</div><div class="size-ml">' + size.ml + '</div><div class="size-price">R$ ' + size.price + '</div>';
-        (function (idx) { opt.addEventListener('click', function () { addToCart(idx); }); })(i);
+        opt.innerHTML = `
+            <div class="size-name">${size.name}</div>
+            <div class="size-ml">${size.ml}</div>
+            <div class="size-price">R$ ${size.price}</div>
+        `;
+
+        (function (idx) {
+            opt.addEventListener('click', function () { addToCart(idx); });
+        })(i);
+
         sizesGrid.appendChild(opt);
     }
 
     document.getElementById('productModal').classList.add('active');
-    // prevenir scroll de fundo enquanto modal aberto
     document.body.classList.add('no-scroll');
-}
+};
 
-function closeModal() {
-    document.getElementById('productModal').classList.remove('active');
-    document.body.classList.remove('no-scroll');
-}
-
-function addToCart(sizeIndex) {
+window.addToCart = function (sizeIndex) {
     var size = sizes[sizeIndex];
     var item = {
         id: Date.now(),
-        productName: selectedProduct.name,
+        productName: selectedProduct.nome,
         size: size.ml,
         price: size.price
     };
     cart.push(item);
-    updateCart();
-    closeModal();
+
+    // Funções que estarão no seu novo arquivo de sacola/interface
+    if (typeof updateCart === 'function') updateCart();
+    if (typeof closeModal === 'function') {
+        closeModal();
+    } else {
+        // Fallback caso closeModal não esteja definido
+        document.getElementById('productModal').classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+
     showNotification('Produto adicionado à sacola!');
-}
+};
+
+// 6. UTILITÁRIOS ORIGINAIS (FECHAR MODAL E NOTIFICAÇÃO)
+window.closeModal = function () {
+    document.getElementById('productModal').classList.remove('active');
+    document.body.classList.remove('no-scroll');
+};
 
 function removeFromCart(itemId) {
     var newCart = [];
@@ -614,7 +930,6 @@ function finalizeOrder() {
     const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
     window.open(url, '_blank');
 }
-
 
 
 init();

@@ -1,0 +1,31 @@
+/* Estilo para a imagem com data-zoom */
+[data-zoom] {
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+
+[data-zoom]:hover {
+    transform: scale(1.5);
+    /* Aumenta 50% */
+    z-index: 10;
+}
+
+.detail-modal-visual {
+    overflow: hidden;
+    /* Garante que a imagem ampliada não saia do quadrado */
+    border-radius: 20px;
+    cursor: zoom-in;
+    background: #fcfaf6;
+}
+
+#detailPerfumeImg {
+    transition: transform 0.3s ease-in-out;
+    display: block;
+    width: 100%;
+}
+
+/* Aplica o zoom quando passas o rato no contentor */
+.detail-modal-visual:hover #detailPerfumeImg {
+    transform: scale(1.6);
+    /* Ajusta o nível de zoom aqui */
+}

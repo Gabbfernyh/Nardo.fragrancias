@@ -14,8 +14,10 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/main.css">
     <link rel="stylesheet" href="src/css/response.css">
+    <link rel="stylesheet" href="src/css/produtos.css">
+    <link rel="stylesheet" href="src/css/perfumeDescription.css">
     <link rel="stylesheet" href="src/css/notification.css">
 </head>
 
@@ -76,14 +78,14 @@
         </div>
     </header>
 
-    <div class="form-overlay" id="formOverlay">
+    <!-- <div class="form-overlay" id="formOverlay">
         <div class="form-modal">
             <h2>Bem-vindo à <br> Nardo Fragrâncias</h2>
             <p>Por favor, informe seu nome para continuar</p>
             <input type="text" id="customerName" placeholder="Seu nome completo">
             <button id="formSubmitBtn">Entrar</button>
         </div>
-    </div>
+    </div> -->
 
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
@@ -117,7 +119,7 @@
                                 deleniti at et non explicabo reiciendis sequi sint. Dignissimos cupiditate velit debitis
                                 doloremque corrupti, consequatur id excepturi dolorem!
                                 ipsum dolor sit amet, consectetur adipiscing elit.
-                                
+
                             </p>
                             <!-- A Nardo Fragrâncias nasceu da paixão pela perfumaria artesanal e independente.
                             Cada fragrância é cuidadosamente desenvolvida para contar uma história única,
@@ -166,7 +168,7 @@
                         <li class="characteristics-item">
                             <h3>💎 Qualidade Premium</h3>
                             <p>Utilizamos matérias-primas selecionadas para criar experiências olfativas únicas, unindo
-                                sofisticação e preço justo.</p>
+                                sofisticação e preço justo dos importados aos nacionais.</p>
                         </li>
                     </ul>
 
@@ -186,22 +188,250 @@
             <h2 class="section-title text-center" data-sr>Catálogo Completo</h2>
             <p class="text-center text-muted mb-5" data-sr>Explore nossa coleção exclusiva de fragrâncias artesanais</p>
 
-            <div class="filter-controls mb-5">
-                <div class="filter-group">
-                    <label for="sort-select">Ordenar por:</label>
-                    <select id="sort-select" class="form-select">
-                        <option value="default">Padrão</option>
-                        <option value="alpha-asc">Nome (A-Z)</option>
-                        <option value="alpha-desc">Nome (Z-A)</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>Filtrar por:</label>
-                    <div id="filter-tags" class="d-flex flex-wrap gap-2"></div>
+            <div class="filter-section-container">
+                <div class="filter-main-grid">
+                    <div class="filter-card">
+                        <label><i class="bi bi-sort-alpha-down"></i> ORDENAR</label>
+                        <select id="sort-select" class="modern-select" onchange="ordenarProdutos(this.value)">
+                            <option value="default">Padrão</option>
+                            <option value="alpha-asc">A - Z</option>
+                            <option value="alpha-desc">Z - A</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-card">
+                        <label><i class="bi bi-lightning-charge"></i> CATEGORIAS</label>
+                        <div class="chip-container">
+                            <button class="filter-chip active"
+                                onclick="filtrarCatalogo('todos', '', this)">Todos</button>
+                            <button class="filter-chip" onclick="filtrarCatalogo('popular', '', this)">🔥
+                                Populares</button>
+                            <button class="filter-chip"
+                                onclick="filtrarCatalogo('genero', 'Masculino', this)">Masculino</button>
+                            <button class="filter-chip"
+                                onclick="filtrarCatalogo('genero', 'Feminino', this)">Feminino</button>
+                            <button class="filter-chip"
+                                onclick="filtrarCatalogo('genero', 'Unissex', this)">Unissex</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="products-grid" id="productsGrid">
+            <div class="main-catalog-layout">
+                <aside class="sidebar-filters">
+                    <div class="sidebar-group">
+                        <h3 class="sidebar-title">MARCAS</h3>
+
+                        <div class="marcas-scroll-container">
+                            <details class="sidebar-details">
+                                <summary>
+                                    O BOTICÁRIO
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'O Boticário', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Malbec', this)">Linha
+                                        Malbec</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Lily', this)">Linha
+                                        Lily</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Quasar', this)">Linha
+                                        Quasar</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    NATURA
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Natura', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Kaiak', this)">Linha
+                                        Kaiak</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Luna', this)">Linha
+                                        Luna</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    DIOR
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Dior', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Sauvage', this)">Linha Sauvage</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Miss Dior', this)">Linha Miss Dior</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'J\'adore', this)">Linha J'adore</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    PACO RABANNE
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Paco Rabanne', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', '1 Million', this)">Linha 1 Million</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Olympéa', this)">Linha Olympéa</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Phantom', this)">Linha Phantom</button>
+                                    <button class="filter-sub-item" onclick="filtrarCatalogo('linha', 'XS', this)">Linha
+                                        Pure XS</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    LANCÔME
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Lancôme', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Trésor', this)">Linha
+                                        Trésor</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'La Vie', this)">Linha
+                                        La Vie Est Belle</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    CAROLINA HERRERA
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Carolina Herrera', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Good Girl', this)">Linha Good Girl</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', '212 VIP', this)">Linha 212 VIP</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    YVES SAINT LAURENT
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Yves Saint Laurent', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('nome', 'Kouros', this)">Kouros</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Libre', this)">Linha
+                                        Libre</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    DOLCE & GABBANA
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Dolce & Gabbana', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Light Blue', this)">Linha Light Blue</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    MONTBLANC
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Montblanc', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Legend', this)">Linha
+                                        Legend</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Explorer', this)">Linha Explorer</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    MARINA DE BOURBON
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Marina de Bourbon', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Classique', this)">Linha Classique</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Royal', this)">Linha
+                                        Royal Marina</button>
+                                </div>
+                            </details>
+
+                            <details class="sidebar-details">
+                                <summary>
+                                    JO MALONE
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Jo Malone London', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Floral', this)">Linha
+                                        Floral</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Blossoms', this)">Linha
+                                        Blossoms</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Cologne Intense', this)">Linha
+                                        Cologne Intense</button>
+                                </div>
+                            </details>
+                            <details class="sidebar-details">
+                                <summary>
+                                    JEAN PAUL GAULTIER
+                                    <i class="bi bi-chevron-down"></i>
+                                </summary>
+                                <div class="sidebar-sub-menu">
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('marca', 'Jean Paul Gaultier', this)">Todos</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'La Belle', this)">Linha
+                                        La Belle</button>
+                                    <button class="filter-sub-item"
+                                        onclick="filtrarCatalogo('linha', 'Le Male', this)">Linha
+                                        Le Male</button>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </aside>
+
+                <main class="products-content">
+                    <div id="productsGrid" class="products-grid">
+                    </div>
+                </main>
             </div>
     </section>
 
@@ -335,6 +565,45 @@
         </iframe>
     </div>
 
+    <div id="perfumeDetailOverlay" class="detail-modal-overlay">
+        <div class="detail-modal-container">
+            <button class="detail-modal-close" onclick="closePerfumeDetail()">&times;</button>
+
+            <div class="detail-modal-layout">
+                <div class="detail-modal-visual">
+                    <img id="detailPerfumeImg" src="" alt="" data-zoom>
+                </div>
+
+                <div class="detail-modal-info">
+                    <p id="detailPerfumeBrand" class="brand-name-detail"></p>
+                    <h2 id="detailPerfumeTitle" class="product-title-detail"></h2>
+
+                    <div class="detail-description-box">
+                        <span class="detail-label">Descrição Olfativa</span>
+                        <p id="detailPerfumeText"></p>
+                    </div>
+                    <div id="detailPerfumeAcordes"></div>
+                    <!-- <div class="estacoes-container">
+                        <div class="estacoes-header">
+                            <i class="bi bi-brightness-high"></i>
+                            <div>
+                                <h4>Melhores estações</h4>
+                                <span>QUANDO USAR</span>
+                            </div>
+                        </div>
+
+                        <div class="estacoes-grid" id="detailEstacoesGrid">
+                        </div>
+                    </div> -->
+                    <div class="detail-footer-price">
+                        <span class="detail-price-label">Valor do decant</span>
+                        <div id="detailPerfumePrice" class="current-price-detail"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- <iframe src="https://app.gptmaker.ai/widget/3ED0B1E9216794DBD7057EB3FEA8D57E/iframe" width="100%"
         style="height: 100%; min-height: 700px; " allow="microphone;" frameborder="0">
     </iframe> -->
@@ -354,8 +623,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
 
     <!-- Scripts -->
-    <script src="src/scripts/notification.js"></script>
-    <script src="src/scripts/index.js"></script>
+    <script src="src/js/notification.js"></script>
+    <script src="src/js/index.js"></script>
+    <script src="src/js/main.js"></script>
+    <script src="src/js/render.js"></script>
     <!-- GPTMaker Widget Script -->
     <script>
         const chatModal = document.getElementById('chatModal');

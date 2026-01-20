@@ -1,0 +1,107 @@
+/* Filter Controls - Modern & Clean UX */
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    /* Empilha os grupos verticalmente */
+    align-items: center;
+    /* Centraliza tudo */
+    gap: 1.5rem;
+    /* Espaço entre os grupos 'Ordenar' e 'Filtrar' */
+    background-color: #fcfaf6;
+    /* Fundo sutil para destacar a seção */
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #efeae2;
+    margin-bottom: 3rem;
+    /* Aumenta o espaço abaixo dos filtros */
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os itens quebrem linha */
+    align-items: center;
+    justify-content: center;
+    /* Centraliza os itens do grupo */
+    gap: 1rem;
+    /* Espaço entre label e o controle */
+}
+
+.filter-group label {
+    font-weight: 600;
+    /* Fonte mais forte */
+    font-size: 1.1rem;
+    color: #78350f;
+    /* Cor consistente com a marca */
+    margin-bottom: 0;
+    /* Remove margem inferior da label */
+}
+
+/* Estilo para o <select> de ordenação */
+.filter-group .form-select {
+    background-color: #fff;
+    color: #78350f;
+    border: 2px solid #d97706;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-width: 200px;
+    /* Largura mínima para melhor toque */
+}
+
+.filter-group .form-select:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+/* Container para as tags de filtro */
+#filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    /* Espaço entre os chips */
+    justify-content: center;
+}
+
+/* Estilo dos botões de filtro (chips) */
+#filter-tags .btn {
+    background-color: #fff;
+    color: #a16207;
+    /* Cor do texto do chip */
+    border: 2px solid #fcd34d;
+    /* Borda dourada clara */
+    border-radius: 20px;
+    /* Pílula/chip */
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    transition: all 0.25s ease-in-out;
+}
+
+#filter-tags .btn:hover {
+    transform: translateY(-2px);
+    background-color: #fef3c7;
+    /* Fundo levemente dourado no hover */
+    border-color: #fbbf24;
+}
+
+/* Estilo do chip ATIVO */
+#filter-tags .btn.active {
+    background: linear-gradient(145deg, #d97706, #a16207);
+    color: #fff;
+    border-color: #a16207;
+    box-shadow: 0 4px 10px rgba(161, 98, 7, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+    .filter-controls {
+        padding: 1.5rem;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        /* Empilha label e controle em telas pequenas */
+        gap: 0.8rem;
+    }
+}

@@ -1,0 +1,847 @@
+[
+    {
+        "id": 1,
+        "nome": "La Belle",
+        "marca": "Jean Paul Gaultier",
+        "linha": "La Belle",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Oriental",
+            "Gourmand",
+            "Populares"
+        ],
+        "descricao": "Uma fragrância viciante que combina a doçura da pera com o calor da baunilha e bergamota fresca.",
+        "imagem": "https://i.pinimg.com/736x/03/6b/3c/036b3cf24ab1a3c9f514d6d5c672ff52.jpg"
+    },
+    {
+        "id": 2,
+        "nome": "Le Male",
+        "marca": "Jean Paul Gaultier",
+        "linha": "Le Male",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Oriental",
+            "Fresco",
+            "Populares"
+        ],
+        "descricao": "Uma fragrância magnética que equilibra a força da lavanda com o calor sensual da baunilha e hortelã.",
+        "imagem": "https://i.pinimg.com/736x/56/ad/2e/56ad2e4627ee090375dfacc06b20d724.jpg"
+    },
+    {
+        "id": 3,
+        "nome": "Oud & Bergamot",
+        "marca": "Jo Malone London",
+        "linha": "Cologne Intense",
+        "genero": "Unissex",
+        "popular": true,
+        "tags": [
+            "Unissex",
+            "Amadeirado",
+            "Cítrico",
+            "Luxo"
+        ],
+        "descricao": "Uma interpretação moderna do Oud que funde a madeira misteriosa com a frescura radiante da bergamota e do limão.",
+        "imagem": "https://i.pinimg.com/1200x/df/68/f5/df68f5b33e535050a87a6c9e44852a7e.jpg"
+    },
+    {
+        "id": 4,
+        "nome": "Orange Blossom",
+        "marca": "Jo Malone London",
+        "linha": "Floral",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Cítrico",
+            "Fresco"
+        ],
+        "descricao": "Um oásis cintilante de flor de laranjeira e lírio d'água, com toques quentes de lírio e vetiver.",
+        "imagem": "https://i.pinimg.com/736x/55/89/2f/55892fe86530fef35812992c8b645d7c.jpg"
+    },
+    {
+        "id": 5,
+        "nome": "Osmanthus Blossom",
+        "marca": "Jo Malone London",
+        "linha": "Blossoms",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Frutado",
+            "Suave"
+        ],
+        "descricao": "Fragrância delicada que captura o aroma da flor de Osmanthus com notas exóticas e um toque de damasco.",
+        "imagem": "https://i.pinimg.com/736x/b1/bf/b2/b1bfb2b0e093e95c9e54be66d9af7faf.jpg"
+    },
+    {
+        "id": 6,
+        "nome": "Red Hibiscus",
+        "marca": "Jo Malone London",
+        "linha": "Cologne Intense",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Solar",
+            "Exótico"
+        ],
+        "descricao": "Um floral solar e intenso, inspirado em uma flor rara das ilhas tropicais, com toques de jasmim e baunilha.",
+        "imagem": "https://i.pinimg.com/1200x/22/82/32/2282329b4c60d661d17fedb089238cc7.jpg"
+    },
+    {
+        "id": 7,
+        "nome": "Scarlet Poppy Intense",
+        "marca": "Jo Malone London",
+        "linha": "Cologne Intense",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Gourmand",
+            "Intenso"
+        ],
+        "descricao": "Um aroma envolvente de papoula vermelha, enriquecido com a doçura da fava tonka e aveludado pela íris.",
+        "imagem": "https://i.pinimg.com/736x/14/8c/9e/148c9e7f2ba24f5d17fa64e4249a39d5.jpg"
+    },
+    {
+        "id": 9,
+        "nome": "Star Magnolia",
+        "marca": "Jo Malone London",
+        "linha": "Blossoms",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Fresco",
+            "Primavera"
+        ],
+        "descricao": "A vivacidade da magnólia branca combinada com o frescor do limão e o calor suave do sândalo.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.54456.avif"
+    },
+    {
+        "id": 10,
+        "nome": "Joop! Femme",
+        "marca": "Joop!",
+        "linha": "Classic",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Oriental",
+            "Ambarado",
+            "Marcante"
+        ],
+        "descricao": "Uma fragrância atemporal e luxuosa que combina notas florais com um fundo oriental quente.",
+        "imagem": "https://i.pinimg.com/736x/4e/1e/93/4e1e93a31820780a3467338d33634e6e.jpg"
+    },
+    {
+        "id": 11,
+        "nome": "Joop! Homme",
+        "marca": "Joop!",
+        "linha": "Classic",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Oriental",
+            "Fougère",
+            "Populares"
+        ],
+        "descricao": "Ícone da perfumaria masculina, com notas vibrantes de canela, mel e fava tonka.",
+        "imagem": "https://i.pinimg.com/1200x/18/3c/10/183c10da0267d255eb7fc9fd4c42ef88.jpg"
+    },
+    {
+        "id": 12,
+        "nome": "Kaiak Aventura Masculino",
+        "marca": "Natura",
+        "linha": "Kaiak",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Cítrico",
+            "Aromático",
+            "Esportivo"
+        ],
+        "descricao": "O espírito da aventura em uma fragrância refrescante com notas cítricas e fundo amadeirado.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.26137.avif"
+    },
+    {
+        "id": 13,
+        "nome": "Kaiak Feminino",
+        "marca": "Natura",
+        "linha": "Kaiak",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Cítrico",
+            "Fresco"
+        ],
+        "descricao": "Uma explosão de frescor e movimento, unindo notas florais com a vivacidade das frutas cítricas.",
+        "imagem": "feminino???"
+    },
+    {
+        "id": 14,
+        "nome": "Kaiak Masculino",
+        "marca": "Natura",
+        "linha": "Kaiak",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Cítrico",
+            "Aquático",
+            "Populares"
+        ],
+        "descricao": "Inspirado no frescor do mar, combina notas aromáticas com o vigor da bergamota.",
+        "estacoes": {
+            "inverno": 20,
+            "primavera": 65,
+            "verao": 95,
+            "outono": 40,
+            "dia": 100,
+            "noite": 30
+        },
+        "acordes": [
+            {
+                "nome": "cítrico",
+                "valor": 90,
+                "cor": "#f1f50e"
+            },
+            {
+                "nome": "aromático",
+                "valor": 75,
+                "cor": "#428a73"
+            },
+            {
+                "nome": "floral branco",
+                "valor": 65,
+                "cor": "#b1b9c1"
+            },
+            {
+                "nome": "verde",
+                "valor": 60,
+                "cor": "#1a631c"
+            },
+            {
+                "nome": "fresco especiado",
+                "valor": 55,
+                "cor": "#7c8d23"
+            },
+            {
+                "nome": "amadeirado",
+                "valor": 50,
+                "cor": "#633e24"
+            },
+            {
+                "nome": "musgo",
+                "valor": 45,
+                "cor": "#4b5331"
+            },
+            {
+                "nome": "fresco",
+                "valor": 45,
+                "cor": "#7399a1"
+            },
+            {
+                "nome": "terroso",
+                "valor": 40,
+                "cor": "#453f3a"
+            },
+            {
+                "nome": "almíscarado",
+                "valor": 40,
+                "cor": "#908491"
+            }
+        ],
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.13237.avif"
+    },
+    {
+        "id": 15,
+        "nome": "Kouros",
+        "marca": "Yves Saint Laurent",
+        "linha": "Classic",
+        "genero": "Masculino",
+        "popular": false,
+        "tags": [
+            "Masculino",
+            "Aromático",
+            "Couro",
+            "Poderoso"
+        ],
+        "descricao": "Uma fragrância de virilidade absoluta, com acordes de couro e notas de ervas aromáticas.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.12282.avif"
+    },
+    {
+        "id": 16,
+        "nome": "La Nuit Trésor à la Folie",
+        "marca": "Lancôme",
+        "linha": "Trésor",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Oriental",
+            "Gourmand",
+            "Noite"
+        ],
+        "descricao": "Uma interpretação ardente e apaixonada, com notas de rosa, baunilha e um toque de benjoim.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.48019.avif"
+    },
+    {
+        "id": 17,
+        "nome": "La Nuit Trésor",
+        "marca": "Lancôme",
+        "linha": "Trésor",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Doce",
+            "Floral",
+            "Populares"
+        ],
+        "descricao": "O diamante negro da perfumaria, uma fragrância afrodisíaca de rosa negra e baunilha.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.29157.avif"
+    },
+    {
+        "id": 18,
+        "nome": "Lacoste Essential",
+        "marca": "Lacoste",
+        "linha": "Essential",
+        "genero": "Masculino",
+        "popular": false,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Verde",
+            "Casual"
+        ],
+        "descricao": "Uma fragrância fresca e sofisticada que utiliza tecnologia para manter o aroma por todo o dia.",
+        "imagem": "lacoste-essential.jpg"
+    },
+    {
+        "id": 19,
+        "nome": "Laguna",
+        "marca": "Salvador Dali",
+        "linha": "Art",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Frutado",
+            "Tropical"
+        ],
+        "descricao": "Uma brisa tropical refrescante com notas de frutas exóticas e um coração floral suave.",
+        "imagem": "laguna.jpg"
+    },
+    {
+        "id": 20,
+        "nome": "Lamar",
+        "marca": "Kajal",
+        "linha": "Luxury",
+        "genero": "Unissex",
+        "popular": true,
+        "tags": [
+            "Unissex",
+            "Oriental",
+            "Frutado",
+            "Luxo"
+        ],
+        "descricao": "Fragrância radiante de nicho que mistura abacaxi, bagas vermelhas e rosas luxuosas.",
+        "imagem": "lamar-kajal.jpg"
+    },
+    {
+        "id": 21,
+        "nome": "La Vie Est Belle",
+        "marca": "Lancôme",
+        "linha": "La Vie",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Gourmand",
+            "Populares"
+        ],
+        "descricao": "Uma declaração universal à felicidade, composta pela nobreza da Íris e do Pralinê.",
+        "imagem": "la-vie-est-belle.jpg"
+    },
+    {
+        "id": 22,
+        "nome": "Le Beau",
+        "marca": "Jean Paul Gaultier",
+        "linha": "Le Beau",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Coco",
+            "Sedutor"
+        ],
+        "descricao": "Um perfume fresco e viciante, construído em torno da madeira de coco e da fava tonka.",
+        "imagem": "le-beau.jpg"
+    },
+    {
+        "id": 23,
+        "nome": "Legend",
+        "marca": "Montblanc",
+        "linha": "Legend",
+        "genero": "Masculino",
+        "popular": false,
+        "tags": [
+            "Masculino",
+            "Fougère",
+            "Aromático",
+            "Elegante"
+        ],
+        "descricao": "A personificação da masculinidade resoluta e moderna, com notas de lavanda e bergamota.",
+        "imagem": "legend-montblanc.jpg"
+    },
+    {
+        "id": 24,
+        "nome": "Light Blue Feminino",
+        "marca": "Dolce & Gabbana",
+        "linha": "Light Blue",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Cítrico",
+            "Fresco",
+            "Verão"
+        ],
+        "descricao": "O frescor do Mediterrâneo em uma mistura vibrante de limão siciliano e maçã verde.",
+        "imagem": "light-blue-fem.jpg"
+    },
+    {
+        "id": 25,
+        "nome": "Light Blue Masculino",
+        "marca": "Dolce & Gabbana",
+        "linha": "Light Blue",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Cítrico",
+            "Aquático",
+            "Fresco"
+        ],
+        "descricao": "A essência da alegria de viver, com notas marinhas refrescantes e cítricos radiantes.",
+        "imagem": "light-blue-masc.jpg"
+    },
+    {
+        "id": 26,
+        "nome": "Lily Essence",
+        "marca": "O Boticário",
+        "linha": "Lily",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Sofisticado",
+            "Populares"
+        ],
+        "descricao": "Fragrância floral branca pura, extraída do lírio através da técnica artesanal de enfleurage.",
+        "imagem": "lily-essence.jpg"
+    },
+    {
+        "id": 27,
+        "nome": "L'Interdit",
+        "marca": "Givenchy",
+        "linha": "L'Interdit",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Intenso",
+            "Luxo"
+        ],
+        "descricao": "Um tributo à feminilidade audaciosa, que une flores brancas radiantes com notas negras e terrosas.",
+        "imagem": "linterdit.jpg"
+    },
+    {
+        "id": 28,
+        "nome": "Lira",
+        "marca": "Xerjoff",
+        "linha": "Casamorati",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Gourmand",
+            "Caramelo",
+            "Luxo"
+        ],
+        "descricao": "Uma fragrância sedutora de nicho com notas de caramelo, baunilha e frutas cítricas frescas.",
+        "imagem": "lira-xerjoff.jpg"
+    },
+    {
+        "id": 29,
+        "nome": "Loulou",
+        "marca": "Cacharel",
+        "linha": "Classic",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Oriental",
+            "Vintage"
+        ],
+        "descricao": "Um clássico audacioso e exótico, marcado pela flor de tiare, incenso e baunilha.",
+        "imagem": "loulou-cacharel.jpg"
+    },
+    {
+        "id": 30,
+        "nome": "Luna Absoluta",
+        "marca": "Natura",
+        "linha": "Luna",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Chipre",
+            "Moderado",
+            "Noite"
+        ],
+        "descricao": "Fragrância chipre moderada que combina a orquídea negra com o toque adocicado do cacau.",
+        "imagem": "luna-absoluta.jpg"
+    },
+    {
+        "id": 31,
+        "nome": "Luna Feminino",
+        "marca": "Natura",
+        "linha": "Luna",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Chipre",
+            "Floral",
+            "Dia a dia"
+        ],
+        "descricao": "Um chipre brasileiro clássico que equilibra notas de patchouli com um corpo floral delicado.",
+        "imagem": "luna-feminino.jpg"
+    },
+    {
+        "id": 32,
+        "nome": "Luna Radiant",
+        "marca": "Natura",
+        "linha": "Luna",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Chipre",
+            "Cítrico",
+            "Luminoso"
+        ],
+        "descricao": "Uma versão luminosa do Luna, unindo o chipre tradicional a notas cítricas e flores douradas.",
+        "imagem": "luna-radiant.jpg"
+    },
+    {
+        "id": 33,
+        "nome": "Malbec Absoluto",
+        "marca": "O Boticário",
+        "linha": "Malbec",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Intenso",
+            "Populares"
+        ],
+        "descricao": "Uma fragrância intensa que exacerba as notas de carvalho e vinho características da linha.",
+        "imagem": "malbec-absoluto.jpg"
+    },
+    {
+        "id": 34,
+        "nome": "Malbec Gold",
+        "marca": "O Boticário",
+        "linha": "Malbec",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Quente",
+            "Sedutor"
+        ],
+        "descricao": "Traz a tecnologia GoldScent, criando um aroma quente e âmbarado que aumenta o poder de atração.",
+        "imagem": "malbec-gold.jpg"
+    },
+    {
+        "id": 35,
+        "nome": "Malbec Masculino",
+        "marca": "O Boticário",
+        "linha": "Malbec",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Vinho",
+            "Populares"
+        ],
+        "descricao": "O primeiro perfume do mundo feito com álcool vínico, macerado em barris de carvalho francês.",
+        "imagem": "malbec-tradicional.jpg"
+    },
+    {
+        "id": 36,
+        "nome": "Malbec Magnetic",
+        "marca": "O Boticário",
+        "linha": "Malbec",
+        "genero": "Masculino",
+        "popular": false,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Mineral",
+            "Moderno"
+        ],
+        "descricao": "Uma fragrância que desperta o magnetismo, unindo o solo rico de Alsácia com o DNA Malbec.",
+        "imagem": "malbec-magnetic.jpg"
+    },
+    {
+        "id": 37,
+        "nome": "Marina de Bourbon Classique",
+        "marca": "Marina de Bourbon",
+        "linha": "Classique",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Frutado",
+            "Elegante"
+        ],
+        "descricao": "Um perfume aristocrático e sofisticado, marcado por notas de groselha, baunilha e flores nobres.",
+        "imagem": "marina-bourbon-classic.jpg"
+    },
+    {
+        "id": 38,
+        "nome": "Marina de Bourbon Royal Marina Diamond",
+        "marca": "Marina de Bourbon",
+        "linha": "Royal",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Oriental",
+            "Luxo",
+            "Noite"
+        ],
+        "descricao": "Uma joia olfativa com notas de açaí, iris e fava tonka, evocando o luxo da realeza.",
+        "imagem": "marina-diamond.jpg"
+    },
+    {
+        "id": 39,
+        "nome": "Miss Dior Blooming Bouquet",
+        "marca": "Dior",
+        "linha": "Miss Dior",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Delicado",
+            "Fresco"
+        ],
+        "descricao": "Um abraço de flores frescas, com notas de peônia, rosa damascena e almíscar branco.",
+        "imagem": "miss-dior-blooming.jpg"
+    },
+    {
+        "id": 40,
+        "nome": "Miss Dior Eau de Parfum",
+        "marca": "Dior",
+        "linha": "Miss Dior",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Chique",
+            "Populares"
+        ],
+        "descricao": "Um buquê floral vibrante e colorido, celebrando o amor com notas de rosa e baunilha.",
+        "imagem": "miss-dior-edp.jpg"
+    },
+    {
+        "id": 41,
+        "nome": "Montblanc Explorer",
+        "marca": "Montblanc",
+        "linha": "Explorer",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Aromático",
+            "Aventura"
+        ],
+        "descricao": "Um convite à descoberta, com notas de bergamota italiana, vetiver do Haiti e patchouli.",
+        "imagem": "montblanc-explorer.jpg"
+    },
+    {
+        "id": 42,
+        "nome": "Narciso Rodriguez For Her",
+        "marca": "Narciso Rodriguez",
+        "linha": "For Her",
+        "genero": "Feminino",
+        "popular": false,
+        "tags": [
+            "Feminino",
+            "Almíscar",
+            "Floral",
+            "Sofisticado"
+        ],
+        "descricao": "Uma fragrância centrada no almíscar, que exala elegância pura e sensualidade discreta.",
+        "imagem": "narciso-rodriguez.jpg"
+    },
+    {
+        "id": 43,
+        "nome": "Olympéa",
+        "marca": "Paco Rabanne",
+        "linha": "Olympéa",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Floral",
+            "Baunilha Salgada",
+            "Populares"
+        ],
+        "descricao": "A fragrância da deusa moderna, que mistura baunilha salgada com o frescor do jasmim aquático.",
+        "imagem": "olympea.jpg"
+    },
+    {
+        "id": 44,
+        "nome": "One Million Elixir",
+        "marca": "Paco Rabanne",
+        "linha": "1 Million",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Intenso",
+            "Oriental",
+            "Noite"
+        ],
+        "descricao": "A versão mais rica e intensa do clássico, com notas de rosa damascena, osmanthus e fava tonka.",
+        "imagem": "one-million-elixir.jpg"
+    },
+    {
+        "id": 45,
+        "nome": "One Million Lucky",
+        "marca": "Paco Rabanne",
+        "linha": "1 Million",
+        "genero": "Masculino",
+        "popular": false,
+        "tags": [
+            "Masculino",
+            "Amadeirado",
+            "Avelã",
+            "Moderno"
+        ],
+        "descricao": "Uma fragrância pulsante que combina avelã com notas amadeiradas e um toque de ameixa.",
+        "imagem": "one-million-lucky.jpg"
+    },
+    {
+        "id": 46,
+        "nome": "Phantom",
+        "marca": "Paco Rabanne",
+        "linha": "Phantom",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Futurista",
+            "Lavanda",
+            "Limão"
+        ],
+        "descricao": "Uma fragrância futurista de lavanda cremosa, limão energizante e baunilha amadeirada.",
+        "imagem": "phantom-paco.jpg"
+    },
+    {
+        "id": 47,
+        "nome": "Prada Candy",
+        "marca": "Prada",
+        "linha": "Candy",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Doce",
+            "Gourmand",
+            "Populares"
+        ],
+        "descricao": "Um perfume luxuoso e divertido, focado no caramelo, almíscares brancos e o calor do benjoim.",
+        "imagem": "prada-candy.jpg"
+    },
+    {
+        "id": 48,
+        "nome": "Pure XS Feminino",
+        "marca": "Paco Rabanne",
+        "linha": "XS",
+        "genero": "Feminino",
+        "popular": true,
+        "tags": [
+            "Feminino",
+            "Sexy",
+            "Pipoca Doce",
+            "Baunilha"
+        ],
+        "descricao": "Uma fragrância provocante com notas ousadas de ylang-ylang e o vício da pipoca doce.",
+        "imagem": "pure-xs-fem.jpg"
+    },
+    {
+        "id": 49,
+        "nome": "Quasar Classic",
+        "marca": "O Boticário",
+        "linha": "Quasar",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Fresco",
+            "Cítrico",
+            "Dia a dia"
+        ],
+        "descricao": "Uma explosão de energia e frescor para o homem que busca superar desafios diários.",
+        "imagem": "quasar-classic.jpg"
+    },
+    {
+        "id": 50,
+        "nome": "Sauvage Elixir",
+        "marca": "Dior",
+        "linha": "Sauvage",
+        "genero": "Masculino",
+        "popular": true,
+        "tags": [
+            "Masculino",
+            "Luxo",
+            "Especiado",
+            "Ultra Intenso"
+        ],
+        "descricao": "A concentração máxima de Sauvage, com especiarias quentes, lavanda e madeiras ricas.",
+        "acordes": [],
+        "imagem": "sauvage-elixir.jpg"
+    }
+]

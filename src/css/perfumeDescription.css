@@ -1,0 +1,273 @@
+/* Overlay específico para Detalhes */
+.detail-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    /* Um nível acima do outro modal se necessário */
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-modal-container {
+    background: #ffffff;
+    width: 95%;
+    max-width: 800px;
+    border-radius: 28px;
+    position: relative;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.detail-modal-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+}
+
+.detail-modal-visual img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: contain;
+    background: #fcfaf6;
+}
+
+/* Tipografia Premium para o Modal */
+.brand-name-detail {
+    color: #d97706;
+    /* Laranja da sua paleta */
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.product-title-detail {
+    font-size: 1.8rem;
+    color: #4b2e1e;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.detail-label {
+    display: block;
+    font-weight: 700;
+    color: #78350f;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.detail-description-box p {
+    color: #71717a;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.current-price-detail {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.detail-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f3f4f6;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.detail-modal-close:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+@media (max-width: 768px) {
+    .detail-modal-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-modal-container {
+        height: 90vh;
+        overflow-y: auto;
+        padding: 25px;
+    }
+}
+
+.acordes-container {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.acorde-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    height: 25px;
+    color: #000;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+
+.modal-content {
+    max-width: 900px;
+    width: 95%;
+    max-height: 90vh;
+    /* Não deixa o modal ser maior que 90% da altura da tela */
+    overflow-y: auto;
+    /* Adiciona scroll se o conteúdo crescer muito */
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.modal-body {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.modal-col-left {
+    flex: 1;
+    position: sticky;
+    /* Mantém a imagem visível enquanto rola o texto */
+    top: 0;
+}
+
+.modal-col-left img {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: contain;
+}
+
+.modal-col-right {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Ajuste nos containers para não ocuparem tanto espaço
+.acordes-wrapper,
+.estacoes-container {
+    width: 100% !important;
+    margin: 10px 0 !important;
+    padding: 12px !important;
+} */
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-col-left {
+        position: static;
+    }
+}
+
+/* .bar-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 10px 10px 0;
+    transition: width 0.5s ease-in-out;
+}
+
+.estacoes-container {
+    background: #1e1e1e;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+
+.estacoes-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.estacoes-header h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.estacoes-header span {
+    font-size: 10px;
+    color: #888;
+}
+
+.estacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    6 colunas para os 6 ícones 
+    gap: 5px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.estacao-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+}
+
+.estacao-item i {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.mini-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.mini-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+}
+
+.estacao-item span {
+    font-size: 11px;
+}
+
+/* Barra de progresso pequena
+.mini-progress-bg {
+    width: 45px;
+    height: 12px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    border-radius: 10px;
+} */
