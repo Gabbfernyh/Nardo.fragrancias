@@ -449,6 +449,11 @@ header .cart-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+
+}
+
+.float-cart-btn {
+    background: #ea580c;
 }
 
 .float-cart-btn:hover {

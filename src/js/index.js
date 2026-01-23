@@ -616,6 +616,68 @@ function aplicarZoom() {
     });
 }
 
+const floatingContainer = document.querySelector('.floating-btns');
+let floatCartBtn = null;
+
+function createFloatingCart() {
+    if (!floatingContainer) return null;
+    if (document.getElementById('floatCartBtn')) return document.getElementById('floatCartBtn');
+    const btn = document.createElement('button');
+    btn.id = 'floatCartBtn';
+    btn.className = 'float-btn float-cart-btn';
+    btn.setAttribute('aria-label', 'Abrir sacola');
+    btn.innerHTML = '<i class="fas fa-shopping-bag"></i>';
+    const span = document.createElement('span');
+    span.className = 'cart-count hidden';
+    span.id = 'floatCartCount';
+    span.textContent = '0';
+    const closeSpan = document.createElement('span');
+    closeSpan.className = 'float-close';
+    closeSpan.setAttribute('aria-hidden', 'true');
+    closeSpan.textContent = '\u00d7';
+    closeSpan.style.display = 'none';
+    btn.appendChild(span);
+    btn.appendChild(closeSpan);
+    floatingContainer.appendChild(btn);
+    btn.addEventListener('click', function (e) { e.stopPropagation(); toggleCart(); });
+    return btn;
+}
+
+function manageCartPlacement() {
+    if (!cartBtn) return;
+    if (window.innerWidth <= 1024) {
+        // ensure header cart hidden via CSS; add floating
+        if (!floatCartBtn) floatCartBtn = createFloatingCart();
+        // sync counts
+        const headerCount = document.getElementById('cartCount');
+        const floatCount = document.getElementById('floatCartCount');
+        if (headerCount && floatCount) {
+            if (headerCount.classList.contains('hidden')) floatCount.classList.add('hidden'); else floatCount.classList.remove('hidden');
+            floatCount.textContent = headerCount.textContent;
+        }
+        // ensure close state matches; use class for styling
+        const fbtn = document.getElementById('floatCartBtn');
+        if (fbtn) {
+            if (document.getElementById('cartSidebar').classList.contains('active')) fbtn.classList.add('opened'); else fbtn.classList.remove('opened');
+        }
+    } else {
+        // remove floating cart if exists
+        if (floatCartBtn) {
+            floatCartBtn.remove();
+            floatCartBtn = null;
+        }
+        // ensure header cart visible (CSS handles it)
+    }
+}
+
+// initial placement and on resize (debounced)
+manageCartPlacement();
+let resizeTimer;
+window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(manageCartPlacement, 120);
+});
+
 // ATENÇÃO: Deves chamar esta função dentro da tua abrirDescricao(id)
 // logo após preencheres o src da imagem!
 
@@ -859,7 +921,6 @@ function removeFromCart(itemId) {
     cart = newCart;
     updateCart();
 }
-
 
 function updateCart() {
     var cartCount = document.getElementById('cartCount');
