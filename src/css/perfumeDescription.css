@@ -166,6 +166,10 @@
     gap: 15px;
 }
 
+#detailPerfumeImg{
+    user-select: none;
+}
+
 /* Ajuste nos containers para não ocuparem tanto espaço
 .acordes-wrapper,
 .estacoes-container {

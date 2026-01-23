@@ -593,28 +593,28 @@ function abrirDescricao(id) {
     // document.getElementById('detailEstacoesGrid').innerHTML = gerarHTMLClima(perfume.estacoes);
 }
 
-function aplicarZoom() {
-    const container = document.querySelector('.detail-modal-visual');
-    const img = document.querySelector('#detailPerfumeImg');
+// function aplicarZoom() {
+//     const container = document.querySelector('.detail-modal-visual');
+//     const img = document.querySelector('#detailPerfumeImg');
 
-    if (!container || !img) return;
+//     if (!container || !img) return;
 
-    container.addEventListener('mousemove', (e) => {
-        const { left, top, width, height } = container.getBoundingClientRect();
+//     container.addEventListener('mousemove', (e) => {
+//         const { left, top, width, height } = container.getBoundingClientRect();
 
-        // Calcula a posição do rato em percentagem dentro da imagem
-        const x = ((e.clientX - left) / width) * 100;
-        const y = ((e.clientY - top) / height) * 100;
+//         // Calcula a posição do rato em percentagem dentro da imagem
+//         const x = ((e.clientX - left) / width) * 100;
+//         const y = ((e.clientY - top) / height) * 100;
 
-        img.style.transformOrigin = `${x}% ${y}%`;
-        img.style.transform = "scale(2)"; // Nível de zoom
-    });
+//         img.style.transformOrigin = `${x}% ${y}%`;
+//         img.style.transform = "scale(2)"; // Nível de zoom
+//     });
 
-    container.addEventListener('mouseleave', () => {
-        img.style.transform = "scale(1)";
-        img.style.transformOrigin = "center center";
-    });
-}
+//     container.addEventListener('mouseleave', () => {
+//         img.style.transform = "scale(1)";
+//         img.style.transformOrigin = "center center";
+//     });
+// }
 
 const floatingContainer = document.querySelector('.floating-btns');
 let floatCartBtn = null;
@@ -681,20 +681,20 @@ window.addEventListener('resize', function () {
 // ATENÇÃO: Deves chamar esta função dentro da tua abrirDescricao(id)
 // logo após preencheres o src da imagem!
 
-document.addEventListener('DOMContentLoaded', function () {
-    const imgContainer = document.querySelector('.detail-modal-visual');
-    const img = document.querySelector('[data-zoom]');
+// document.addEventListener('DOMContentLoaded', function () {
+//     const imgContainer = document.querySelector('.detail-modal-visual');
+//     const img = document.querySelector('[data-zoom]');
 
-    if (imgContainer && img) {
-        imgContainer.addEventListener('mousemove', (e) => {
-            const { left, top, width, height } = imgContainer.getBoundingClientRect();
-            const x = ((e.pageX - left) / width) * 100;
-            const y = ((e.pageY - top) / height) * 100;
+//     if (imgContainer && img) {
+//         imgContainer.addEventListener('mousemove', (e) => {
+//             const { left, top, width, height } = imgContainer.getBoundingClientRect();
+//             const x = ((e.pageX - left) / width) * 100;
+//             const y = ((e.pageY - top) / height) * 100;
 
-            img.style.transformOrigin = `${x}% ${y}%`;
-        });
-    }
-});
+//             img.style.transformOrigin = `${x}% ${y}%`;
+//         });
+//     }
+// });
 
 function gerarGraficoAcordes(acordes) {
     if (!acordes) return '';

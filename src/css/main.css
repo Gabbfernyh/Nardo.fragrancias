@@ -2,7 +2,7 @@
 @import url('produtos.css');
 @import url('perfumeDescription.css');
 @import url('filter.css');
-@import url('zoom.css');
+/* @import url('zoom.css'); */
 
 html {
     overflow-y: scroll;
