@@ -35,7 +35,10 @@
     height: auto;
     border-radius: 20px;
     object-fit: contain;
-    background: #fcfaf6;
+    background-color: #fcfaf6;
+    /* Um tom que camufla o fundo das fotos do Fragrantica */
+    mix-blend-mode: multiply;
+    /* Faz com que o "quase branco" da foto se funda ao branco do teu site */
 }
 
 /* Tipografia Premium para o Modal */

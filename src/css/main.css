@@ -285,7 +285,7 @@ header {
 .logo-section {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     /* reduzir espaçamento para melhor encaixe */
 
 }
@@ -299,7 +299,7 @@ header {
 } */
 
 .logoImg {
-    height: 58px;
+    height: 57px;
     width: auto;
     /* border: 1px solid #d97706; */
     border-radius: 8px;
@@ -309,13 +309,13 @@ header {
 .logo-text h1 {
     padding-top: 7px;
     color: #fbbf24;
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 5px;
 }
 
 .logo-text p {
     color: #d97706;
-    font-size: 14px;
+    font-size: 12px;
     font-style: italic;
 }
 
@@ -364,18 +364,6 @@ header .cart-btn {
     body {
         padding-top: 72px;
     }
-}
-
-.floating-btns {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    z-index: 900;
-    align-items: center;
-    justify-content: flex-end;
 }
 
 .float-btn {
@@ -435,9 +423,32 @@ header .cart-btn {
 }
 
 /* Floating cart button (mobile) */
-.float-cart-btn {
-    background: #d97706;
-    color: #000;
+/* Garante que o container dos botões flutuantes apareça no canto da tela */
+.floating-btns {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-end;
+    /* z-index: 9999; */
+    /* Fica acima de tudo */
+}
+
+/* Estilo do botão flutuante para garantir visibilidade */
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .float-cart-btn:hover {
@@ -771,6 +782,44 @@ header .cart-btn {
     font-weight: bold;
 } */
 
+.purchase-controls {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #d97706;
+    animation: fadeIn 0.3s ease;
+}
+
+.quantity-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+#modalQty {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+}
+
+.btn-confirm-add:hover {
+    background: #fcd34d;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -786,7 +835,7 @@ header .cart-btn {
     display: flex;
 }
 
-.modal-content {
+/* .modal-content {
     background: linear-gradient(135deg, #78350f 0%, #000 100%);
     border: 2px solid #d97706;
     border-radius: 12px;
@@ -797,7 +846,7 @@ header .cart-btn {
     transform: translateY(12px) scale(.99);
     transition: transform 220ms ease, opacity 220ms ease;
     opacity: 0.98;
-}
+} */
 
 .modal-overlay.active .modal-content {
     transform: translateY(0) scale(1);
@@ -820,10 +869,27 @@ header .cart-btn {
     color: #fcd34d;
 }
 
+.modal-content {
+    background: #121212;
+    /* Fundo preto sólido e elegante */
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-height: 90vh;
+    /* Não deixa passar da altura da tela */
+    overflow-y: auto;
+}
+
 .modal-content h3 {
-    color: #fbbf24;
-    font-size: 32px;
-    margin-bottom: 15px;
+    color: #fff;
+    font-size: 28px;
+    letter-spacing: -1px;
+}
+
+.modal-description {
+    color: #888 !important;
+    font-size: 14px;
 }
 
 .modal-content .modal-description {
@@ -838,19 +904,68 @@ header .cart-btn {
 }
 
 .sizes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
 }
 
 .size-option {
-    background: #000;
-    border: 2px solid #d97706;
-    border-radius: 8px;
-    padding: 16px 12px;
-    text-align: center;
+    flex: 1;
+    background: #1d1d1f;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 15px;
+    transition: all 0.2s ease;
+}
+
+.size-option.selected {
+    border-color: #fbbf24;
+    background: #2d2d2d;
+    transform: translateY(-2px);
+}
+
+.size-name {
+    color: #fbbf24;
+    font-size: 14px;
+}
+
+.size-price {
+    color: #fff;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* Seletor de Quantidade Clean */
+.quantity-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    background: #1d1d1f;
+    padding: 10px 20px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    color: #fbbf24;
+    font-size: 24px;
+    padding: 0 15px;
     cursor: pointer;
-    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+/* Botão de Finalização */
+.btn-confirm-add {
+    width: 100%;
+    background: #fbbf24;
+    color: #000;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .size-option:hover {
@@ -886,7 +1001,7 @@ header .cart-btn {
     background: linear-gradient(180deg, #78350f 0%, #000 100%);
     border-left: 2px solid #d97706;
     transition: right 0.3s;
-    z-index: 2000;
+    z-index: 9999 !important;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -897,6 +1012,18 @@ header .cart-btn {
 
 .cart-sidebar.active {
     right: 0;
+}
+
+/* Ajuste o seletor para a classe real da sua sacola */
+.cart-sidebar {
+    z-index: 9999 !important;
+    /* Garante que a sacola fique sobre tudo */
+    /* ... outros estilos ... */
+}
+
+/* Se quiser esconder os botões especificamente quando a sacola abrir via CSS */
+body.cart-open .float-buttons {
+    display: none;
 }
 
 .cart-header {
@@ -963,40 +1090,78 @@ header .cart-btn {
 .cart-item {
     background: #000;
     border: 1px solid #d97706;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    /* Empilha no mobile para não apertar */
+    gap: 10px;
+    position: relative;
 }
 
 .cart-item-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    align-items: flex-start;
 }
 
 .cart-item h4 {
     color: #fbbf24;
     font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.cart-item p {
-    color: #fcd34d;
-    font-size: 14px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .remove-item {
     background: none;
     border: none;
-    color: #dc2626;
+    color: #ef4444;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.remove-item:hover {
+    transform: scale(1.2);
+}
+
+.qty-badge {
+    background: #fbbf24;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.item-details {
+    color: #888;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.item-details strong {
+    color: #fbbf24;
+}
+
+.cart-item p {
+    color: #a1a1aa;
+    font-size: 13px;
+    margin: 4px 0 0 0;
 }
 
 .cart-item-price {
-    color: #fbbf24;
+    color: #fff;
     font-weight: bold;
     font-size: 18px;
+    text-align: right;
+    border-top: 1px solid #27272a;
+    padding-top: 8px;
 }
 
 .cart-empty {
@@ -1054,6 +1219,18 @@ header .cart-btn {
 
     .cart-total-row {
         font-size: 18px;
+    }
+
+    /* Ajuste para telas maiores que celular */
+    .cart-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cart-item-price {
+        border-top: none;
+        padding-top: 0;
     }
 }
 
@@ -1171,7 +1348,7 @@ header .cart-btn {
 }
 
 .section {
-    padding: var(--padding-secao);
+    padding: 20px;
     min-height: 100vh;
 }
 
@@ -1186,6 +1363,7 @@ header .cart-btn {
 /* ABOUT SECTION */
 .about {
     background: var(--cor-fundo-claro);
+    /* padding: var(--padding-secao); */
 }
 
 .about-text {
@@ -1437,8 +1615,8 @@ header .cart-btn {
 
 /* --- Configurações Gerais da Seção --- */
 .abou-job {
-    min-height: 100vh;
-    padding: 4.9rem 1rem 2rem 1rem;
+    min-height: 99vh;
+    padding: 2rem 1rem 2rem 1rem;
     /* Espaçamento interno generoso */
     background-color: #fcfcfc;
     /* Fundo off-white para elegância */

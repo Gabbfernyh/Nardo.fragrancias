@@ -86,8 +86,6 @@ async function init() {
     }
 }
 
-
-
 // Menu toggle (mobile)
 document.addEventListener('DOMContentLoaded', function () {
     const navToggle = document.querySelector('.nav-toggle');
@@ -733,48 +731,93 @@ window.ordenarProdutos = function (criterio) {
 };
 
 // 4. MODAL DE PRODUTO (ALIMENTADO PELO PRICE.JSON)
+let currentSelectedSize = null;
+let currentQty = 1;
+
 window.openProductModal = function (productId) {
     if (!customerName) {
         if (typeof showNotification === 'function') showNotification('Por favor, preencha seu nome!', 'error');
         return;
     }
 
-    // Busca o produto selecionado no array de produtos
-    for (var i = 0; i < products.length; i++) {
-        if (products[i].id === productId) {
-            selectedProduct = products[i];
-            break;
-        }
-    }
+    // Reset de estado
+    currentSelectedSize = null;
+    currentQty = 1;
+    document.getElementById('modalQty').textContent = "1";
+    document.getElementById('purchaseControls').style.display = 'none';
+
+    selectedProduct = products.find(p => p.id === productId);
 
     document.getElementById('modalProductName').textContent = selectedProduct.nome;
-    document.getElementById('modalProductDescription').textContent = selectedProduct.tipo;
+    document.getElementById('modalProductDescription').textContent = selectedProduct.descricao || selectedProduct.tipo;
 
-    var sizesGrid = document.getElementById('sizesGrid');
-    if (!sizesGrid) return;
+    const sizesGrid = document.getElementById('sizesGrid');
     sizesGrid.innerHTML = '';
 
-    // Usa o array 'sizes' que veio do price.json
-    for (var i = 0; i < sizes.length; i++) {
-        var size = sizes[i];
-        var opt = document.createElement('div');
+    sizes.forEach((size, index) => {
+        const opt = document.createElement('div');
         opt.className = 'size-option';
-        opt.tabIndex = 0;
         opt.innerHTML = `
             <div class="size-name">${size.name}</div>
             <div class="size-ml">${size.ml}</div>
             <div class="size-price">R$ ${size.price}</div>
         `;
 
-        (function (idx) {
-            opt.addEventListener('click', function () { addToCart(idx); });
-        })(i);
-
+        opt.onclick = () => selectSize(index, opt);
         sizesGrid.appendChild(opt);
-    }
+    });
 
     document.getElementById('productModal').classList.add('active');
     document.body.classList.add('no-scroll');
+};
+
+// Seleciona o tamanho e libera o contador
+function selectSize(index, element) {
+    currentSelectedSize = sizes[index];
+
+    // Remove classe selected de outros
+    document.querySelectorAll('.size-option').forEach(el => el.classList.remove('selected'));
+    element.classList.add('selected');
+
+    // Mostra controles e atualiza preço total
+    document.getElementById('purchaseControls').style.display = 'block';
+    updateTotalPrice();
+}
+
+window.changeQty = function (val) {
+    currentQty = Math.max(1, currentQty + val);
+    document.getElementById('modalQty').textContent = currentQty;
+    updateTotalPrice();
+};
+
+function updateTotalPrice() {
+    if (!currentSelectedSize) return;
+    const total = currentSelectedSize.price * currentQty;
+    document.getElementById('totalValue').textContent = `R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+}
+
+window.confirmAddToCart = function () {
+    if (!currentSelectedSize) {
+        showNotification('Selecione um tamanho!', 'error');
+        return;
+    }
+
+    // Criamos o item com a quantidade ATUAL do modal
+    const itemParaSacola = {
+        id: Date.now(),
+        productName: selectedProduct.nome,
+        size: currentSelectedSize.ml,
+        price: currentSelectedSize.price * currentQty, // Preço Total
+        unitPrice: currentSelectedSize.price,         // Preço Unitário para referência
+        quantity: currentQty                          // QUANTIDADE REAL SELECIONADA
+    };
+
+    cart.push(itemParaSacola);
+
+    if (typeof updateCart === 'function') updateCart();
+
+    closeModal();
+    showNotification(`${currentQty} unidade(s) adicionada(s)!`);
 };
 
 window.addToCart = function (sizeIndex) {
@@ -826,53 +869,81 @@ function updateCart() {
     var totalPrice = document.getElementById('totalPrice');
 
     if (cart.length === 0) {
-        cartCount.classList.add('hidden');
+        if (cartCount) cartCount.classList.add('hidden');
         cartItems.innerHTML = '<div class="cart-empty">Sua sacola está vazia</div>';
-        cartTotal.classList.add('hidden');
-        checkoutBtn.classList.add('hidden');
+        if (cartTotal) cartTotal.classList.add('hidden');
+        if (checkoutBtn) checkoutBtn.classList.add('hidden');
     } else {
-        cartCount.classList.remove('hidden');
-        cartCount.textContent = cart.length;
+        // 1. Soma todas as quantidades individuais para o ícone da sacola
+        var totalItens = cart.reduce((acc, i) => acc + (Number(i.quantity) || 1), 0);
+
+        if (cartCount) {
+            cartCount.classList.remove('hidden');
+            cartCount.textContent = totalItens;
+        }
 
         var html = '';
+        var totalGeral = 0;
+
+        // 2. Loop para gerar os itens da sacola
         for (var i = 0; i < cart.length; i++) {
             var item = cart[i];
+
+            // Proteções contra erro de 'undefined' nas propriedades
+            var nome = item.productName || item.nome || "Produto";
+            var tamanho = item.size || item.tamanho || "";
+            var qtd = Number(item.quantity) || 1;
+            var precoTotalLinha = Number(item.price) || 0;
+
+            totalGeral += precoTotalLinha;
+
+            // Início do HTML do Item
             html += '<div class="cart-item">';
             html += '<div class="cart-item-header">';
             html += '<div>';
-            html += '<h4>' + item.productName + '</h4>';
-            html += '<p>' + item.size + '</p>';
+            // Badge de quantidade + Nome do Perfume
+            html += '<h4><span class="qty-badge">' + qtd + 'x</span> ' + nome + '</h4>';
+            // Detalhes: Tamanho + Texto explicativo de unidades
+            html += '<p class="item-details">' + tamanho + ' | <strong>' + qtd + ' un.</strong></p>';
             html += '</div>';
             html += '<button class="remove-item" data-item-id="' + item.id + '">';
             html += '<i class="fas fa-times"></i>';
             html += '</button>';
             html += '</div>';
-            html += '<div class="cart-item-price">R$ ' + item.price + '</div>';
+
+            // Rodapé do item com Subtotal daquela linha
+            html += '<div class="cart-item-footer" style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; border-top:1px solid #333; padding-top:8px;">';
+            html += '<span style="font-size:11px; color:#888;">Subtotal:</span>';
+            html += '<div class="cart-item-price" style="margin:0;">R$ ' + precoTotalLinha.toFixed(2).replace('.', ',') + '</div>';
+            html += '</div>';
             html += '</div>';
         }
+
         cartItems.innerHTML = html;
-        // attach listeners to remove buttons
+
+        // 3. Reatesta os ouvintes de clique para remover
         cartItems.querySelectorAll('.remove-item').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var id = Number(btn.getAttribute('data-item-id'));
-                removeFromCart(id);
+                if (typeof removeFromCart === 'function') {
+                    removeFromCart(id);
+                }
             });
         });
 
-        var total = 0;
-        for (var i = 0; i < cart.length; i++) {
-            total += cart[i].price;
+        // 4. Atualiza o valor total da sacola
+        if (totalPrice) {
+            totalPrice.textContent = 'R$ ' + totalGeral.toFixed(2).replace('.', ',');
         }
-        totalPrice.textContent = 'R$ ' + total;
-        cartTotal.classList.remove('hidden');
-        checkoutBtn.classList.remove('hidden');
+        if (cartTotal) cartTotal.classList.remove('hidden');
+        if (checkoutBtn) checkoutBtn.classList.remove('hidden');
     }
-    // Sync floating cart count if present
+
+    // 5. Sincroniza o contador flutuante (Mobile) se ele existir
     const floatCount = document.getElementById('floatCartCount');
-    const headerCount = document.getElementById('cartCount');
-    if (floatCount && headerCount) {
-        if (headerCount.classList.contains('hidden')) floatCount.classList.add('hidden'); else floatCount.classList.remove('hidden');
-        floatCount.textContent = headerCount.textContent;
+    if (floatCount && cartCount) {
+        floatCount.textContent = cartCount.textContent;
+        floatCount.classList.toggle('hidden', cart.length === 0);
     }
 }
 
@@ -916,17 +987,51 @@ function finalizeOrder() {
     }
     addressInput.classList.remove('is-invalid');
 
-    var message = 'Olá! Meu nome é ' + ' ' + '*' + customerName + '*' + '\n' + 'Endereço de Entrega: ' + '*' + adressClient + '*' + '\n' + '*Pedido*:' + '\n';
-    for (var i = 0; i < cart.length; i++) {
-        var item = cart[i];
-        message += '' + (i + 1) + '. ' + item.productName + ' - ' + item.size + ' - R$ ' + ' ' + ' ' + item.price + '\n';
-    }
-    var total = 0;
-    for (var i = 0; i < cart.length; i++) {
-        total += cart[i].price;
-    }
-    message += '*Total: R$ ' + ' ' + total + '*';
+    // --- CORREÇÃO VISUAL: OCULTAR BOTÕES FLUTUANTES ---
+    // Seleciona os botões de chat e whatsapp pelos seletores comuns
+    const floatButtons = document.querySelectorAll('.whatsapp-btn, .chat-btn, [class*="float"]');
+    floatButtons.forEach(btn => btn.style.zIndex = "1"); // Joga para trás
 
+    // 1. AGRUPAMENTO (Soma itens iguais: mesmo perfume + mesmo ML)
+    const cartAgrupado = {};
+    cart.forEach(item => {
+        const nomeLimpo = item.productName || item.nome;
+        const chave = nomeLimpo + '|' + item.size;
+
+        if (cartAgrupado[chave]) {
+            cartAgrupado[chave].quantity += (Number(item.quantity) || 1);
+            cartAgrupado[chave].price += Number(item.price);
+        } else {
+            cartAgrupado[chave] = {
+                nome: nomeLimpo,
+                tamanho: item.size,
+                quantity: (Number(item.quantity) || 1),
+                price: Number(item.price)
+            };
+        }
+    });
+
+    // 2. CONSTRUÇÃO DA MENSAGEM (Sem emojis, visual limpo)
+    var message = 'Ola! Meu nome e *' + customerName + '*\n\n';
+
+    message += '> ENDERECO DE ENTREGA:\n';
+    message += '*' + adressClient + '*\n\n';
+
+    message += '> ITENS DO PEDIDO:\n';
+
+    var totalGeral = 0;
+
+    for (let chave in cartAgrupado) {
+        let item = cartAgrupado[chave];
+        // Formato pedido: *2x* Nome (30ml) - R$ 60,00
+        message += '*' + item.quantity + 'x* ' + item.nome + ' (' + item.tamanho + ') - R$ ' + item.price.toFixed(2).replace('.', ',') + '\n';
+        totalGeral += item.price;
+    }
+
+    message += '\n--------------------------\n';
+    message += '*TOTAL DO PEDIDO: R$ ' + totalGeral.toFixed(2).replace('.', ',') + '*';
+
+    // 3. ENVIO VIA WHATSAPP
     const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
     window.open(url, '_blank');
 }

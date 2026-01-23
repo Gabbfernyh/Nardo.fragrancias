@@ -330,7 +330,7 @@
 
                             <details class="sidebar-details">
                                 <summary>
-                                    YVES SAINT LAURENT
+                                    PRADA
                                     <i class="bi bi-chevron-down"></i>
                                 </summary>
                                 <div class="sidebar-sub-menu">
@@ -346,7 +346,7 @@
 
                             <details class="sidebar-details">
                                 <summary>
-                                    DOLCE & GABBANA
+                                    NARCISO RODRIGUES
                                     <i class="bi bi-chevron-down"></i>
                                 </summary>
                                 <div class="sidebar-sub-menu">
@@ -437,11 +437,26 @@
 
     <div class="modal-overlay" id="productModal">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose">&times;</button>
+            <button class="modal-close" id="modalClose" onclick="closeModal()">&times;</button>
             <h3 id="modalProductName"></h3>
             <p class="modal-description" id="modalProductDescription"></p>
-            <h4>Escolha o tamanho:</h4>
+
+            <h4>1. Escolha o tamanho:</h4>
             <div class="sizes-grid" id="sizesGrid"></div>
+
+            <div class="purchase-controls" id="purchaseControls" style="display: none;">
+                <h4>2. Quantidade:</h4>
+                <div class="quantity-wrapper">
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                        <span id="modalQty">1</span>
+                        <button class="qty-btn" onclick="changeQty(1)">+</button>
+                    </div>
+                    <button class="btn-confirm-add" onclick="confirmAddToCart()">
+                        Adicionar <span id="totalValue">R$ 0,00</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -522,14 +537,10 @@
                     <h2 class="section-title text-center" data-sr>Entre em Contato</h2>
                     <div class="contact-info text-center" data-sr>
                         <p>Descubra nossas fragrâncias exclusivas</p>
-                        <p class="mt-3">
-                            <i class="bi bi-envelope"></i>
-                            <a href="mailto:contato@nardofragrancias.com">contato@nardofragrancias.com</a>
-                        </p>
                         <p class="mt-2">
                             <i class="bi bi-whatsapp"></i>
-                            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre as fragrâncias Nardo."
-                                target="_blank">(11) 99999-9999</a>
+                            <a href="https://wa.me/+5511991990293?text=Olá! Gostaria de saber mais sobre as fragrâncias Nardo."
+                                target="_blank">(11) 99199-0293</a>
                         </p>
                         <p class="mt-2">
                             <i class="bi bi-instagram"></i>
@@ -611,7 +622,12 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Nardo Fragrâncias. Todos os direitos reservados.</p>
+            
+            <p class="mt-3">
+                "Imagens meramente ilustrativas. As marcas e fotos pertencem aos seus respectivos
+                proprietários e são utilizadas aqui apenas para identificação dos produtos."
+            </p>
+            <p>&copy; 2026 Nardo Fragrâncias. Alguns direitos reservados.</p>
         </div>
     </footer>
 
