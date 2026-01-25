@@ -1,17 +1,21 @@
 // main.js - Onde a mágica começa
 let todosProdutos = [];
 
+// main.js
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Carrega os dados do seu JSON
     try {
         const response = await fetch('./src/data/produtos.json');
         todosProdutos = await response.json();
 
-        // 2. Inicializa a tela com os "Populares" (sua primeira exigência)
-        mostrarPopulares();
+        // Verificação de segurança: espera um pequeno instante ou verifica se a função existe
+        const checkReady = setInterval(() => {
+            if (typeof window.renderizarProdutos === 'function') {
+                clearInterval(checkReady);
+                mostrarPopulares();
+                setupSearch();
+            }
+        }, 50); // Checa a cada 50ms se o outro arquivo carregou
 
-        // 3. Configura a busca em tempo real (Search)
-        setupSearch();
     } catch (error) {
         console.error("Erro ao carregar banco de dados:", error);
     }

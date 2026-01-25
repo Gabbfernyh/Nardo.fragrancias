@@ -51,3 +51,4 @@ export function renderizarProdutos(listaProdutos, containerId) {
 }
 // Deixa a função disponível globalmente para o index.js e main.js
 window.renderizarProdutos = renderizarProdutos;
+window.applyFiltersAndSort = applyFiltersAndSort;
