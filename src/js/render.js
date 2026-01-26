@@ -20,16 +20,13 @@ export function renderizarProdutos(listaProdutos, containerId) {
                 
                 <div class="product-info">
                     <p class="brand-name">${prod.marca.toUpperCase()} - ${prod.linha}</p>
+                    <p class="product-genero">${prod.genero}</p>
                     <h3 class="product-title">${prod.nome}</h3>
-                    
-                    <div class="rating">
-                        <span class="stars">★★★★★</span>
-                    </div>
-                    
                     <div class="price-container">
                         <span>A partir de</span>
                         <div class="current-price-row">
-                            <span class="current-price">R$ 15,00</span>
+                            <span class="current-price">R$ 45,00</span>
+                            <span>30ml</span>
                         </div>
                     </div>
 

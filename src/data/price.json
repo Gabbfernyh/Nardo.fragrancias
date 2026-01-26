@@ -1,22 +1,22 @@
 [
     {
-        "name": "De Bolso",
-        "ml": "15ml",
-        "price": 15
-    },
-    {
         "name": "Pequeno",
         "ml": "30ml",
-        "price": 30
+        "price": 45
     },
     {
         "name": "Médio",
         "ml": "50ml",
-        "price": 50
+        "price": 75
+    },
+    {
+        "name": "Médio",
+        "ml": "80ml",
+        "price": 120
     },
     {
         "name": "Grande",
         "ml": "100ml",
-        "price": 100
+        "price": 150
     }
 ]

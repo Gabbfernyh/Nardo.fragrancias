@@ -5,53 +5,6 @@ let cart = [];
 let selectedProduct = null;
 let products = [];  //Carregado do produtos.json
 let sizes = [];    // Carregado do price.json
-
-// let products = [
-//     {
-//         id: 1,
-//         name: "Essência Luxury",
-//         image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=500&fit=crop",
-//         description: "Fragrância sofisticada com notas amadeiradas",
-//         tags: ["Populares"]
-//     },
-//     {
-//         id: 2,
-//         name: "Noir Élégance",
-//         image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=500&fit=crop",
-//         description: "Perfume intenso com toque floral",
-//         tags: ["floral", "feminino"]
-//     },
-//     {
-//         id: 3,
-//         name: "Oud Royal",
-//         image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=500&fit=crop",
-//         description: "Aroma oriental exclusivo",
-//         tags: ["oriental", "unissex"]
-//     },
-//     {
-//         id: 4,
-//         name: "Citrus Fresh",
-//         image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
-//         description: "Fragrância cítrica revitalizante",
-//         tags: ["cítrico", "unissex"]
-//     },
-//     {
-//         id: 5,
-//         name: "Doce Paixão",
-//         image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
-//         description: "Um perfume doce e envolvente",
-//         tags: ["doce", "feminino"]
-//     },
-//     {
-//         id: 6,
-//         name: "Aventura Selvagem",
-//         image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=500&fit=crop",
-//         description: "Fragrância masculina com notas de couro e especiarias",
-//         tags: ["especiado", "masculino"]
-//     }
-// ];
-
-
 // (arrays e variáveis definidos acima)
 
 // 1. INICIALIZAÇÃO E CARREGAMENTO DE DADOS (Dual JSON)
@@ -69,18 +22,6 @@ async function init() {
         // Renderização inicial
         renderProducts(products);
 
-        // Conexão do sistema de pesquisa original
-        const searchInput = document.querySelector('.search-input');
-        if (searchInput) {
-            searchInput.addEventListener('input', function (e) {
-                const termo = e.target.value.toLowerCase();
-                const filtrados = products.filter(p =>
-                    p.nome.toLowerCase().includes(termo) ||
-                    p.marca.toLowerCase().includes(termo)
-                );
-                renderProducts(filtrados);
-            });
-        }
     } catch (error) {
         console.error("Erro ao carregar os dados:", error);
     }
@@ -189,34 +130,41 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // function applyFiltersAndSort() {
-    //     let filteredProducts = [...products];
 
-    //     // Apply filters
-    //     if (activeFilters.length > 0) {
-    //         filteredProducts = filteredProducts.filter(p =>
-    //             activeFilters.every(filter => p.tags.includes(filter))
-    //         );
-    //     }
+    function applyFiltersAndSort() {
+        let filteredProducts = [...products];
 
-    //     // Apply search term
-    //     const term = searchInput.value.toLowerCase();
-    //     if (term) {
-    //         filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(term));
-    //     }
+        // Apply search term
+        const term = searchInput.value.toLowerCase();
+        if (term) {
+            filteredProducts = filteredProducts.filter(p =>
+                p.nome.toLowerCase().includes(term) ||
+                p.marca.toLowerCase().includes(term)
+            );
+        }
 
-    //     // Apply sort
-    //     switch (currentSort) {
-    //         case 'alpha-asc':
-    //             filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-    //             break;
-    //         case 'alpha-desc':
-    //             filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
-    //             break;
-    //     }
+        // Apply filters
+        if (activeFilters.length > 0) {
+            filteredProducts = filteredProducts.filter(p =>
+                activeFilters.every(filter => {
+                    if (!p[filter.type]) return false;
+                    return p[filter.type].toString().toLowerCase() === filter.value.toString().toLowerCase();
+                })
+            );
+        }
 
-    //     renderProducts(filteredProducts);
-    // }
+        // Apply sort
+        switch (currentSort) {
+            case 'alpha-asc':
+                filteredProducts.sort((a, b) => a.nome.localeCompare(b.nome));
+                break;
+            case 'alpha-desc':
+                filteredProducts.sort((a, b) => b.nome.localeCompare(a.nome));
+                break;
+        }
+
+        renderProducts(filteredProducts);
+    }
 
     if (cartBtn) cartBtn.addEventListener('click', toggleCart);
     if (cartClose) cartClose.addEventListener('click', toggleCart);
@@ -462,14 +410,13 @@ function renderProducts(productList = products) {
 
         info.innerHTML = `
             <p class="brand-name">${product.marca.toUpperCase()} - ${product.linha}</p>
+            <p class="product-genero">${product.genero}</p>
             <h3 class="product-title">${product.nome}</h3>
-            <div class="rating">
-                <span class="stars">★★★★★</span>
-            </div>
             <div class="price-container">
                 <span>A partir de</span>
                 <div class="current-price-row">
-                    <span class="current-price">R$ 15,00</span>
+                    <span class="current-price">R$ 45,00</span>
+                    <span>30 ml</span>
                 </div>
             </div>
         `;
@@ -742,55 +689,107 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-window.filtrarCatalogo = function (tipo, valor, elementoClicado) {
-    // 1. Feedback visual imediato nos botões
-    document.querySelectorAll('.filter-chip, .filter-sub-item').forEach(btn => {
-        btn.classList.remove('active');
-    });
+// A função 'applyFiltersAndSort' agora é a única fonte de verdade para renderizar produtos.
+// As funções 'filtrarCatalogo' e 'ordenarProdutos' irão apenas manipular os estados
+// (activeFilters e currentSort) e então chamar applyFiltersAndSort.
 
-    if (elementoClicado) {
-        elementoClicado.classList.add('active');
+document.addEventListener('DOMContentLoaded', function () {
+    // ... (código anterior do DOMContentLoaded)
+
+    let currentSort = 'default';
+    let activeFilters = [];
+    const searchInput = document.getElementById('searchInput');
+
+    function applyFiltersAndSort() {
+        let filteredProducts = [...products];
+
+        // 1. Aplicar termo de busca
+        const term = searchInput.value.toLowerCase();
+        if (term) {
+            filteredProducts = filteredProducts.filter(p =>
+                p.nome.toLowerCase().includes(term) ||
+                p.marca.toLowerCase().includes(term)
+            );
+        }
+
+        // 2. Aplicar filtros ativos (marca, etc.)
+        if (activeFilters.length > 0) {
+            filteredProducts = filteredProducts.filter(p =>
+                activeFilters.every(filter => {
+                    if (filter.type === 'popular') {
+                        return p.popular === filter.value;
+                    }
+                    if (!p[filter.type]) return false;
+                    return p[filter.type].toString().toLowerCase() === filter.value.toString().toLowerCase();
+                })
+            );
+        }
+
+        // 3. Aplicar ordenação
+        switch (currentSort) {
+            case 'alpha-asc':
+                filteredProducts.sort((a, b) => a.nome.localeCompare(b.nome));
+                break;
+            case 'alpha-desc':
+                filteredProducts.sort((a, b) => b.nome.localeCompare(a.nome));
+                break;
+        }
+
+        renderProducts(filteredProducts);
     }
 
-    // 2. Filtragem silenciosa (sem mover a tela)
-    if (tipo === 'todos') {
-        currentProducts = [...products];
-    } else if (tipo === 'popular') {
-        currentProducts = products.filter(p => p.popular === true);
-    } else {
-        currentProducts = products.filter(p => {
-            if (!p[tipo]) return false;
-            return p[tipo].toString().toLowerCase() === valor.toString().toLowerCase();
+    window.filtrarCatalogo = function (tipo, valor, elementoClicado) {
+        document.querySelectorAll('.filter-chip, .filter-sub-item').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        if (elementoClicado) {
+            elementoClicado.classList.add('active');
+        }
+
+        activeFilters = []; // Limpa filtros para uma seleção única
+
+        if (tipo === 'popular') {
+            activeFilters.push({ type: 'popular', value: true });
+        } else if (tipo !== 'todos') {
+            activeFilters.push({ type: tipo, value: valor });
+        }
+
+        applyFiltersAndSort();
+
+        const grid = document.getElementById('productsGrid');
+        if (grid) {
+            grid.style.opacity = '0';
+            setTimeout(() => {
+                grid.style.transition = 'opacity 0.4s ease';
+                grid.style.opacity = '1';
+            }, 10);
+        }
+    };
+
+    window.ordenarProdutos = function (criterio) {
+        currentSort = criterio;
+        applyFiltersAndSort();
+    };
+
+    // Attach listeners
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            window.ordenarProdutos(e.target.value);
         });
     }
 
-    // 3. Renderiza os novos cards
-    renderProducts(currentProducts);
-
-    // DICA: Em vez de rolar a página, podemos dar um pequeno "fade" no grid 
-    // para o usuário perceber que os produtos mudaram.
-    const grid = document.getElementById('productsGrid');
-    if (grid) {
-        grid.style.opacity = '0';
-        setTimeout(() => {
-            grid.style.transition = 'opacity 0.4s ease';
-            grid.style.opacity = '1';
-        }, 10);
+    if (searchInput) {
+        searchInput.addEventListener('keyup', applyFiltersAndSort);
     }
-};
 
-// ORDENAÇÃO (Chamada pelo seu Select)
-window.ordenarProdutos = function (criterio) {
-    if (criterio === 'alpha-asc') {
-        currentProducts.sort((a, b) => a.nome.localeCompare(b.nome));
-    } else if (criterio === 'alpha-desc') {
-        currentProducts.sort((a, b) => b.nome.localeCompare(a.nome));
-    } else {
-        // Reset para ordem original do JSON
-        currentProducts = [...products];
-    }
-    renderProducts(currentProducts);
-};
+    // ... (resto do código do DOMContentLoaded)
+
+    // As chamadas iniciais
+    // createFilterButtons(); // Se você usar filtros de tag, mantenha isso
+    applyFiltersAndSort();
+});
 
 // 4. MODAL DE PRODUTO (ALIMENTADO PELO PRICE.JSON)
 let currentSelectedSize = null;
