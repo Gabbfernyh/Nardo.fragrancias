@@ -1,4 +1,4 @@
-# Nardo Fragrâncias | Perfumaria Independente
+# <img src="https://nardofragrancias.vercel.app/src/assets/img/image.png" height="200" alt="Nardo Fragrâncias Logo" />  Nardo Fragrâncias | Perfumaria Independente
 
 Plataforma de catálogo digital e e-commerce desenvolvida sob medida para a **Nardo Fragrâncias**. O projeto foca em uma experiência de usuário (UX) premium, permitindo a exploração detalhada de perfumes importados e independentes com finalização direta via WhatsApp.
 
@@ -20,7 +20,6 @@ O projeto foi construído utilizando tecnologias modernas de front-end, focando 
 * **Banco de Dados Dinâmico:** Gerenciamento de inventário através de um arquivo JSON estruturado, facilitando atualizações de estoque, preços e descrições.
 * **Agrupamento Inteligente:** Algoritmo customizado na sacola de compras que agrupa itens idênticos (mesmo perfume e volumetria), gerando uma mensagem de pedido limpa e profissional.
 * **Interface Responsiva:** Design adaptável para desktop e dispositivos móveis, com correção de profundidade (z-index) para que elementos flutuantes não obstruam a navegação.
-
 ---
 
 ## ✨ Funcionalidades
@@ -55,9 +54,10 @@ Para rodar o projeto em ambiente de desenvolvimento:
 
 Projeto desenvolvido com foco em alta performance e design minimalista.
 
-* **LinkedIn:** [Seu Nome Aqui](https://www.linkedin.com/in/gabbfernyh/)
-* **Portfólio:** [Link do Seu Portfólio](https://gabbfernyh.github.io/Mefolio/)
+* **LinkedIn:** [Gabriel Fernandes](https://www.linkedin.com/in/gabbfernyh/)
+* **Portfólio:** [My Portfólio](https://gabbfernyh.github.io/Mefolio/)
 
 ---
 
 **Nardo Fragrâncias – Elegância em cada gota.** 🌿✨
+
