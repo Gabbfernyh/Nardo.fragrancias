@@ -35,9 +35,9 @@ O projeto foi construído utilizando tecnologias modernas de front-end, focando 
 
 Este é um projeto desenvolvido para um cliente real, e o uso de seus materiais deve respeitar os seguintes critérios:
 
-1.  **Imagens e Dados Técnicos:** Todas as fotografias de produtos, escalas de "principais acordos" e pirâmides olfativas foram extraídas da plataforma **Fragrantica**. Os direitos autorais destas mídias pertencem aos seus respectivos fotógrafos, às marcas detentoras das fragrâncias e ao portal Fragrantica.
-2.  **Direitos de Cópia (Copywriting):** Os textos descritivos e a identidade verbal da marca são de propriedade exclusiva da **Nardo Fragrâncias**.
-3.  **Marcas Registradas:** Nomes como *Parfums de Marly, Tom Ford, Nishane, Jo Malone* e *Maison Francis Kurkdjian* são marcas registradas de terceiros, utilizadas aqui apenas para fins informativos de identificação dos produtos originais oferecidos pela perfumaria.
+1. **Imagens e Dados Técnicos:** Todas as fotografias de produtos, escalas de "principais acordos" e pirâmides olfativas foram extraídas da plataforma **Fragrantica**. Os direitos autorais destas mídias pertencem aos seus respectivos fotógrafos, às marcas detentoras das fragrâncias e ao portal Fragrantica.
+2. **Direitos de Cópia (Copywriting):** Os textos descritivos e a identidade verbal da marca são de propriedade exclusiva da **Nardo Fragrâncias**.
+3. **Marcas Registradas:** Nomes como *Parfums de Marly, Tom Ford, Nishane, Jo Malone* e *Maison Francis Kurkdjian* são marcas registradas de terceiros, utilizadas aqui apenas para fins informativos de identificação dos produtos originais oferecidos pela perfumaria.
 
 ---
 
@@ -45,15 +45,15 @@ Este é um projeto desenvolvido para um cliente real, e o uso de seus materiais 
 
 Para rodar o projeto em ambiente de desenvolvimento:
 
-1.  Clone este repositório.
-2.  Como o projeto utiliza módulos JavaScript (`type="module"`) e requisições assíncronas para o arquivo JSON, é obrigatório rodar através de um servidor local (ex: extensão **Live Server** do VS Code).
-3.  Certifique-se de que o arquivo `produtos.json` esteja na pasta correta para que o `fetch` ocorra sem erros de caminho.
+1. Clone este repositório.
+2. Como o projeto utiliza módulos JavaScript (`type="module"`) e requisições assíncronas para o arquivo JSON, é obrigatório rodar através de um servidor local (ex: extensão **Live Server** do VS Code).
+3. Certifique-se de que o arquivo `produtos.json` esteja na pasta correta para que o `fetch` ocorra sem erros de caminho.
 
 ---
 
 ## 👨‍💻 Desenvolvedor
 
-Projeto desenvolvido com foco em alta performance e design minimalista. 
+Projeto desenvolvido com foco em alta performance e design minimalista.
 
 * **LinkedIn:** [Seu Nome Aqui](https://www.linkedin.com/in/gabbfernyh/)
 * **Portfólio:** [Link do Seu Portfólio](https://gabbfernyh.github.io/Mefolio/)
