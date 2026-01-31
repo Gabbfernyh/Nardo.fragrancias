@@ -4,7 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/assets/img/image.png" type="image/x-icon">
     <title>Nardo Fragrâncias | Perfumaria Independente</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Nardo Fragrâncias">
+    <meta name="description"
+        content="Descubra a Nardo Fragrâncias, uma perfumaria independente dedicada a criar fragrâncias únicas e marcantes. Oferecemos uma seleção exclusiva de perfumes artesanais, com alta fixação e performance, para homens e mulheres. Explore nosso catálogo e encontre a sua assinatura olfativa.">
+    <meta name="keywords"
+        content="perfumaria independente, perfumes artesanais, fragrâncias únicas, perfumes masculinos, perfumes femininos, perfumes unissex, alta fixação, Nardo Fragrâncias, comprar perfumes, decants de perfumes, perfumes importados, perfumes nacionais">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://fragrancias-nardo.vercel.app/">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nardo Fragrâncias | Perfumaria Independente">
+    <meta property="og:description"
+        content="Elegância em cada gota. Explore nossa coleção de perfumes artesanais e encontre a fragrância que define você.">
+    <meta property="og:image" content="https://fragrancias-nardo.vercel.app/src/assets/img/image.png">
+    <meta property="og:url" content="https://fragrancias-nardo.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Nardo Fragrâncias">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +39,8 @@
     <link rel="stylesheet" href="src/css/produtos.css">
     <link rel="stylesheet" href="src/css/perfumeDescription.css">
     <link rel="stylesheet" href="src/css/notification.css">
+
+
 </head>
 
 <body>
@@ -41,10 +63,10 @@
                         <button class="nav-close" aria-label="Fechar menu">&times;</button>
                         <ul>
                             <li><a href="#hero">Inicio</a></li>
-                            <li><a href="#about">Sobre</a></li>
+                            <!-- <li><a href="#about">Sobre</a></li> -->
                             <li><a href="#job">Nosso Trabalho</a></li>
                             <li><a href="#catalog">Catálogo</a></li>
-                            <li><a href="#chatbot">Chatbot</a></li>
+                            <!-- <li><a href="#chatbot">Chatbot</a></li> -->
                             <li><a href="#contact">Contato</a></li>
                         </ul>
                     </nav>
@@ -82,7 +104,7 @@
         <div class="form-modal">
             <h2>Bem-vindo à <br> Nardo Fragrâncias</h2>
             <p>Por favor, informe seu nome para continuar</p>
-            <input type="text" id="customerName" placeholder="Seu nome completo">
+            <input type="text" id="customerName" placeholder="Seu nome completo" required>
             <button id="formSubmitBtn">Entrar</button>
         </div>
     </div>
@@ -98,7 +120,7 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="section about" id="about">
+    <!--  <section class="section about" id="about">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -121,17 +143,17 @@
                                 ipsum dolor sit amet, consectetur adipiscing elit.
 
                             </p>
-                            <!-- A Nardo Fragrâncias nasceu da paixão pela perfumaria artesanal e independente.
+                            A Nardo Fragrâncias nasceu da paixão pela perfumaria artesanal e independente.
                             Cada fragrância é cuidadosamente desenvolvida para contar uma história única,
                             combinando ingredientes nobres com criatividade e técnica refinada.
                             Acreditamos que um perfume é mais do que um aroma – é uma expressão de identidade,
-                            uma memória viva que acompanha cada momento especial da sua jornada. -->
+                            uma memória viva que acompanha cada momento especial da sua jornada.
                         </article>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section class="abou-job section" id="job">
         <div class="containerJ">
@@ -212,6 +234,10 @@
                                 onclick="filtrarCatalogo('genero', 'Feminino', this)">Feminino</button>
                             <button class="filter-chip"
                                 onclick="filtrarCatalogo('genero', 'Unissex', this)">Unissex</button>
+                            <button class="filter-chip"
+                                onclick="filtrarCatalogo('nacionalidade', 'Internacional', this)">✈️ Internacional</button>
+                            <button class="filter-chip"
+                                onclick="filtrarCatalogo('nacionalidade', 'Nacional', this)">🇧🇷 Nacional</button>
                         </div>
                     </div>
                 </div>
@@ -272,8 +298,6 @@
                                         onclick="filtrarCatalogo('linha', 'Sauvage', this)">Linha Sauvage</button>
                                     <button class="filter-sub-item"
                                         onclick="filtrarCatalogo('linha', 'Miss Dior', this)">Linha Miss Dior</button>
-                                    <button class="filter-sub-item"
-                                        onclick="filtrarCatalogo('linha', 'J\'adore', this)">Linha J'adore</button>
                                 </div>
                             </details>
 
@@ -351,9 +375,9 @@
                                 </summary>
                                 <div class="sidebar-sub-menu">
                                     <button class="filter-sub-item"
-                                        onclick="filtrarCatalogo('marca', 'Dolce & Gabbana', this)">Todos</button>
+                                        onclick="filtrarCatalogo('marca', 'Narciso Rodriguez', this)">Todos</button>
                                     <button class="filter-sub-item"
-                                        onclick="filtrarCatalogo('linha', 'Light Blue', this)">Linha Light Blue</button>
+                                        onclick="filtrarCatalogo('linha', 'For Her', this)">Linha For Her</button>
                                 </div>
                             </details>
 
@@ -497,7 +521,7 @@
     </div>
 
     <!-- CHATBOT SECTION -->
-    <section class="section chatbot" id="chatbot">
+    <!-- <section class="section chatbot" id="chatbot">
         <div class="container">
             <h2 class="section-title text-center" data-sr>Encontre Sua Fragrância Ideal</h2>
             <div class="chat-container" data-sr>
@@ -527,7 +551,7 @@
                 </p>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- CONTACT SECTION -->
     <section class="contact" id="contact">
@@ -560,23 +584,23 @@
     </section>
 
     <div class="floating-btns">
-        <button class="float-btn ia-btn" id="chatButton" title="Conversar com IA" aria-label="Chat com IA">
+        <!-- <button class="float-btn ia-btn" id="chatButton" title="Conversar com IA" aria-label="Chat com IA">
             <i class="fas fa-comments"></i>
-        </button>
+        </button> -->
 
-        <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre as fragrâncias Nardo."
+        <a href="https://wa.me/5511993768869?text=Olá! Gostaria de saber mais sobre as fragrâncias Nardo."
             target="_blank" class="float-btn whatsapp-btn" title="Conversar no WhatsApp" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
     </button>
 
-    <div class="chat-modal" id="chatModal">
+    <!-- <div class="chat-modal" id="chatModal">
         <button class="close-button" id="closeButton" aria-label="Fechar chat">&times;</button>
         <iframe class="chat-iframe" src="https://app.gptmaker.ai/widget/3ED0C095A04EB082D6A612638AEAD7A8/iframe"
             allow="microphone;" loading="lazy">
         </iframe>
-    </div>
+    </div> -->
 
     <div id="perfumeDetailOverlay" class="detail-modal-overlay">
         <div class="detail-modal-container">
@@ -630,7 +654,7 @@
                 "Imagens meramente ilustrativas. As marcas e fotos pertencem aos seus respectivos
                 proprietários e são utilizadas aqui apenas para identificação dos produtos."
             </p>
-            <p>&copy; 2026 Nardo Fragrâncias. Alguns direitos reservados.</p>
+            <p>&copy; 2026 Nardo Fragrâncias by <a class="gabb-footer" href="https://github.com/Gabbfernyh">Gabbfernyh</a>. Alguns direitos reservados.</p>
         </div>
     </footer>
 
@@ -643,12 +667,11 @@
 
     <!-- Scripts -->
     <script type="module" src="src/js/render.js"></script>
-    <script type="module" src="src/js/render.js"></script>
     <script type="module" src="src/js/main.js"></script>
     <script type="module" src="src/js/index.js"></script>
     <script src="src/js/notification.js"></script>
     <!-- GPTMaker Widget Script -->
-    <script>
+    <!-- <script>
         const chatModal = document.getElementById('chatModal');
         const closeButton = document.getElementById('closeButton');
         const floatingButton = document.getElementById('chatButton');
@@ -698,7 +721,7 @@
                 }
             }
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -24,8 +24,8 @@
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Removido width: 280px para permitir responsividade */
-    width: 100%;
-    height: 100%;
+    width: 98%;
+    height: 91%;
 }
 
 .product-card:hover {

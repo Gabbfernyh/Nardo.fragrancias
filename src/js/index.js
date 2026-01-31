@@ -1,5 +1,5 @@
 // Código limpo: pequenas melhorias de interação
-const whatsappNumber = '5511993768869'; // Alterar conforme necessário
+const whatsappNumber = '5511991990293'; // Alterar conforme necessário
 let customerName = '';
 let cart = [];
 let selectedProduct = null;

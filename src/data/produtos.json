@@ -6,6 +6,7 @@
         "linha": "La Belle",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Oriental",
@@ -22,6 +23,7 @@
         "linha": "Le Male",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Oriental",
@@ -38,6 +40,7 @@
         "linha": "Cologne Intense",
         "genero": "Unissex",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Unissex",
             "Amadeirado",
@@ -54,6 +57,7 @@
         "linha": "Floral",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -70,6 +74,7 @@
         "linha": "Blossoms",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -86,6 +91,7 @@
         "linha": "Cologne Intense",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -118,6 +124,7 @@
         "linha": "Blossoms",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -134,6 +141,7 @@
         "linha": "Classic",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Oriental",
@@ -150,6 +158,7 @@
         "linha": "Classic",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Oriental",
@@ -166,6 +175,7 @@
         "linha": "Kaiak",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Cítrico",
@@ -182,6 +192,7 @@
         "linha": "Kaiak",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -198,6 +209,7 @@
         "linha": "Kaiak",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Cítrico",
@@ -274,6 +286,7 @@
         "linha": "Classic",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Aromático",
@@ -290,6 +303,7 @@
         "linha": "Trésor",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Oriental",
@@ -306,6 +320,7 @@
         "linha": "Trésor",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Doce",
@@ -322,6 +337,7 @@
         "linha": "Essential",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -338,6 +354,7 @@
         "linha": "Art",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -354,6 +371,7 @@
         "linha": "Luxury",
         "genero": "Unissex",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Unissex",
             "Oriental",
@@ -370,6 +388,7 @@
         "linha": "La Vie",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -386,6 +405,7 @@
         "linha": "Le Beau",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -402,6 +422,7 @@
         "linha": "Legend",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Fougère",
@@ -418,6 +439,7 @@
         "linha": "Light Blue",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Cítrico",
@@ -434,6 +456,7 @@
         "linha": "Light Blue",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Cítrico",
@@ -450,6 +473,7 @@
         "linha": "Lily",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -466,6 +490,7 @@
         "linha": "L'Interdit",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -482,6 +507,7 @@
         "linha": "Casamorati",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Gourmand",
@@ -498,6 +524,7 @@
         "linha": "Classic",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -514,6 +541,7 @@
         "linha": "Luna",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Feminino",
             "Chipre",
@@ -530,6 +558,7 @@
         "linha": "Luna",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Feminino",
             "Chipre",
@@ -546,6 +575,7 @@
         "linha": "Luna",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Nacional",
         "tags": [
             "Feminino",
             "Chipre",
@@ -562,6 +592,7 @@
         "linha": "Malbec",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -578,6 +609,7 @@
         "linha": "Malbec",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -594,6 +626,7 @@
         "linha": "Malbec",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -610,6 +643,7 @@
         "linha": "Malbec",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -626,6 +660,7 @@
         "linha": "Malbec",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -642,6 +677,7 @@
         "linha": "Malbec",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -658,6 +694,7 @@
         "linha": "Classique",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -674,6 +711,7 @@
         "linha": "Royal",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Oriental",
@@ -690,6 +728,7 @@
         "linha": "Miss Dior",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -706,6 +745,7 @@
         "linha": "Miss Dior",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -722,6 +762,7 @@
         "linha": "Explorer",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -738,6 +779,7 @@
         "linha": "For Her",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Almíscar",
@@ -754,6 +796,7 @@
         "linha": "Olympéa",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -770,6 +813,7 @@
         "linha": "1 Million",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Intenso",
@@ -786,6 +830,7 @@
         "linha": "1 Million",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Amadeirado",
@@ -802,6 +847,7 @@
         "linha": "Phantom",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Futurista",
@@ -818,6 +864,7 @@
         "linha": "Candy",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Doce",
@@ -834,6 +881,7 @@
         "linha": "XS",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Sexy",
@@ -850,6 +898,7 @@
         "linha": "Quasar",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Nacional",
         "tags": [
             "Masculino",
             "Fresco",
@@ -866,6 +915,7 @@
         "linha": "Sauvage",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Luxo",
@@ -882,6 +932,7 @@
         "linha": "The Scent",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Sedutor",
@@ -898,6 +949,7 @@
         "linha": "Niche Collection",
         "genero": "Unissex",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Unissex",
             "Nicho",
@@ -914,6 +966,7 @@
         "linha": "Poison",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Oriental",
@@ -930,6 +983,7 @@
         "linha": "Idôle",
         "genero": "Feminino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Floral",
@@ -946,6 +1000,7 @@
         "linha": "L’Homme Idéal",
         "genero": "Masculino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Amêndoa",
@@ -961,6 +1016,7 @@
         "linha": "Les Infusions",
         "genero": "Feminino",
         "popular": false,
+        "nacionalidade": "Internacional",
         "tags": [
             "Feminino",
             "Atalcado",
@@ -976,6 +1032,7 @@
         "linha": "Invictus",
         "genero": "Masculino",
         "popular": true,
+        "nacionalidade": "Internacional",
         "tags": [
             "Masculino",
             "Aquático",
@@ -984,5 +1041,77 @@
         ],
         "descricao": "A fragrância da vitória: um encontro explosivo entre o frescor marinho e a sensualidade das notas amadeiradas.",
         "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.18471.avif"
+    },
+    {
+        "id": 60,
+        "nome": "Layton",
+        "marca": "Parfums de Marly",
+        "linha": "Parfums de Marly",
+        "genero": "Unissex",
+        "popular": true,
+        "nacionalidade": "Internacional",
+        "tags": [
+            "Unissex",
+            "Quente",
+            "Picante",
+            "Amadeirado",
+            "Populares"
+        ],
+        "descricao": "Uma fragrância viciante que mistura o frescor picante com a elegância do amadeirado e notas de baunilha.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.39314.avif"
+    },
+    {
+        "id": 61,
+        "nome": "Delina Exclusif",
+        "marca": "Parfums de Marly",
+        "linha": "Parfums de Marly",
+        "genero": "Feminino",
+        "popular": true,
+        "nacionalidade": "Internacional",
+        "tags": [
+            "Feminino",
+            "Rosa",
+            "Frutado",
+            "Doce",
+            "Populares"
+        ],
+        "descricao": "Uma interpretação sofisticada e rica da rosa, com toques frutados e um fundo aveludado de baunilha e âmbar.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.50370.avif"
+    },
+    {
+        "id": 62,
+        "nome": "Vanille Fatale",
+        "marca": "Tom Ford",
+        "linha": "Tom Ford",
+        "genero": "Unissex",
+        "popular": true,
+        "nacionalidade": "Internacional",
+        "tags": [
+            "Unissex",
+            "Baunilha",
+            "Âmbar",
+            "Doce",
+            "Populares"
+        ],
+        "descricao": "Uma força da natureza em forma de perfume: baunilha intensa cercada por especiarias quentes e notas de tabaco.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.48029.avif"
+    },
+    {
+        "id": 63,
+        "nome": "Baccarat Rouge 540",
+        "marca": "Maison Francis Kurkdjian",
+        "linha": "Maison Francis Kurkdjian",
+        "genero": "Unissex",
+        "popular": true,
+        "nacionalidade": "Internacional",
+        "tags": [
+            "Unissex",
+            "Amadeirado",
+            "Âmbar",
+            "Sofisticado",
+            "Populares"
+        ],
+        "descricao": "Uma fragrância luminosa e intensa, com notas de jasmim, açafrão e cedro, criando uma assinatura luxuosa.",
+        "imagem": "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.33519.avif"
     }
 ]
